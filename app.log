@@ -15828,3 +15828,45 @@ client_session: <aiohttp.client.ClientSession object at 0x00000205ADA7A7B0>
 2026-08-19 14:35:23 | INFO     | dispatcher | Обработано: router_id: 1804683499168 | message_callback | chat_id: 461175464, user_id: 216480106
 2026-08-19 14:35:27 | INFO     | dispatcher | Обработано: router_id: 1804683499168 | message_callback | chat_id: 461175464, user_id: 216480106
 2026-08-19 14:36:49 | INFO     | dispatcher | Обработано: router_id: 1804683499168 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-19 15:09:46 | INFO     | root | 1
+2026-08-19 15:09:47 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-19 15:09:47 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-19 15:09:47 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-19 15:09:47 | INFO     | dispatcher | Зарегистрировано 10 обработчиков событий
+2026-08-19 15:09:47 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://g84m7b-83-142-162-102.ru.tuna.am/webhook
+2026-08-19 15:09:47 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-19 15:11:16 | INFO     | root | Бот и ресурсы успешно остановлены.
+2026-08-19 15:11:16 | ERROR    | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x00000224E90F6A50>
+2026-08-19 15:11:20 | INFO     | root | 1
+2026-08-19 15:11:20 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-19 15:11:20 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-19 15:11:20 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-19 15:11:20 | INFO     | dispatcher | Зарегистрировано 10 обработчиков событий
+2026-08-19 15:11:20 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://a74miq-83-142-162-102.ru.tuna.am/webhook
+2026-08-19 15:11:20 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-19 15:11:25 | INFO     | dispatcher | Обработано: router_id: 1949492762608 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-19 15:11:28 | INFO     | dispatcher | Обработано: router_id: 1949492762608 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-19 15:25:49 | INFO     | root | Бот и ресурсы успешно остановлены.
+2026-08-19 15:25:49 | ERROR    | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001C5E6F76A50>
+2026-08-19 15:25:53 | INFO     | root | 1
+2026-08-19 15:25:53 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-19 15:25:53 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-19 15:25:53 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-19 15:25:53 | INFO     | dispatcher | Зарегистрировано 10 обработчиков событий
+2026-08-19 15:25:53 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://a74miq-83-142-162-102.ru.tuna.am/webhook
+2026-08-19 15:25:53 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-19 15:26:58 | INFO     | dispatcher | Обработано: router_id: 2232175024112 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-19 15:27:00 | INFO     | dispatcher | Обработано: router_id: 2232175024112 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-19 15:27:18 | INFO     | root | Бот и ресурсы успешно остановлены.
+2026-08-19 15:27:18 | ERROR    | asyncio | Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x00000207B82A9490>, 19981.7069152)])']
+connector: <aiohttp.connector.TCPConnector object at 0x00000207B8246660>
+2026-08-19 15:27:22 | INFO     | root | 1
+2026-08-19 15:27:22 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-19 15:27:22 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-19 15:27:23 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-19 15:27:23 | INFO     | dispatcher | Зарегистрировано 10 обработчиков событий
+2026-08-19 15:27:23 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://a74miq-83-142-162-102.ru.tuna.am/webhook
+2026-08-19 15:27:23 | INFO     | root | Подписка на webhook зарегистрирована успешно.

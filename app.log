@@ -15870,3 +15870,44 @@ connector: <aiohttp.connector.TCPConnector object at 0x00000207B8246660>
 2026-08-19 15:27:23 | INFO     | dispatcher | Зарегистрировано 10 обработчиков событий
 2026-08-19 15:27:23 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://a74miq-83-142-162-102.ru.tuna.am/webhook
 2026-08-19 15:27:23 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-19 15:37:39 | INFO     | root | 1
+2026-08-19 15:37:40 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-19 15:37:40 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-19 15:37:40 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-19 15:37:40 | INFO     | dispatcher | Зарегистрировано 10 обработчиков событий
+2026-08-19 15:37:40 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://a74miq-83-142-162-102.ru.tuna.am/webhook
+2026-08-19 15:37:40 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-19 15:37:48 | INFO     | dispatcher | Обработано: router_id: 2234228070048 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-19 15:37:49 | INFO     | dispatcher | Обработано: router_id: 2234228070048 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-19 15:45:13 | INFO     | root | Бот и ресурсы успешно остановлены.
+2026-08-19 15:45:13 | ERROR    | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000002083286A7B0>
+2026-08-19 15:45:48 | INFO     | root | 1
+2026-08-19 15:45:48 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-19 15:45:48 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-19 15:45:49 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-19 15:45:49 | INFO     | dispatcher | Зарегистрировано 10 обработчиков событий
+2026-08-19 15:45:49 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://a74miq-83-142-162-102.ru.tuna.am/webhook
+2026-08-19 15:45:49 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-19 15:46:11 | INFO     | root | Бот и ресурсы успешно остановлены.
+2026-08-19 15:46:11 | ERROR    | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001C1FE2DA7B0>
+2026-08-19 15:46:14 | INFO     | root | 1
+2026-08-19 15:46:15 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-19 15:46:15 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-19 15:46:15 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-19 15:46:15 | INFO     | dispatcher | Зарегистрировано 10 обработчиков событий
+2026-08-19 15:46:15 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://rqj3vr-83-142-162-102.ru.tuna.am/webhook
+2026-08-19 15:46:15 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-19 15:46:21 | INFO     | dispatcher | Обработано: router_id: 1988551825056 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-19 15:46:24 | INFO     | dispatcher | Обработано: router_id: 1988551825056 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-19 15:47:13 | INFO     | root | Бот и ресурсы успешно остановлены.
+2026-08-19 15:47:14 | ERROR    | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001CEFF14A7B0>
+2026-08-19 15:47:17 | INFO     | root | 1
+2026-08-19 15:47:18 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-19 15:47:18 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-19 15:47:18 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-19 15:47:18 | INFO     | dispatcher | Зарегистрировано 10 обработчиков событий
+2026-08-19 15:47:18 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://rqj3vr-83-142-162-102.ru.tuna.am/webhook
+2026-08-19 15:47:18 | INFO     | root | Подписка на webhook зарегистрирована успешно.

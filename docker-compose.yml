@@ -1,0 +1,130 @@
+version: '3.8'
+services:
+  mongodb:
+    image: mongo:7
+    container_name: mongodb
+    restart: unless-stopped
+    command: mongod --quiet --logpath /dev/null
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+      - ./libs:/app/libs
+    environment:
+      - TZ=Asia/Yekaterinburg
+    networks:
+      - max-net
+
+  # Сервис обработки вебхуков (FastAPI)
+  max-server:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    container_name: max_server
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./server/start.py:/app/start.py
+      - ./libs:/app/libs
+    networks:
+      - max-net
+    depends_on:
+      - mongodb
+    environment:
+      - TZ=Asia/Yekaterinburg
+    extra_hosts:
+      - "mis-host:192.168.19.2"
+
+  # Сервис слушателя сообщений (Bot Long Polling) - теперь только внутренний
+  max-listener:
+    build:
+      context: .
+      dockerfile: listener/Dockerfile
+    container_name: max_listener
+    restart: unless-stopped
+    # ports: # УДАЛЕН: Внешний доступ теперь через nginx
+    #   - "8888:8888"
+    expose:
+      - "8888"
+    env_file:
+      - .env
+    volumes:
+      - ./listener:/app/listener
+      - ./libs:/app/libs
+    networks:
+      - max-net
+    environment:
+      - TZ=Asia/Yekaterinburg
+    depends_on:
+      - mongodb
+    extra_hosts:
+      - "mis-host:192.168.19.2"      
+    command: ["python", "listener/listener.py", "--port", "8888"]
+
+  # Сервис рассылки
+  max-sender:
+    build:
+      context: .
+      dockerfile: sender/Dockerfile
+    container_name: max_sender
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - TZ=Asia/Yekaterinburg
+    volumes:
+      - ./sender/sender.py:/app/sender.py
+      - ./libs:/app/libs
+    networks:
+      - max-net
+    depends_on:
+      - mongodb
+    extra_hosts:
+      - "mis-host:192.168.19.2"
+
+  # Сервис Nginx + Certbot
+  nginx:
+    image: nginx:alpine
+    container_name: nginx_proxy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - TZ=Asia/Yekaterinburg
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - web_certs:/etc/letsencrypt
+      - ./logs/nginx:/var/log/nginx
+      - certbot_webroot:/var/www/certbot
+    depends_on:
+      - max-listener
+    networks:
+      - max-net
+
+  # Сервис для получения и обновления сертификатов
+  certbot:
+    image: certbot/certbot # Базовый образ
+    container_name: certbot
+    restart: unless-stopped
+    environment:
+      - TZ=Asia/Yekaterinburg
+    volumes:
+      - web_certs:/etc/letsencrypt # Том для сертификатов
+      - certbot_webroot:/var/www/certbot # КЛЮЧЕВО: Монтируем ТОТ ЖЕ ТОМ внутрь certbot
+      - ./logs/certbot:/var/log/letsencrypt
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+    networks:
+      - max-net
+
+volumes:
+  mongo_data:
+  web_certs:
+  certbot_webroot: # Определяем том
+
+networks:
+  max-net:
+    driver: bridge

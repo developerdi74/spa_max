@@ -1,0 +1,5 @@
+maxapi
+motor
+aiohttp
+python-dotenv
+apscheduler

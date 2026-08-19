@@ -1,0 +1,8 @@
+python-dotenv
+maxapi[fastapi]
+motor
+uvicorn
+fastapi
+aiocache
+openai
+rich

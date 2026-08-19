@@ -1,0 +1,9 @@
+maxapi
+motor
+aiohttp
+python-dotenv
+fastapi
+uvicorn
+pydantic
+python-multipart
+jinja2

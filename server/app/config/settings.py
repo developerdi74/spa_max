@@ -27,7 +27,7 @@ class Settings:
     MAX_BOT_TOKEN: str = os.getenv("MAX_BOT_TOKEN", "")
     
     # Salon1C настройки
-    SALON_API_KEY: str = os.getenv("SALON_API_KEY", "")
+    SALON_API_KEY: str = os.getenv("API_KEY", "")
     SALON_ID: str = os.getenv("SALON_ID", "")
     
     # Сервер настройки

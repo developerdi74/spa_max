@@ -41,6 +41,10 @@ class Settings:
     LOG_MAX_BYTES: int = 10 * 1024 * 1024  # 10 MB
     LOG_BACKUP_COUNT: int = 5
     
+    # Авторизация
+    ADMIN_USERNAME: str = os.getenv("ADMIN_USERNAME", "admin")
+    ADMIN_PASSWORD: str = os.getenv("ADMIN_PASSWORD", "")
+    
     # Рассылки
     NEWSLETTER_RATE_LIMIT_DELAY: float = 0.05  # задержка между сообщениями (сек)
     NEWSLETTER_BATCH_SIZE: int = 10  # обновление статистики каждые N сообщений

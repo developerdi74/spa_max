@@ -10,6 +10,7 @@ from typing import Optional, AsyncGenerator
 
 from fastapi import FastAPI
 from fastapi.templating import Jinja2Templates
+from starlette.middleware.sessions import SessionMiddleware
 from maxapi import Bot
 
 from .config.settings import settings
@@ -18,6 +19,7 @@ from .services.newsletter_service import NewsletterService
 from .routers.newsletters import NewsletterRouter, HealthRouter
 from .routers.shares import ShareRouter
 from .utils.logging import setup_logging
+from .utils.auth import AuthRouter
 
 logger = logging.getLogger(__name__)
 
@@ -105,18 +107,27 @@ def create_application() -> FastAPI:
         lifespan=lifespan,
     )
     
+    # Добавляем middleware для сессий
+    app.add_middleware(
+        SessionMiddleware,
+        secret_key=settings.MAX_BOT_TOKEN[:32] if len(settings.MAX_BOT_TOKEN) >= 32 else settings.MAX_BOT_TOKEN + "x" * (32 - len(settings.MAX_BOT_TOKEN)),
+        https_only=False,
+    )
+    
     # Создание роутеров
     health_router = HealthRouter()
     newsletter_router = NewsletterRouter(templates)
     share_router = ShareRouter(templates)
+    auth_router = AuthRouter(templates)
     
     # Сохраняем роутеры в state для последующей инициализации
-    app.state.routers = [health_router, newsletter_router, share_router]
+    app.state.routers = [health_router, newsletter_router, share_router, auth_router]
     
     # Регистрация роутеров
     app.include_router(health_router.router)
     app.include_router(newsletter_router.router)
     app.include_router(share_router.router)
+    app.include_router(auth_router.router)
     
     return app
 

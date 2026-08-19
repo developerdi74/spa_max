@@ -14,6 +14,7 @@ from fastapi.templating import Jinja2Templates
 from ..models.share import ShareDocument, ShareStatus, ShareCreate, ShareUpdate
 from ..repositories.database import DatabaseManager
 from ..config.settings import settings
+from ..utils.auth import login_required
 
 logger = logging.getLogger(__name__)
 
@@ -59,6 +60,7 @@ class ShareRouter:
         """Настройка маршрутов."""
         
         @self.router.get("/shares", response_class=HTMLResponse)
+        @login_required
         async def shares_list(request: Request):
             """Список всех акций."""
             if not self.db_manager or not self.db_manager.shares:
@@ -76,6 +78,7 @@ class ShareRouter:
             )
         
         @self.router.get("/shares/new", response_class=HTMLResponse)
+        @login_required
         async def share_new(request: Request):
             """Форма создания новой акции."""
             services = []
@@ -101,6 +104,7 @@ class ShareRouter:
             )
         
         @self.router.post("/shares", response_class=HTMLResponse)
+        @login_required
         async def share_create(
             request: Request,
             name: str = Form(...),
@@ -134,6 +138,7 @@ class ShareRouter:
             return RedirectResponse("/shares", status_code=303)
         
         @self.router.post("/shares/{share_id}", response_class=HTMLResponse)
+        @login_required
         async def share_update(
             request: Request,
             share_id: str,
@@ -171,6 +176,7 @@ class ShareRouter:
             return RedirectResponse("/shares", status_code=303)
         
         @self.router.post("/shares/{share_id}/delete", response_class=HTMLResponse)
+        @login_required
         async def share_delete(share_id: str):
             """Удаление акции."""
             if not self.db_manager or not self.db_manager.shares:
@@ -188,6 +194,7 @@ class ShareRouter:
             return RedirectResponse("/shares", status_code=303)
         
         @self.router.get("/shares/{share_id}/edit", response_class=HTMLResponse)
+        @login_required
         async def share_edit(request: Request, share_id: str):
             """Форма редактирования акции."""
             if not self.db_manager or not self.db_manager.shares:

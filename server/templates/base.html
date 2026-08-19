@@ -207,6 +207,21 @@
     </style>
 </head>
 <body>
+    {% if request.session.get("authenticated") %}
+    <nav style="margin-bottom: 20px; padding: 10px 0; background: #fff; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+        <ul style="list-style: none; margin: 0; padding: 0 16px; display: flex; gap: 8px; justify-content: flex-end;">
+            <li style="display: flex; align-items: center; color: #6b7280; font-size: 14px; margin-right: 10px;">
+                👤 {{ request.session.get("username", "Пользователь") }}
+            </li>
+            <li>
+                <a href="/logout" style="display: inline-block; padding: 8px 14px; border-radius: 8px; background: #dc2626; color: #fff; text-decoration: none; font-size: 14px; font-weight: 500;">
+                    Выход
+                </a>
+            </li>
+        </ul>
+    </nav>
+    {% endif %}
+    
     <main class="container">
         <nav>
             <ul>

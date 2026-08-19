@@ -15,6 +15,7 @@ from ..models.newsletter import NewsletterDocument, NewsletterStatus, Newsletter
 from ..repositories.database import DatabaseManager
 from ..services.newsletter_service import NewsletterService
 from ..config.settings import settings
+from ..utils.auth import login_required
 
 logger = logging.getLogger(__name__)
 
@@ -66,6 +67,7 @@ class NewsletterRouter:
         """Настройка маршрутов."""
         
         @self.router.get("/newsletters", response_class=HTMLResponse)
+        @login_required
         async def newsletters_list(request: Request):
             """Список всех рассылок."""
             if not self.db_manager or not self.db_manager.newsletters:
@@ -89,6 +91,7 @@ class NewsletterRouter:
             )
         
         @self.router.get("/newsletters/new", response_class=HTMLResponse)
+        @login_required
         async def newsletter_new(request: Request):
             """Форма создания новой рассылки."""
             return self.templates.TemplateResponse(
@@ -102,6 +105,7 @@ class NewsletterRouter:
             )
         
         @self.router.post("/newsletters", response_class=HTMLResponse)
+        @login_required
         async def newsletter_create(
             request: Request,
             name: str = Form(...),
@@ -130,6 +134,7 @@ class NewsletterRouter:
             return RedirectResponse("/newsletters", status_code=303)
         
         @self.router.post("/newsletters/{newsletter_id}", response_class=HTMLResponse)
+        @login_required
         async def newsletter_update(
             request: Request,
             newsletter_id: str,
@@ -163,6 +168,7 @@ class NewsletterRouter:
             return RedirectResponse("/newsletters", status_code=303)
         
         @self.router.post("/newsletters/{newsletter_id}/delete", response_class=HTMLResponse)
+        @login_required
         async def newsletter_delete(newsletter_id: str):
             """Удаление рассылки."""
             if not self.db_manager or not self.db_manager.newsletters:
@@ -186,6 +192,7 @@ class NewsletterRouter:
             return RedirectResponse("/newsletters", status_code=303)
         
         @self.router.get("/newsletters/{newsletter_id}/edit", response_class=HTMLResponse)
+        @login_required
         async def newsletter_edit(request: Request, newsletter_id: str):
             """Форма редактирования рассылки."""
             if not self.db_manager or not self.db_manager.newsletters:
@@ -209,6 +216,7 @@ class NewsletterRouter:
             )
         
         @self.router.post("/newsletters/{newsletter_id}/send", response_class=HTMLResponse)
+        @login_required
         async def newsletter_send(newsletter_id: str, background_tasks: BackgroundTasks):
             """Запуск рассылки."""
             if not self.db_manager or not self.db_manager.newsletters:

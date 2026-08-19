@@ -7,7 +7,7 @@ from datetime import datetime
 from typing import Optional, Dict, Any
 from bson import ObjectId
 
-from fastapi import APIRouter, Request, HTTPException, BackgroundTasks
+from fastapi import APIRouter, Request, HTTPException, BackgroundTasks, Form
 from fastapi.responses import JSONResponse, RedirectResponse, HTMLResponse
 from fastapi.templating import Jinja2Templates
 
@@ -104,8 +104,8 @@ class NewsletterRouter:
         @self.router.post("/newsletters")
         async def newsletter_create(
             request: Request,
-            name: str = ...,
-            text: str = ...
+            name: str = Form(...),
+            text: str = Form(...)
         ):
             """Создание новой рассылки."""
             if not self.db_manager or not self.db_manager.newsletters:
@@ -133,8 +133,8 @@ class NewsletterRouter:
         async def newsletter_update(
             request: Request,
             newsletter_id: str,
-            name: str = ...,
-            text: str = ...
+            name: str = Form(...),
+            text: str = Form(...)
         ):
             """Обновление существующей рассылки."""
             if not self.db_manager or not self.db_manager.newsletters:

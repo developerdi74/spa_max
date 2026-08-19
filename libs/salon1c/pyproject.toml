@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "salon1c-sdk"
+version = "1.0.0"
+description = "Python SDK для API 1С:SPA-Салон, редакция 3.0"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+dependencies = ["requests>=2.28.0"]
+
+[project.optional-dependencies]
+dev = ["pytest", "responses"]
+
+[tool.setuptools.packages.find]
+include = ["salon1c*"]

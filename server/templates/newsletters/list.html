@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}Рассылки{% endblock %}
+
+{% block head %}
+    {% if has_active %}
+        <meta http-equiv="refresh" content="5">
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    {% set status_labels = {
+        'draft': 'Черновик',
+        'queued': 'В очереди',
+        'running': 'Отправляется',
+        'completed': 'Завершена',
+        'failed': 'Ошибка'
+    } %}
+
+    <div class="page-head">
+        <h1>Рассылки</h1>
+        <a class="btn" href="/newsletters/new">Добавить рассылку</a>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th>Статус</th>
+                <th>Отправлено / Ошибки</th>
+                <th>Создана</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+                <tr>
+                    <td>{{ item.name }}</td>
+                    <td>
+                        <span class="badge {{ item.status }}">
+                            {{ status_labels.get(item.status, item.status) }}
+                        </span>
+
+                        {% if item.error %}
+                            <div class="muted" title="{{ item.error }}">
+                                {{ item.error[:100] }}
+                            </div>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {{ item.sentCount or 0 }} / {{ item.errorCount or 0 }}
+                    </td>
+                    <td>
+                        {{ item.createdAt.strftime('%d.%m.%Y %H:%M') if item.createdAt else '' }}
+                    </td>
+                    <td>
+                        <div class="actions">
+                            <form method="post" action="/newsletters/{{ item._id }}/send">
+                                <button
+                                    type="submit"
+                                    {% if item.status in ['queued', 'running'] %}disabled{% endif %}
+                                >
+                                    Запустить
+                                </button>
+                            </form>
+
+                            <a href="/newsletters/{{ item._id }}/edit">Изменить</a>
+
+                            <form
+                                method="post"
+                                action="/newsletters/{{ item._id }}/delete"
+                                onsubmit="return confirm('Удалить рассылку?');"
+                            >
+                                <button
+                                    type="submit"
+                                    class="btn-danger"
+                                    {% if item.status in ['queued', 'running'] %}disabled{% endif %}
+                                >
+                                    Удалить
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">Рассылок пока нет</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -10,7 +10,7 @@ from bson import ObjectId
 
 from motor.motor_asyncio import AsyncIOMotorClient, AsyncIOMotorDatabase, AsyncIOMotorCollection
 
-from ..models.newsletter import NewsletterDocument, NewsletterLog, NewsletterStatus
+from ..models.newsletter import NewsletterDocument, NewsletterLog, NewsletterStatus,NewsletterUpdate
 from ..config.settings import Settings
 
 logger = logging.getLogger(__name__)

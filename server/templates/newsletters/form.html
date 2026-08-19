@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ 'Изменить рассылку' if mode == 'edit' else 'Добавить рассылку' }}
+{% endblock %}
+
+{% block content %}
+    {% set status_labels = {
+        'draft': 'Черновик',
+        'queued': 'В очереди',
+        'running': 'Отправляется',
+        'completed': 'Завершена',
+        'failed': 'Ошибка'
+    } %}
+
+    <div class="page-head">
+        <h1>{{ 'Изменить рассылку' if mode == 'edit' else 'Добавить рассылку' }}</h1>
+        <a class="btn btn-secondary" href="/newsletters">Назад</a>
+    </div>
+
+    <div class="form-box">
+        {% if mode == 'edit' and newsletter %}
+            <p>
+                Текущий статус:
+                <span class="badge {{ newsletter.status }}">
+                    {{ status_labels.get(newsletter.status, newsletter.status) }}
+                </span>
+            </p>
+        {% endif %}
+
+        <form
+            method="post"
+            action="{{ '/newsletters/' ~ id if mode == 'edit' else '/newsletters' }}"
+        >
+            <label>
+                Название рассылки
+                <input
+                    type="text"
+                    name="name"
+                    maxlength="255"
+                    required
+                    value="{{ newsletter.name if newsletter else '' }}"
+                >
+            </label>
+
+            <label>
+                Текст рассылки
+                <textarea
+                    name="text"
+                    required
+                >{{ newsletter.text if newsletter else '' }}</textarea>
+            </label>
+
+            <div class="form-actions">
+                <button type="submit">Сохранить</button>
+            </div>
+        </form>
+
+        {% if mode == 'edit' and newsletter and newsletter.status not in ['queued', 'running'] %}
+            <div class="form-actions">
+                <form method="post" action="/newsletters/{{ id }}/send">
+                    <button type="submit">Запустить рассылку</button>
+                </form>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

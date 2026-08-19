@@ -1,0 +1,24 @@
+events { worker_connections 1024; }
+
+http {
+    server {
+        listen 80;
+        server_name max.mgn-doctor.ru;
+
+        # ACME challenge (используем alias для точного пути)
+        location /.well-known/acme-challenge/ {
+            alias /var/www/certbot/.well-known/acme-challenge/;
+            default_type "text/plain";
+            try_files $uri =404;
+        }
+
+        # Проксирование основного приложения
+        location / {
+            proxy_pass http://max-listener:8888;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+    }
+}

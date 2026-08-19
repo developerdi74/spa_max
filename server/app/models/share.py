@@ -21,6 +21,7 @@ class ShareBase(BaseModel):
     text: str = Field(..., min_length=1)
     service_id: Optional[str] = Field(None, max_length=255)
     service_name: Optional[str] = Field(None, max_length=255)
+    active: bool = True
 
 
 class ShareCreate(ShareBase):
@@ -41,6 +42,7 @@ class ShareDocument(BaseModel):
     service_id: Optional[str] = None
     service_name: Optional[str] = None
     status: ShareStatus = ShareStatus.draft
+    active: bool = True
     createdAt: Optional[datetime] = None
     updatedAt: Optional[datetime] = None
     
@@ -57,6 +59,7 @@ class ShareDocument(BaseModel):
             service_id=doc.get("service_id"),
             service_name=doc.get("service_name"),
             status=ShareStatus(doc.get("status", ShareStatus.draft.value)),
+            active=doc.get("active", True),
             createdAt=doc.get("createdAt"),
             updatedAt=doc.get("updatedAt"),
         )
@@ -69,6 +72,7 @@ class ShareDocument(BaseModel):
             "service_id": self.service_id,
             "service_name": self.service_name,
             "status": self.status.value,
+            "active": self.active,
             "createdAt": self.createdAt,
             "updatedAt": self.updatedAt,
         }

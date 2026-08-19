@@ -36,7 +36,7 @@ class InformationCenterHandler(BaseHandler):
         
         for share in shares:
             buttons=[]
-            text = as_html(Heading(share["name"])+f"\n"+share["text"])
+            text = as_html(Heading("АКЦИЯ: "+share["name"])+f"\n\n"+share["text"])
             if share.get("service_id"):
                 service_id = share.get("service_id")
                 service_name = share.get("service_name","Записаться")

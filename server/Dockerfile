@@ -7,7 +7,7 @@ COPY server/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Копируем код сервиса
-COPY server/ .
+COPY server/start.py .
 COPY libs /app/libs
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "start:app", "--host", "0.0.0.0", "--port", "8000"]

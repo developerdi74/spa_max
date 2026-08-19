@@ -7,7 +7,7 @@ from datetime import datetime
 from typing import Optional, Dict, Any
 from bson import ObjectId
 
-from fastapi import APIRouter, Request, HTTPException, BackgroundTasks
+from fastapi import APIRouter, Request, HTTPException, BackgroundTasks, Form
 from fastapi.responses import JSONResponse, RedirectResponse, HTMLResponse
 from fastapi.templating import Jinja2Templates
 
@@ -101,11 +101,11 @@ class NewsletterRouter:
                 }
             )
         
-        @self.router.post("/newsletters")
+        @self.router.post("/newsletters", response_class=HTMLResponse)
         async def newsletter_create(
             request: Request,
-            name: str = ...,
-            text: str = ...
+            name: str = Form(...),
+            text: str = Form(...)
         ):
             """Создание новой рассылки."""
             if not self.db_manager or not self.db_manager.newsletters:
@@ -129,12 +129,12 @@ class NewsletterRouter:
             
             return RedirectResponse("/newsletters", status_code=303)
         
-        @self.router.post("/newsletters/{newsletter_id}")
+        @self.router.post("/newsletters/{newsletter_id}", response_class=HTMLResponse)
         async def newsletter_update(
             request: Request,
             newsletter_id: str,
-            name: str = ...,
-            text: str = ...
+            name: str = Form(...),
+            text: str = Form(...)
         ):
             """Обновление существующей рассылки."""
             if not self.db_manager or not self.db_manager.newsletters:
@@ -162,7 +162,7 @@ class NewsletterRouter:
             
             return RedirectResponse("/newsletters", status_code=303)
         
-        @self.router.post("/newsletters/{newsletter_id}/delete")
+        @self.router.post("/newsletters/{newsletter_id}/delete", response_class=HTMLResponse)
         async def newsletter_delete(newsletter_id: str):
             """Удаление рассылки."""
             if not self.db_manager or not self.db_manager.newsletters:
@@ -208,7 +208,7 @@ class NewsletterRouter:
                 }
             )
         
-        @self.router.post("/newsletters/{newsletter_id}/send")
+        @self.router.post("/newsletters/{newsletter_id}/send", response_class=HTMLResponse)
         async def newsletter_send(newsletter_id: str, background_tasks: BackgroundTasks):
             """Запуск рассылки."""
             if not self.db_manager or not self.db_manager.newsletters:

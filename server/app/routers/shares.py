@@ -34,6 +34,7 @@ def normalize_share(doc: ShareDocument) -> Dict[str, Any]:
         "name": doc.name,
         "text": doc.text,
         "service_id": doc.service_id,
+        "service_name": doc.service_name,
         "status": doc.status.value,
         "createdAt": doc.createdAt,
         "updatedAt": doc.updatedAt,
@@ -104,7 +105,8 @@ class ShareRouter:
             request: Request,
             name: str = Form(...),
             text: str = Form(...),
-            service_id: str = Form(None)
+            service_id: str = Form(None),
+            service_name: str = Form(None)
         ):
             """Создание новой акции."""
             if not self.db_manager or not self.db_manager.shares:
@@ -117,6 +119,7 @@ class ShareRouter:
                 name=name.strip(),
                 text=text.strip(),
                 service_id=service_id.strip() if service_id else None,
+                service_name=service_name.strip() if service_name else None,
                 status=ShareStatus.draft,
                 createdAt=datetime.now(),
                 updatedAt=datetime.now(),
@@ -132,7 +135,8 @@ class ShareRouter:
             share_id: str,
             name: str = Form(...),
             text: str = Form(...),
-            service_id: str = Form(None)
+            service_id: str = Form(None),
+            service_name: str = Form(None)
         ):
             """Обновление существующей акции."""
             if not self.db_manager or not self.db_manager.shares:
@@ -151,7 +155,8 @@ class ShareRouter:
             update_data = ShareUpdate(
                 name=name.strip(),
                 text=text.strip(),
-                service_id=service_id.strip() if service_id else None
+                service_id=service_id.strip() if service_id else None,
+                service_name=service_name.strip() if service_name else None
             )
             await self.db_manager.shares.update(share_id, update_data)
             

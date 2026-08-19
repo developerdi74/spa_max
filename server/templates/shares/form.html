@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ 'Изменить акцию' if mode == 'edit' else 'Добавить акцию' }}
+{% endblock %}
+
+{% block content %}
+    {% set status_labels = {
+        'draft': 'Черновик',
+        'active': 'Активна',
+        'archived': 'Архив'
+    } %}
+
+    <div class="page-head">
+        <h1>{{ 'Изменить акцию' if mode == 'edit' else 'Добавить акцию' }}</h1>
+        <a class="btn btn-secondary" href="/shares">Назад</a>
+    </div>
+
+    <div class="form-box">
+        {% if mode == 'edit' and share %}
+            <p>
+                Текущий статус:
+                <span class="badge {{ share.status }}">
+                    {{ status_labels.get(share.status, share.status) }}
+                </span>
+            </p>
+        {% endif %}
+
+        <form
+            method="post"
+            action="{{ '/shares/' ~ id if mode == 'edit' else '/shares' }}"
+        >
+            <label>
+                Название акции
+                <input
+                    type="text"
+                    name="name"
+                    maxlength="255"
+                    required
+                    value="{{ share.name if share else '' }}"
+                >
+            </label>
+
+            <label>
+                Текст акции
+                <textarea
+                    name="text"
+                    required
+                >{{ share.text if share else '' }}</textarea>
+            </label>
+
+            <label>
+                Услуга
+                <select name="service_id">
+                    <option value="">— Не выбрано —</option>
+                    {% for service in services %}
+                        <option value="{{ service.id }}" 
+                            {% if share and share.service_id == service.id %}selected{% endif %}>
+                            {{ service.title }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </label>
+
+            <div class="form-actions">
+                <button type="submit">Сохранить</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

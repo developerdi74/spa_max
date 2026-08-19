@@ -10,6 +10,13 @@ from .newsletter import (
     NewsletterDocument,
     NewsletterLog,
 )
+from .share import (
+    ShareStatus,
+    ShareBase,
+    ShareCreate,
+    ShareUpdate,
+    ShareDocument,
+)
 
 __all__ = [
     "NewsletterStatus",
@@ -18,4 +25,9 @@ __all__ = [
     "NewsletterUpdate",
     "NewsletterDocument",
     "NewsletterLog",
+    "ShareStatus",
+    "ShareBase",
+    "ShareCreate",
+    "ShareUpdate",
+    "ShareDocument",
 ]

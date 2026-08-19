@@ -11,6 +11,7 @@ from bson import ObjectId
 from motor.motor_asyncio import AsyncIOMotorClient, AsyncIOMotorDatabase, AsyncIOMotorCollection
 
 from ..models.newsletter import NewsletterDocument, NewsletterLog, NewsletterStatus,NewsletterUpdate
+from ..models.share import ShareDocument, ShareUpdate as ShareUpdateModel
 from ..config.settings import Settings
 
 logger = logging.getLogger(__name__)
@@ -297,6 +298,75 @@ class NewsletterLogRepository(BaseRepository):
         return doc is not None
 
 
+class ShareRepository(BaseRepository):
+    """Репозиторий для работы с акциями."""
+    
+    def __init__(self, db: AsyncIOMotorDatabase, collection_name: str):
+        super().__init__(db)
+        self.collection: AsyncIOMotorCollection = db[collection_name]
+    
+    async def create_index(self) -> None:
+        """Создание индексов."""
+        try:
+            await self.collection.create_index([("createdAt", -1)])
+            logger.info("✅ Индексы коллекции shares созданы")
+        except Exception as e:
+            logger.warning(f"⚠️ Не удалось создать индексы: {e}")
+    
+    async def get_all(self, limit: int = 200) -> List[ShareDocument]:
+        """Получение всех акций с сортировкой."""
+        items = []
+        async for doc in self.collection.find().sort("createdAt", -1).limit(limit):
+            items.append(ShareDocument.from_mongo(doc))
+        return items
+    
+    async def get_by_id(self, share_id: str) -> Optional[ShareDocument]:
+        """Получение акции по ID."""
+        try:
+            oid = ObjectId(share_id)
+            doc = await self.collection.find_one({"_id": oid})
+            if doc:
+                return ShareDocument.from_mongo(doc)
+        except Exception as e:
+            logger.error(f"❌ Ошибка получения акции {share_id}: {e}")
+        return None
+    
+    async def create(self, share: ShareDocument) -> ShareDocument:
+        """Создание новой акции."""
+        doc = share.to_mongo()
+        doc["createdAt"] = datetime.now()
+        doc["updatedAt"] = datetime.now()
+        result = await self.collection.insert_one(doc)
+        share.id = str(result.inserted_id)
+        return share
+    
+    async def update(self, share_id: str, share: ShareUpdateModel) -> bool:
+        """Обновление акции."""
+        try:
+            oid = ObjectId(share_id)
+            update_data = share.dict()
+            update_data["updatedAt"] = datetime.now()
+            
+            result = await self.collection.update_one(
+                {"_id": oid},
+                {"$set": update_data}
+            )
+            return result.modified_count > 0
+        except Exception as e:
+            logger.error(f"❌ Ошибка обновления акции {share_id}: {e}")
+            return False
+    
+    async def delete(self, share_id: str) -> bool:
+        """Удаление акции."""
+        try:
+            oid = ObjectId(share_id)
+            result = await self.collection.delete_one({"_id": oid})
+            return result.deleted_count > 0
+        except Exception as e:
+            logger.error(f"❌ Ошибка удаления акции {share_id}: {e}")
+            return False
+
+
 class UserRepository(BaseRepository):
     """Репозиторий для работы с пользователями."""
     
@@ -322,6 +392,7 @@ class DatabaseManager:
         self.newsletters: Optional[NewsletterRepository] = None
         self.newsletter_logs: Optional[NewsletterLogRepository] = None
         self.users: Optional[UserRepository] = None
+        self.shares: Optional[ShareRepository] = None
     
     async def connect(self) -> None:
         """Подключение к MongoDB."""
@@ -341,10 +412,15 @@ class DatabaseManager:
             self.db,
             self.settings.COLLECTION_USERS
         )
+        self.shares = ShareRepository(
+            self.db,
+            "shares"
+        )
         
         # Создание индексов
         await self.newsletters.create_index()
         await self.newsletter_logs.create_index()
+        await self.shares.create_index()
         
         # Проверка подключения
         try:

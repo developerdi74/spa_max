@@ -26,6 +26,10 @@ class Settings:
     # MAX Bot настройки
     MAX_BOT_TOKEN: str = os.getenv("MAX_BOT_TOKEN", "")
     
+    # Salon1C настройки
+    SALON_API_KEY: str = os.getenv("SALON_API_KEY", "")
+    SALON_ID: str = os.getenv("SALON_ID", "")
+    
     # Сервер настройки
     WEBHOOK_HOST: str = os.getenv("WEBHOOK_HOST", "0.0.0.0")
     WEBHOOK_PORT: int = int(os.getenv("WEBHOOK_PORT", "8000"))

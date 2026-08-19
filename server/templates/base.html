@@ -147,7 +147,8 @@
         }
 
         input[type="text"],
-        textarea {
+        textarea,
+        select {
             width: 100%;
             margin-top: 6px;
             padding: 10px 12px;
@@ -167,10 +168,52 @@
             gap: 10px;
             margin-top: 20px;
         }
+
+        nav {
+            margin-bottom: 20px;
+            padding: 10px 0;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0 16px;
+            display: flex;
+            gap: 8px;
+        }
+
+        nav a {
+            display: inline-block;
+            padding: 8px 14px;
+            border-radius: 8px;
+            background: #f3f4f6;
+            color: #111827;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            background: #e5e7eb;
+        }
+
+        nav a.active {
+            background: #2563eb;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
     <main class="container">
+        <nav>
+            <ul>
+                <li><a href="/newsletters" {% if request.url.path.startswith('/newsletters') %}class="active"{% endif %}>Рассылки</a></li>
+                <li><a href="/shares" {% if request.url.path.startswith('/shares') %}class="active"{% endif %}>Акции</a></li>
+            </ul>
+        </nav>
         {% block content %}{% endblock %}
     </main>
 </body>

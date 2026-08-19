@@ -65,6 +65,15 @@
 
             <input type="hidden" name="service_name" id="service_name_input" value="{{ share.service_name if share and share.service_name else '' }}">
 
+            <label class="checkbox-label">
+                <input
+                    type="checkbox"
+                    name="active"
+                    {% if share and share.active %}checked{% endif %}
+                >
+                Активная акция
+            </label>
+
             <div class="form-actions">
                 <button type="submit">Сохранить</button>
             </div>

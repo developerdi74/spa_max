@@ -106,7 +106,8 @@ class ShareRouter:
             name: str = Form(...),
             text: str = Form(...),
             service_id: str = Form(None),
-            service_name: str = Form(None)
+            service_name: str = Form(None),
+            active: str = Form(None)
         ):
             """Создание новой акции."""
             if not self.db_manager or not self.db_manager.shares:
@@ -115,12 +116,15 @@ class ShareRouter:
             if not name.strip() or not text.strip():
                 raise HTTPException(status_code=400, detail="Название и текст обязательны")
             
+            is_active = active == "on"
+            
             share = ShareDocument(
                 name=name.strip(),
                 text=text.strip(),
                 service_id=service_id.strip() if service_id else None,
                 service_name=service_name.strip() if service_name else None,
                 status=ShareStatus.draft,
+                active=is_active,
                 createdAt=datetime.now(),
                 updatedAt=datetime.now(),
             )
@@ -136,7 +140,8 @@ class ShareRouter:
             name: str = Form(...),
             text: str = Form(...),
             service_id: str = Form(None),
-            service_name: str = Form(None)
+            service_name: str = Form(None),
+            active: str = Form(None)
         ):
             """Обновление существующей акции."""
             if not self.db_manager or not self.db_manager.shares:
@@ -152,11 +157,14 @@ class ShareRouter:
             if not share:
                 raise HTTPException(status_code=404, detail="Акция не найдена")
             
+            is_active = active == "on"
+            
             update_data = ShareUpdate(
                 name=name.strip(),
                 text=text.strip(),
                 service_id=service_id.strip() if service_id else None,
-                service_name=service_name.strip() if service_name else None
+                service_name=service_name.strip() if service_name else None,
+                active=is_active
             )
             await self.db_manager.shares.update(share_id, update_data)
             
@@ -203,12 +211,15 @@ class ShareRouter:
             except Exception as e:
                 logger.warning(f"Не удалось загрузить услуги: {e}")
             
+            normalized_share = normalize_share(share)
+            normalized_share["active"] = share.active
+            
             return self.templates.TemplateResponse(
                 request=request,
                 name="shares/form.html",
                 context={
                     "mode": "edit",
-                    "share": normalize_share(share),
+                    "share": normalized_share,
                     "id": share_id,
                     "services": services,
                 }

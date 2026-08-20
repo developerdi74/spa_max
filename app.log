@@ -15923,3 +15923,17 @@ client_session: <aiohttp.client.ClientSession object at 0x000001CEFF14A7B0>
 2026-08-19 16:14:42 | INFO     | root | Бот и ресурсы успешно остановлены.
 2026-08-19 16:14:42 | ERROR    | asyncio | Unclosed client session
 client_session: <aiohttp.client.ClientSession object at 0x00000248A807A7B0>
+2026-08-19 16:28:15 | INFO     | root | 1
+2026-08-19 16:28:15 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-19 16:28:16 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-19 16:28:16 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-19 16:28:16 | INFO     | dispatcher | Зарегистрировано 10 обработчиков событий
+2026-08-19 16:28:16 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://rqj3vr-83-142-162-102.ru.tuna.am/webhook
+2026-08-19 16:28:16 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-20 13:22:23 | INFO     | root | 1
+2026-08-20 13:22:23 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-20 13:22:23 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-20 13:22:24 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-20 13:22:24 | INFO     | dispatcher | Зарегистрировано 10 обработчиков событий
+2026-08-20 13:22:24 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://ngtd3w-83-142-162-102.ru.tuna.am/webhook
+2026-08-20 13:22:24 | INFO     | root | Подписка на webhook зарегистрирована успешно.

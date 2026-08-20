@@ -35,7 +35,7 @@ class Config:
             webhook_url=os.getenv("WEBHOOK_URL_SUBSCRIBE", ""),
             webhook_secret=os.getenv("WEBHOOK_SECRET") or None,
             webhook_host=os.getenv("WEBHOOK_HOST", "0.0.0.0"),
-            webhook_port=int(os.getenv("WEBHOOK_PORT_HTTPS", "8880")),
+            webhook_port=int(os.getenv("WEBHOOK_PORT_HTTPS", "8888")),
             webhook_path=os.getenv("WEBHOOK_PATH", "/webhook"),
             ai_activated=os.getenv("AI_ACTIVATED", "0"),
             ai_key=os.getenv("AI_SECRET",""),

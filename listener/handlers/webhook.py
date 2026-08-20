@@ -19,11 +19,11 @@ class WebhookSetupHandler(BaseHandler):
         if not self._config.webhook_url:
             logging.warning("WEBHOOK_URL не задан, подписка на webhook не выполнена.")
             return
-
-        logging.info("Диспетчер запущен, подписываемся на webhook: %s", self._config.webhook_url)
+        webhook_url = self._config.webhook_url+self._config.webhook_path
+        logging.info("Диспетчер запущен, подписываемся на webhook: %s", webhook_url)
         try:
             await self._bot.subscribe_webhook(
-                url=self._config.webhook_url,
+                url=webhook_url,
                 update_types=[
                     UpdateType.MESSAGE_CREATED,
                     UpdateType.MESSAGE_CALLBACK,

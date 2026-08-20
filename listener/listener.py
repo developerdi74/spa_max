@@ -1,9 +1,9 @@
 """
 Сервис слушает события через webhook мессенджер МАКС отправляет ответы и уведомления
-Путь: /maxprojects/listener/listener.py
+Путь: /spamaxbot/listener/listener.py
 Библиотеки:
     /maxprojects/libs/funcs.py
-    /maxprojects/libs/renovation_api.py
+    /maxprojects/libs/salon1c
 """
 import asyncio
 import logging

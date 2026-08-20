@@ -4,7 +4,7 @@ import logging
 from aiocache import cached, Cache
 
 CACHE_CONFIG_LONG = {"cache": Cache.MEMORY, "ttl": 3600*24*30}
-CACHE_CONFIG = {"cache": Cache.MEMORY, "ttl": 3600*12}
+CACHE_CONFIG = {"cache": Cache.MEMORY, "ttl": 3600*6}
 
 class Salon1CService:
     def __init__(self, api_key: str, salon_id: str):
@@ -63,24 +63,26 @@ class Salon1CService:
         start_date = date.today()
         end_date = date.today() + timedelta(days=14)
         staffs = self.client.bookings.book_staff(self.salon_id, service_id = service_id)
-        date_list = self.client.bookings.recording_dates(self.salon_id,start_date=start_date,end_date=end_date,service_id=service_id)
+        #date_list = self.client.bookings.recording_dates(self.salon_id,start_date=start_date,end_date=end_date,service_id=service_id)
         filtered_staffs = []
         for staff in staffs:
 
             if len(staff_id)>0 and staff_id != staff['id']:
                 continue
 
-            result = next((item for item in date_list if item['id'] == staff['id']), None)
-
-            staff['available_dates'] = sorted({dt.split()[0] for dt in result['date']}) or []
+            dates = self.client.bookings.book_dates(self.salon_id,start_date=start_date,end_date=end_date,service_id=service_id, staff_id=staff['id'])
+            #result = next((item for item in date_list if item['id'] == staff['id']), None)
+            #staff['available_dates'] = sorted({dt.split()[0] for dt in result['date']}) or []
+            staff['available_dates'] = dates or []
             filtered_staffs.append(staff)
         return filtered_staffs
     
-    def get_time_staff(self, staff_id:str, service_id, select_date:str) -> list:
-        start_date = datetime.strptime(select_date, "%d.%m.%Y")
-        end_date = start_date + timedelta(days=1)
-        time_list = self.client.bookings.recording_dates(self.salon_id,start_date=start_date,end_date=end_date,service_id=service_id,staff_id=staff_id)
-        return time_list[0]['date'] or []
+    @cached(**CACHE_CONFIG)
+    async def get_time_staff(self, staff_id:str, service_id, select_date:str) -> list:
+        datetime_ = datetime.strptime(select_date, "%d.%m.%Y")
+        time_list = self.client.bookings.book_times(self.salon_id,datetime_=datetime_,service_id=service_id,staff_id=staff_id)
+        #time_list = self.client.bookings.recording_dates(self.salon_id,start_date=start_date,end_date=end_date,service_id=service_id,staff_id=staff_id)
+        return time_list or []
 
     @cached(**CACHE_CONFIG)
     def get_client(self, phone:str, usertoken:str) -> list:

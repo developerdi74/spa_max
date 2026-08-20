@@ -15990,3 +15990,1429 @@ client_session: <aiohttp.client.ClientSession object at 0x00000274F10CA900>
 2026-08-20 14:41:20 | ERROR    | asyncio | Unclosed connector
 connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x00000274F10E9CD0>, 103635.0423312)])']
 connector: <aiohttp.connector.TCPConnector object at 0x00000274F10CA510>
+2026-08-20 14:45:24 | INFO     | root | 1
+2026-08-20 14:45:24 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-20 14:45:24 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-20 14:45:24 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-20 14:45:24 | INFO     | dispatcher | Зарегистрировано 11 обработчиков событий
+2026-08-20 14:45:24 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://105aqb-83-142-162-102.ru.tuna.am/webhook
+2026-08-20 14:45:25 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-20 14:45:29 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:45:31 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:45:33 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:45:55 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:46:01 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:46:07 | INFO     | root | category_id='' services_id='' step='' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 14:46:07 | INFO     | root | create_visit
+2026-08-20 14:46:08 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:46:57 | INFO     | root | category_id='8be9b8b6-eea8-11ef-ba59-00155d582500' services_id='' step='get_services' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 14:46:57 | INFO     | root | create_visit
+2026-08-20 14:46:57 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:47:00 | INFO     | root | category_id='8be9b8b6-eea8-11ef-ba59-00155d582500' services_id='22fcae3e-a589-11ef-bc68-00505683a460' step='get_staff_and_date' staff_id='' staff_name='' select_date='' datetime='' services_title='Пилинг рук 400р' action='create_visit'
+2026-08-20 14:47:00 | INFO     | root | create_visit
+2026-08-20 14:47:01 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:47:04 | INFO     | root | category_id='8be9b8b6-eea8-11ef-ba59-00155d582500' services_id='22fcae3e-a589-11ef-bc68-00505683a460' step='get_time_staff' staff_id='9e0fbcdb-1b59-4d97-a498-f65ee73394ab' staff_name='Милешина Евгения' select_date='29.08.2026' datetime='' services_title='Пилинг рук 400р' action='create_visit'
+2026-08-20 14:47:04 | INFO     | root | create_visit
+2026-08-20 14:47:05 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:47:09 | INFO     | root | category_id='8be9b8b6-eea8-11ef-ba59-00155d582500' services_id='22fcae3e-a589-11ef-bc68-00505683a460' step='get_time_staff' staff_id='a9a4d078-1f61-45a5-a796-d6b9a6c55c0a' staff_name='Пестова Елена' select_date='30.08.2026' datetime='' services_title='Пилинг рук 400р' action='create_visit'
+2026-08-20 14:47:09 | INFO     | root | create_visit
+2026-08-20 14:47:09 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:47:11 | INFO     | root | category_id='8be9b8b6-eea8-11ef-ba59-00155d582500' services_id='22fcae3e-a589-11ef-bc68-00505683a460' step='get_time_staff' staff_id='7fb5d09f-6fdb-4890-9fc4-38c50e0dac83' staff_name='Лубских Светлана' select_date='28.08.2026' datetime='' services_title='Пилинг рук 400р' action='create_visit'
+2026-08-20 14:47:11 | INFO     | root | create_visit
+2026-08-20 14:47:13 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:47:14 | INFO     | root | category_id='8be9b8b6-eea8-11ef-ba59-00155d582500' services_id='22fcae3e-a589-11ef-bc68-00505683a460' step='get_staff_and_date' staff_id='7fb5d09f-6fdb-4890-9fc4-38c50e0dac83' staff_name='Лубских Светлана' select_date='' datetime='' services_title='Пилинг рук 400р' action='create_visit'
+2026-08-20 14:47:14 | INFO     | root | create_visit
+2026-08-20 14:47:15 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:47:17 | INFO     | root | category_id='8be9b8b6-eea8-11ef-ba59-00155d582500' services_id='22fcae3e-a589-11ef-bc68-00505683a460' step='get_time_staff' staff_id='518640f1-8e1b-42b2-b9fe-43e2edbdf876' staff_name='Калинина Галина' select_date='31.08.2026' datetime='' services_title='Пилинг рук 400р' action='create_visit'
+2026-08-20 14:47:17 | INFO     | root | create_visit
+2026-08-20 14:47:18 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:47:22 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:47:23 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:47:25 | INFO     | root | category_id='' services_id='' step='' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 14:47:25 | INFO     | root | create_visit
+2026-08-20 14:47:26 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:47:27 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='' step='get_services' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 14:47:27 | INFO     | root | create_visit
+2026-08-20 14:47:28 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:47:30 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='a5946821-19b6-11f0-ba5a-00155d582500' step='get_staff_and_date' staff_id='' staff_name='' select_date='' datetime='' services_title='Уход для тела в хаммаме «Восточное расслабление с ароматом розы»  10000р' action='create_visit'
+2026-08-20 14:47:30 | INFO     | root | create_visit
+2026-08-20 14:47:32 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:47:34 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='a5946821-19b6-11f0-ba5a-00155d582500' step='get_time_staff' staff_id='ca8cc48f-8a82-42ed-8f39-f971049e2a1a' staff_name='Смирнова Светлана' select_date='21.08.2026' datetime='' services_title='Уход для тела в хаммаме «Восточное расслабление с ароматом розы»  10000р' action='create_visit'
+2026-08-20 14:47:34 | INFO     | root | create_visit
+2026-08-20 14:47:36 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:47:39 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='a5946821-19b6-11f0-ba5a-00155d582500' step='get_time_staff' staff_id='f479d290-6b8b-43ee-845a-9438f572b9ed' staff_name='Тимашкова Анастасия' select_date='31.08.2026' datetime='' services_title='Уход для тела в хаммаме «Восточное расслабление с ароматом розы»  10000р' action='create_visit'
+2026-08-20 14:47:39 | INFO     | root | create_visit
+2026-08-20 14:47:39 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:47:41 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='a5946821-19b6-11f0-ba5a-00155d582500' step='confirmation' staff_id='f479d290-6b8b-43ee-845a-9438f572b9ed' staff_name='Тимашкова Анастасия' select_date='31.08.2026' datetime='31.08.2026 16:00:00' services_title='Уход для тела в хаммаме «Восточное расслабление с ароматом розы»  10000р' action='create_visit'
+2026-08-20 14:47:41 | INFO     | root | create_visit
+2026-08-20 14:47:41 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:47:45 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='a5946821-19b6-11f0-ba5a-00155d582500' step='confirm_appointment' staff_id='f479d290-6b8b-43ee-845a-9438f572b9ed' staff_name='Тимашкова Анастасия' select_date='31.08.2026' datetime='31.08.2026 16:00:00' services_title='Уход для тела в хаммаме «Восточное расслабление с ароматом розы»  10000р' action='create_visit'
+2026-08-20 14:47:45 | INFO     | root | create_visit
+2026-08-20 14:47:45 | INFO     | root | {'record_array': [{'datetime': '20260831T1600', 'service_id': 'a5946821-19b6-11f0-ba5a-00155d582500', 'staff_id': 'f479d290-6b8b-43ee-845a-9438f572b9ed', 'comment': ''}]}
+2026-08-20 14:47:45 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:47:47 | INFO     | root | action_filter='list_visits' action='list_visits' visit_id=''
+2026-08-20 14:47:47 | INFO     | root | list_visits
+2026-08-20 14:47:48 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:47:51 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:47:54 | INFO     | root | action_filter='list_visits' action='list_visits' visit_id=''
+2026-08-20 14:47:54 | INFO     | root | list_visits
+2026-08-20 14:47:55 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:48:04 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:48:07 | INFO     | root | action_filter='list_visits' action='list_visits' visit_id=''
+2026-08-20 14:48:07 | INFO     | root | list_visits
+2026-08-20 14:48:07 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:48:09 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:52:23 | INFO     | root | category_id='' services_id='' step='' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 14:52:23 | INFO     | root | create_visit
+2026-08-20 14:52:23 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:52:25 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='' step='get_services' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 14:52:25 | INFO     | root | create_visit
+2026-08-20 14:52:26 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:52:27 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_staff_and_date' staff_id='' staff_name='' select_date='' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 14:52:27 | INFO     | root | create_visit
+2026-08-20 14:52:29 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:52:32 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_time_staff' staff_id='1750e4d6-e302-4813-bdc8-e18d9504ff7e' staff_name='Дусанова Ася' select_date='28.08.2026' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 14:52:32 | INFO     | root | create_visit
+2026-08-20 14:52:33 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:52:35 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='confirmation' staff_id='1750e4d6-e302-4813-bdc8-e18d9504ff7e' staff_name='Дусанова Ася' select_date='28.08.2026' datetime='28.08.2026 20:00:00' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 14:52:35 | INFO     | root | create_visit
+2026-08-20 14:52:36 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:52:38 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='confirm_appointment' staff_id='1750e4d6-e302-4813-bdc8-e18d9504ff7e' staff_name='Дусанова Ася' select_date='28.08.2026' datetime='28.08.2026 20:00:00' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 14:52:38 | INFO     | root | create_visit
+2026-08-20 14:52:39 | INFO     | root | {'record_array': [{'datetime': '20260828T2000', 'service_id': '490af87f-a58b-11ef-bc68-00505683a460', 'staff_id': '1750e4d6-e302-4813-bdc8-e18d9504ff7e', 'comment': ''}]}
+2026-08-20 14:52:40 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:52:41 | INFO     | root | action_filter='list_visits' action='list_visits' visit_id=''
+2026-08-20 14:52:41 | INFO     | root | list_visits
+2026-08-20 14:52:42 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:53:55 | INFO     | root | action_filter='list_visits' action='cancel_visit' visit_id='d8a327ff-9c7c-11f1-ba62-00155d582500'
+2026-08-20 14:53:55 | INFO     | root | list_visits
+2026-08-20 14:53:56 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:54:27 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:54:29 | INFO     | root | category_id='' services_id='' step='' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 14:54:29 | INFO     | root | create_visit
+2026-08-20 14:54:30 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:54:32 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='' step='get_services' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 14:54:32 | INFO     | root | create_visit
+2026-08-20 14:54:33 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:54:35 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='a5946821-19b6-11f0-ba5a-00155d582500' step='get_staff_and_date' staff_id='' staff_name='' select_date='' datetime='' services_title='Уход для тела в хаммаме «Восточное расслабление с ароматом розы»  10000р' action='create_visit'
+2026-08-20 14:54:35 | INFO     | root | create_visit
+2026-08-20 14:54:37 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:54:41 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='a5946821-19b6-11f0-ba5a-00155d582500' step='get_time_staff' staff_id='f479d290-6b8b-43ee-845a-9438f572b9ed' staff_name='Тимашкова Анастасия' select_date='31.08.2026' datetime='' services_title='Уход для тела в хаммаме «Восточное расслабление с ароматом розы»  10000р' action='create_visit'
+2026-08-20 14:54:41 | INFO     | root | create_visit
+2026-08-20 14:54:41 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:54:43 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='a5946821-19b6-11f0-ba5a-00155d582500' step='confirmation' staff_id='f479d290-6b8b-43ee-845a-9438f572b9ed' staff_name='Тимашкова Анастасия' select_date='31.08.2026' datetime='31.08.2026 16:00:00' services_title='Уход для тела в хаммаме «Восточное расслабление с ароматом розы»  10000р' action='create_visit'
+2026-08-20 14:54:43 | INFO     | root | create_visit
+2026-08-20 14:54:44 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:54:45 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='a5946821-19b6-11f0-ba5a-00155d582500' step='confirm_appointment' staff_id='f479d290-6b8b-43ee-845a-9438f572b9ed' staff_name='Тимашкова Анастасия' select_date='31.08.2026' datetime='31.08.2026 16:00:00' services_title='Уход для тела в хаммаме «Восточное расслабление с ароматом розы»  10000р' action='create_visit'
+2026-08-20 14:54:45 | INFO     | root | create_visit
+2026-08-20 14:54:45 | INFO     | root | {'record_array': [{'datetime': '20260831T1600', 'service_id': 'a5946821-19b6-11f0-ba5a-00155d582500', 'staff_id': 'f479d290-6b8b-43ee-845a-9438f572b9ed', 'comment': ''}]}
+2026-08-20 14:54:46 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:54:48 | INFO     | root | action_filter='list_visits' action='list_visits' visit_id=''
+2026-08-20 14:54:48 | INFO     | root | list_visits
+2026-08-20 14:54:49 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:54:51 | INFO     | dispatcher | Обработано: router_id: 2138251187536 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:57:26 | INFO     | root | Бот и ресурсы успешно остановлены.
+2026-08-20 14:57:26 | ERROR    | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001F1D9DBA7B0>
+2026-08-20 14:57:30 | INFO     | root | 1
+2026-08-20 14:57:30 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-20 14:57:30 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-20 14:57:31 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-20 14:57:31 | INFO     | dispatcher | Зарегистрировано 11 обработчиков событий
+2026-08-20 14:57:31 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://105aqb-83-142-162-102.ru.tuna.am/webhook
+2026-08-20 14:57:31 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-20 14:57:31 | INFO     | root | category_id='' services_id='' step='' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 14:57:31 | INFO     | root | create_visit
+2026-08-20 14:57:33 | INFO     | dispatcher | Обработано: router_id: 1576305677648 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:57:34 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='' step='get_services' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 14:57:34 | INFO     | root | create_visit
+2026-08-20 14:57:35 | INFO     | dispatcher | Обработано: router_id: 1576305677648 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:57:36 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='a5946821-19b6-11f0-ba5a-00155d582500' step='get_staff_and_date' staff_id='' staff_name='' select_date='' datetime='' services_title='Уход для тела в хаммаме «Восточное расслабление с ароматом розы»  10000р' action='create_visit'
+2026-08-20 14:57:36 | INFO     | root | create_visit
+2026-08-20 14:57:39 | INFO     | dispatcher | Обработано: router_id: 1576305677648 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:57:42 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='a5946821-19b6-11f0-ba5a-00155d582500' step='get_time_staff' staff_id='f479d290-6b8b-43ee-845a-9438f572b9ed' staff_name='Тимашкова Анастасия' select_date='31.08.2026' datetime='' services_title='Уход для тела в хаммаме «Восточное расслабление с ароматом розы»  10000р' action='create_visit'
+2026-08-20 14:57:42 | INFO     | root | create_visit
+2026-08-20 14:57:42 | INFO     | dispatcher | Обработано: router_id: 1576305677648 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:57:44 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='a5946821-19b6-11f0-ba5a-00155d582500' step='confirmation' staff_id='f479d290-6b8b-43ee-845a-9438f572b9ed' staff_name='Тимашкова Анастасия' select_date='31.08.2026' datetime='31.08.2026 16:00:00' services_title='Уход для тела в хаммаме «Восточное расслабление с ароматом розы»  10000р' action='create_visit'
+2026-08-20 14:57:44 | INFO     | root | create_visit
+2026-08-20 14:57:45 | INFO     | dispatcher | Обработано: router_id: 1576305677648 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:57:46 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='a5946821-19b6-11f0-ba5a-00155d582500' step='confirm_appointment' staff_id='f479d290-6b8b-43ee-845a-9438f572b9ed' staff_name='Тимашкова Анастасия' select_date='31.08.2026' datetime='31.08.2026 16:00:00' services_title='Уход для тела в хаммаме «Восточное расслабление с ароматом розы»  10000р' action='create_visit'
+2026-08-20 14:57:46 | INFO     | root | create_visit
+2026-08-20 14:57:46 | INFO     | root | {'record_array': [{'datetime': '20260831T1600', 'service_id': 'a5946821-19b6-11f0-ba5a-00155d582500', 'staff_id': 'f479d290-6b8b-43ee-845a-9438f572b9ed', 'comment': ''}]}
+2026-08-20 14:57:46 | INFO     | root | None
+2026-08-20 14:57:46 | INFO     | dispatcher | Обработано: router_id: 1576305677648 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:59:07 | INFO     | root | Бот и ресурсы успешно остановлены.
+2026-08-20 14:59:07 | ERROR    | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x0000016F034BA7B0>
+2026-08-20 14:59:19 | INFO     | root | 1
+2026-08-20 14:59:19 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-20 14:59:19 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-20 14:59:19 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-20 14:59:19 | INFO     | dispatcher | Зарегистрировано 11 обработчиков событий
+2026-08-20 14:59:19 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://d2nyun-83-142-162-102.ru.tuna.am/webhook
+2026-08-20 14:59:19 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-20 14:59:25 | INFO     | root | action_filter='list_visits' action='list_visits' visit_id=''
+2026-08-20 14:59:25 | INFO     | root | list_visits
+2026-08-20 14:59:25 | INFO     | dispatcher | Обработано: router_id: 2129181136208 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:59:27 | INFO     | dispatcher | Обработано: router_id: 2129181136208 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:59:29 | INFO     | root | category_id='' services_id='' step='' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 14:59:29 | INFO     | root | create_visit
+2026-08-20 14:59:32 | INFO     | dispatcher | Обработано: router_id: 2129181136208 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:59:33 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='' step='get_services' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 14:59:33 | INFO     | root | create_visit
+2026-08-20 14:59:34 | INFO     | dispatcher | Обработано: router_id: 2129181136208 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:59:36 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='83b3b4ca-a58e-11ef-bc68-00505683a460' step='get_staff_and_date' staff_id='' staff_name='' select_date='' datetime='' services_title='Хамам 90 минут блаженства 8500р' action='create_visit'
+2026-08-20 14:59:36 | INFO     | root | create_visit
+2026-08-20 14:59:38 | INFO     | dispatcher | Обработано: router_id: 2129181136208 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:59:40 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='83b3b4ca-a58e-11ef-bc68-00505683a460' step='get_time_staff' staff_id='f479d290-6b8b-43ee-845a-9438f572b9ed' staff_name='Тимашкова Анастасия' select_date='31.08.2026' datetime='' services_title='Хамам 90 минут блаженства 8500р' action='create_visit'
+2026-08-20 14:59:40 | INFO     | root | create_visit
+2026-08-20 14:59:40 | INFO     | dispatcher | Обработано: router_id: 2129181136208 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:59:42 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='83b3b4ca-a58e-11ef-bc68-00505683a460' step='confirmation' staff_id='f479d290-6b8b-43ee-845a-9438f572b9ed' staff_name='Тимашкова Анастасия' select_date='31.08.2026' datetime='31.08.2026 16:00:00' services_title='Хамам 90 минут блаженства 8500р' action='create_visit'
+2026-08-20 14:59:42 | INFO     | root | create_visit
+2026-08-20 14:59:43 | INFO     | dispatcher | Обработано: router_id: 2129181136208 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:59:44 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='83b3b4ca-a58e-11ef-bc68-00505683a460' step='confirm_appointment' staff_id='f479d290-6b8b-43ee-845a-9438f572b9ed' staff_name='Тимашкова Анастасия' select_date='31.08.2026' datetime='31.08.2026 16:00:00' services_title='Хамам 90 минут блаженства 8500р' action='create_visit'
+2026-08-20 14:59:44 | INFO     | root | create_visit
+2026-08-20 14:59:46 | INFO     | root | {'Result': True, 'record_id': 'd9fa9a96-9c7d-11f1-ba62-00155d582500', 'status': 'Reserved', 'total_amount': 8500, 'total_discount': 0, 'data_log': {'Контрагент': {'id': 'f053a274-9249-11f1-ba62-00155d582500', 'Наименование': 'Семейный Тестовый Доктор'}, 'СтруктурнаяЕдиница': {'id': '2e2f026f-a57e-11ef-bc68-00505683a460', 'Наименование': 'Другое измерение'}, 'ДатаЗаписи': '2026-08-31T16:00:00', 'Услуги': [{'id': '83b3b4ca-a58e-11ef-bc68-00505683a460', 'Наименование': 'Хамам 90 минут блаженства'}], 'Сотрудники': [{'id': 'f479d290-6b8b-43ee-845a-9438f572b9ed', 'Наименование': 'Тимашкова Анастасия'}], 'Статус': {'Наименование': 'Ожидается'}, 'Цена': 8500}}
+2026-08-20 14:59:46 | INFO     | dispatcher | Обработано: router_id: 2129181136208 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:59:52 | INFO     | root | action_filter='list_visits' action='list_visits' visit_id=''
+2026-08-20 14:59:52 | INFO     | root | list_visits
+2026-08-20 14:59:53 | INFO     | dispatcher | Обработано: router_id: 2129181136208 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:59:55 | INFO     | root | action_filter='list_visits' action='cancel_visit' visit_id='d9fa9a96-9c7d-11f1-ba62-00155d582500'
+2026-08-20 14:59:55 | INFO     | root | list_visits
+2026-08-20 14:59:56 | INFO     | dispatcher | Обработано: router_id: 2129181136208 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 14:59:59 | INFO     | dispatcher | Обработано: router_id: 2129181136208 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:01:50 | INFO     | root | Бот и ресурсы успешно остановлены.
+2026-08-20 15:01:50 | ERROR    | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001EFBD3DA7B0>
+2026-08-20 15:01:54 | INFO     | root | 1
+2026-08-20 15:01:54 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-20 15:01:54 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-20 15:01:54 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-20 15:01:54 | INFO     | dispatcher | Зарегистрировано 11 обработчиков событий
+2026-08-20 15:01:54 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://d2nyun-83-142-162-102.ru.tuna.am/webhook
+2026-08-20 15:01:54 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-20 15:01:57 | INFO     | root | category_id='' services_id='' step='' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 15:01:57 | INFO     | root | create_visit
+2026-08-20 15:01:58 | INFO     | dispatcher | Обработано: router_id: 1972716098896 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:02:03 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='' step='get_services' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 15:02:03 | INFO     | root | create_visit
+2026-08-20 15:02:04 | INFO     | dispatcher | Обработано: router_id: 1972716098896 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:02:05 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='a5946821-19b6-11f0-ba5a-00155d582500' step='get_staff_and_date' staff_id='' staff_name='' select_date='' datetime='' services_title='Уход для тела в хаммаме «Восточное расслабление с ароматом розы»  10000р' action='create_visit'
+2026-08-20 15:02:05 | INFO     | root | create_visit
+2026-08-20 15:02:07 | INFO     | dispatcher | Обработано: router_id: 1972716098896 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:02:09 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='a5946821-19b6-11f0-ba5a-00155d582500' step='get_time_staff' staff_id='f479d290-6b8b-43ee-845a-9438f572b9ed' staff_name='Тимашкова Анастасия' select_date='31.08.2026' datetime='' services_title='Уход для тела в хаммаме «Восточное расслабление с ароматом розы»  10000р' action='create_visit'
+2026-08-20 15:02:09 | INFO     | root | create_visit
+2026-08-20 15:02:11 | INFO     | dispatcher | Обработано: router_id: 1972716098896 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:02:12 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='a5946821-19b6-11f0-ba5a-00155d582500' step='confirmation' staff_id='f479d290-6b8b-43ee-845a-9438f572b9ed' staff_name='Тимашкова Анастасия' select_date='31.08.2026' datetime='31.08.2026 16:00:00' services_title='Уход для тела в хаммаме «Восточное расслабление с ароматом розы»  10000р' action='create_visit'
+2026-08-20 15:02:12 | INFO     | root | create_visit
+2026-08-20 15:02:13 | INFO     | dispatcher | Обработано: router_id: 1972716098896 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:02:14 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='a5946821-19b6-11f0-ba5a-00155d582500' step='confirm_appointment' staff_id='f479d290-6b8b-43ee-845a-9438f572b9ed' staff_name='Тимашкова Анастасия' select_date='31.08.2026' datetime='31.08.2026 16:00:00' services_title='Уход для тела в хаммаме «Восточное расслабление с ароматом розы»  10000р' action='create_visit'
+2026-08-20 15:02:14 | INFO     | root | create_visit
+2026-08-20 15:02:15 | ERROR    | dispatcher | Ошибка в обработчике: HandlerException(handler=handle, router_id=1972716098896, process=message_callback | chat_id: 461175464, user_id: 216480106, context_keys=['data', 'state'], cause=TypeError: 'NoneType' object is not subscriptable)
+Traceback (most recent call last):
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\maxapi\dispatcher.py", line 986, in _execute_handler
+    await handler_chain(event, data)
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\maxapi\dispatcher.py", line 591, in call_handler
+    await handler.func_event(event_object, **kwargs)
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\listener\handlers\create_visit_handler.py", line 247, in handle
+    if result['Result'] == True:
+       ~~~~~~^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+2026-08-20 15:03:09 | INFO     | root | Бот и ресурсы успешно остановлены.
+2026-08-20 15:03:10 | ERROR    | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001CB4F32A7B0>
+2026-08-20 15:03:13 | INFO     | root | 1
+2026-08-20 15:03:13 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-20 15:03:13 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-20 15:03:13 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-20 15:03:13 | INFO     | dispatcher | Зарегистрировано 11 обработчиков событий
+2026-08-20 15:03:13 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://d2nyun-83-142-162-102.ru.tuna.am/webhook
+2026-08-20 15:03:14 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-20 15:03:18 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='a5946821-19b6-11f0-ba5a-00155d582500' step='get_time_staff' staff_id='ca8cc48f-8a82-42ed-8f39-f971049e2a1a' staff_name='Смирнова Светлана' select_date='26.08.2026' datetime='' services_title='Уход для тела в хаммаме «Восточное расслабление с ароматом розы»  10000р' action='create_visit'
+2026-08-20 15:03:18 | INFO     | root | create_visit
+2026-08-20 15:03:20 | INFO     | dispatcher | Обработано: router_id: 2353999435088 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:03:23 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='a5946821-19b6-11f0-ba5a-00155d582500' step='confirmation' staff_id='ca8cc48f-8a82-42ed-8f39-f971049e2a1a' staff_name='Смирнова Светлана' select_date='26.08.2026' datetime='26.08.2026 20:30:00' services_title='Уход для тела в хаммаме «Восточное расслабление с ароматом розы»  10000р' action='create_visit'
+2026-08-20 15:03:23 | INFO     | root | create_visit
+2026-08-20 15:03:24 | INFO     | dispatcher | Обработано: router_id: 2353999435088 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:03:26 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='a5946821-19b6-11f0-ba5a-00155d582500' step='confirm_appointment' staff_id='ca8cc48f-8a82-42ed-8f39-f971049e2a1a' staff_name='Смирнова Светлана' select_date='26.08.2026' datetime='26.08.2026 20:30:00' services_title='Уход для тела в хаммаме «Восточное расслабление с ароматом розы»  10000р' action='create_visit'
+2026-08-20 15:03:26 | INFO     | root | create_visit
+2026-08-20 15:03:28 | ERROR    | dispatcher | Ошибка в обработчике: HandlerException(handler=handle, router_id=2353999435088, process=message_callback | chat_id: 461175464, user_id: 216480106, context_keys=['data', 'state'], cause=TypeError: 'NoneType' object is not subscriptable)
+Traceback (most recent call last):
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\maxapi\dispatcher.py", line 986, in _execute_handler
+    await handler_chain(event, data)
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\maxapi\dispatcher.py", line 591, in call_handler
+    await handler.func_event(event_object, **kwargs)
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\listener\handlers\create_visit_handler.py", line 248, in handle
+    if result['Result'] == True:
+       ~~~~~~^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+2026-08-20 15:04:13 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='a5946821-19b6-11f0-ba5a-00155d582500' step='get_time_staff' staff_id='ca8cc48f-8a82-42ed-8f39-f971049e2a1a' staff_name='Смирнова Светлана' select_date='26.08.2026' datetime='' services_title='Уход для тела в хаммаме «Восточное расслабление с ароматом розы»  10000р' action='create_visit'
+2026-08-20 15:04:13 | INFO     | root | create_visit
+2026-08-20 15:04:14 | INFO     | dispatcher | Обработано: router_id: 2353999435088 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:04:28 | INFO     | root | Бот и ресурсы успешно остановлены.
+2026-08-20 15:04:29 | ERROR    | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000002241574A7B0>
+2026-08-20 15:04:29 | ERROR    | asyncio | Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x000002241576D250>, 105015.3985272)])']
+connector: <aiohttp.connector.TCPConnector object at 0x000002241574A3C0>
+2026-08-20 15:04:32 | INFO     | root | 1
+2026-08-20 15:04:32 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-20 15:04:32 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-20 15:04:33 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-20 15:04:33 | INFO     | dispatcher | Зарегистрировано 11 обработчиков событий
+2026-08-20 15:04:33 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://d2nyun-83-142-162-102.ru.tuna.am/webhook
+2026-08-20 15:04:33 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-20 15:04:34 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='a5946821-19b6-11f0-ba5a-00155d582500' step='confirmation' staff_id='ca8cc48f-8a82-42ed-8f39-f971049e2a1a' staff_name='Смирнова Светлана' select_date='26.08.2026' datetime='26.08.2026 20:30:00' services_title='Уход для тела в хаммаме «Восточное расслабление с ароматом розы»  10000р' action='create_visit'
+2026-08-20 15:04:34 | INFO     | root | create_visit
+2026-08-20 15:04:35 | INFO     | dispatcher | Обработано: router_id: 1480713295184 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:04:39 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='a5946821-19b6-11f0-ba5a-00155d582500' step='confirm_appointment' staff_id='ca8cc48f-8a82-42ed-8f39-f971049e2a1a' staff_name='Смирнова Светлана' select_date='26.08.2026' datetime='26.08.2026 20:30:00' services_title='Уход для тела в хаммаме «Восточное расслабление с ароматом розы»  10000р' action='create_visit'
+2026-08-20 15:04:39 | INFO     | root | create_visit
+2026-08-20 15:04:40 | INFO     | dispatcher | Обработано: router_id: 1480713295184 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:05:09 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='a5946821-19b6-11f0-ba5a-00155d582500' step='get_time_staff' staff_id='a1cbea1f-f7d5-4885-972c-363af5f920d6' staff_name='Багрецова Наталья' select_date='25.08.2026' datetime='' services_title='Уход для тела в хаммаме «Восточное расслабление с ароматом розы»  10000р' action='create_visit'
+2026-08-20 15:05:09 | INFO     | root | create_visit
+2026-08-20 15:05:13 | ERROR    | dispatcher | Ошибка в обработчике: HandlerException(handler=handle, router_id=1480713295184, process=message_callback | chat_id: 461175464, user_id: 216480106, context_keys=['data', 'state'], cause=NotFoundError: [None] HTTP 404 (HTTP 404))
+Traceback (most recent call last):
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\maxapi\dispatcher.py", line 986, in _execute_handler
+    await handler_chain(event, data)
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\maxapi\dispatcher.py", line 591, in call_handler
+    await handler.func_event(event_object, **kwargs)
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\listener\handlers\create_visit_handler.py", line 145, in handle
+    times = self._salon_service.get_time_staff(service_id = payload.services_id, staff_id = payload.staff_id,select_date = select_date)
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\listener\services\salon1c_service.py", line 82, in get_time_staff
+    time_list = self.client.bookings.recording_dates(self.salon_id,start_date=start_date,end_date=end_date,service_id=service_id,staff_id=staff_id)
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\libs\salon1c\resources\bookings.py", line 103, in recording_dates
+    resp = self.http.get(f"/hs/api/v1/recording_dates/{salon_id}/", params=params)
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\libs\salon1c\http.py", line 104, in get
+    def get(self, path, **kw):    return self.request("GET", path, **kw)
+                                         ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\libs\salon1c\http.py", line 91, in request
+    raise_for_status(response.status_code, payload)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\libs\salon1c\exceptions.py", line 72, in raise_for_status
+    raise exc_cls(code=code, message=message or f"HTTP {status_code}",
+                  http_status=status_code, raw=payload)
+libs.salon1c.exceptions.NotFoundError: [None] HTTP 404 (HTTP 404)
+2026-08-20 15:05:13 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='a5946821-19b6-11f0-ba5a-00155d582500' step='get_time_staff' staff_id='85a12bcb-7810-4fcf-a321-22083240ba25' staff_name='Дяченко Елена' select_date='30.08.2026' datetime='' services_title='Уход для тела в хаммаме «Восточное расслабление с ароматом розы»  10000р' action='create_visit'
+2026-08-20 15:05:13 | INFO     | root | create_visit
+2026-08-20 15:05:14 | INFO     | dispatcher | Обработано: router_id: 1480713295184 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:05:15 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='a5946821-19b6-11f0-ba5a-00155d582500' step='confirmation' staff_id='85a12bcb-7810-4fcf-a321-22083240ba25' staff_name='Дяченко Елена' select_date='30.08.2026' datetime='30.08.2026 14:30:00' services_title='Уход для тела в хаммаме «Восточное расслабление с ароматом розы»  10000р' action='create_visit'
+2026-08-20 15:05:15 | INFO     | root | create_visit
+2026-08-20 15:05:15 | INFO     | dispatcher | Обработано: router_id: 1480713295184 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:05:17 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='a5946821-19b6-11f0-ba5a-00155d582500' step='confirm_appointment' staff_id='85a12bcb-7810-4fcf-a321-22083240ba25' staff_name='Дяченко Елена' select_date='30.08.2026' datetime='30.08.2026 14:30:00' services_title='Уход для тела в хаммаме «Восточное расслабление с ароматом розы»  10000р' action='create_visit'
+2026-08-20 15:05:17 | INFO     | root | create_visit
+2026-08-20 15:05:18 | INFO     | dispatcher | Обработано: router_id: 1480713295184 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:05:20 | INFO     | dispatcher | Обработано: router_id: 1480713295184 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:05:23 | INFO     | root | category_id='' services_id='' step='' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 15:05:23 | INFO     | root | create_visit
+2026-08-20 15:05:24 | INFO     | dispatcher | Обработано: router_id: 1480713295184 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:05:26 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='' step='get_services' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 15:05:26 | INFO     | root | create_visit
+2026-08-20 15:05:27 | INFO     | dispatcher | Обработано: router_id: 1480713295184 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:05:28 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_staff_and_date' staff_id='' staff_name='' select_date='' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:05:28 | INFO     | root | create_visit
+2026-08-20 15:05:30 | INFO     | dispatcher | Обработано: router_id: 1480713295184 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:05:33 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_time_staff' staff_id='6da231dc-8a46-4f35-b642-5e932066987a' staff_name='Федосеева Елена' select_date='30.08.2026' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:05:33 | INFO     | root | create_visit
+2026-08-20 15:05:34 | INFO     | dispatcher | Обработано: router_id: 1480713295184 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:05:36 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='confirmation' staff_id='6da231dc-8a46-4f35-b642-5e932066987a' staff_name='Федосеева Елена' select_date='30.08.2026' datetime='30.08.2026 18:30:00' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:05:36 | INFO     | root | create_visit
+2026-08-20 15:05:36 | INFO     | dispatcher | Обработано: router_id: 1480713295184 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:05:37 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='confirm_appointment' staff_id='6da231dc-8a46-4f35-b642-5e932066987a' staff_name='Федосеева Елена' select_date='30.08.2026' datetime='30.08.2026 18:30:00' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:05:37 | INFO     | root | create_visit
+2026-08-20 15:05:39 | INFO     | dispatcher | Обработано: router_id: 1480713295184 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:05:40 | INFO     | root | action_filter='list_visits' action='list_visits' visit_id=''
+2026-08-20 15:05:40 | INFO     | root | list_visits
+2026-08-20 15:05:41 | INFO     | dispatcher | Обработано: router_id: 1480713295184 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:05:43 | INFO     | root | action_filter='list_visits' action='cancel_visit' visit_id='ad82c387-9c7e-11f1-ba62-00155d582500'
+2026-08-20 15:05:43 | INFO     | root | list_visits
+2026-08-20 15:05:44 | INFO     | dispatcher | Обработано: router_id: 1480713295184 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:07:18 | INFO     | dispatcher | Обработано: router_id: 1480713295184 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:07:22 | INFO     | root | category_id='' services_id='' step='' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 15:07:22 | INFO     | root | create_visit
+2026-08-20 15:07:23 | INFO     | dispatcher | Обработано: router_id: 1480713295184 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:07:26 | INFO     | root | category_id='143eb2b8-ecf1-11ef-ba59-00155d582500' services_id='' step='get_services' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 15:07:26 | INFO     | root | create_visit
+2026-08-20 15:07:26 | INFO     | dispatcher | Обработано: router_id: 1480713295184 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:10:36 | INFO     | root | Бот и ресурсы успешно остановлены.
+2026-08-20 15:10:37 | ERROR    | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x00000158C18BA7B0>
+2026-08-20 15:10:40 | INFO     | root | 1
+2026-08-20 15:10:41 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-20 15:10:41 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-20 15:10:41 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-20 15:10:41 | INFO     | dispatcher | Зарегистрировано 11 обработчиков событий
+2026-08-20 15:10:41 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://d2nyun-83-142-162-102.ru.tuna.am/webhook
+2026-08-20 15:10:41 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-20 15:10:44 | INFO     | dispatcher | Обработано: router_id: 1873699067216 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:10:46 | INFO     | root | category_id='' services_id='' step='' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 15:10:46 | INFO     | root | create_visit
+2026-08-20 15:10:49 | INFO     | dispatcher | Обработано: router_id: 1873699067216 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:10:50 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='' step='get_services' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 15:10:50 | INFO     | root | create_visit
+2026-08-20 15:10:54 | ERROR    | dispatcher | Ошибка в обработчике: HandlerException(handler=handle, router_id=1873699067216, process=message_callback | chat_id: 461175464, user_id: 216480106, context_keys=['data', 'state'], cause=NotFoundError: [None] HTTP 404 (HTTP 404))
+Traceback (most recent call last):
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\maxapi\dispatcher.py", line 986, in _execute_handler
+    await handler_chain(event, data)
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\maxapi\dispatcher.py", line 591, in call_handler
+    await handler.func_event(event_object, **kwargs)
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\listener\handlers\create_visit_handler.py", line 46, in handle
+    validated = await self._validate_user(event, storage = self._storage, salon_service = self._salon_service)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\listener\handlers\base_handler.py", line 36, in _validate_user
+    checkuser = salon_service.validity_usertoken(usertoken)
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\listener\services\salon1c_service.py", line 114, in validity_usertoken
+    user_client = self.client.clients.get_client(salon_id=self.salon_id, usertoken = usertoken)
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\libs\salon1c\resources\clients.py", line 16, in get_client
+    resp = self.http.get(
+        f"/hs/api/v1/client/{salon_id}/",
+        usertoken=self.token(usertoken),
+    )
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\libs\salon1c\http.py", line 104, in get
+    def get(self, path, **kw):    return self.request("GET", path, **kw)
+                                         ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\libs\salon1c\http.py", line 91, in request
+    raise_for_status(response.status_code, payload)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\libs\salon1c\exceptions.py", line 72, in raise_for_status
+    raise exc_cls(code=code, message=message or f"HTTP {status_code}",
+                  http_status=status_code, raw=payload)
+libs.salon1c.exceptions.NotFoundError: [None] HTTP 404 (HTTP 404)
+2026-08-20 15:11:14 | INFO     | dispatcher | Обработано: router_id: 1873699067216 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:11:18 | INFO     | root | category_id='' services_id='' step='' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 15:11:18 | INFO     | root | create_visit
+2026-08-20 15:11:19 | INFO     | dispatcher | Обработано: router_id: 1873699067216 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:11:20 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='' step='get_services' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 15:11:20 | INFO     | root | create_visit
+2026-08-20 15:11:21 | INFO     | dispatcher | Обработано: router_id: 1873699067216 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:11:22 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_staff_and_date' staff_id='' staff_name='' select_date='' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:11:22 | INFO     | root | create_visit
+2026-08-20 15:11:24 | INFO     | dispatcher | Обработано: router_id: 1873699067216 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:17:20 | INFO     | root | Бот и ресурсы успешно остановлены.
+2026-08-20 15:17:21 | ERROR    | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001B44152A7B0>
+2026-08-20 15:17:24 | INFO     | root | 1
+2026-08-20 15:17:24 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-20 15:17:25 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-20 15:17:25 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-20 15:17:25 | INFO     | dispatcher | Зарегистрировано 11 обработчиков событий
+2026-08-20 15:17:25 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://d2nyun-83-142-162-102.ru.tuna.am/webhook
+2026-08-20 15:17:25 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-20 15:17:27 | INFO     | dispatcher | Обработано: router_id: 1712739898704 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:17:28 | INFO     | root | category_id='' services_id='' step='' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 15:17:28 | INFO     | root | create_visit
+2026-08-20 15:17:30 | INFO     | dispatcher | Обработано: router_id: 1712739898704 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:17:32 | INFO     | root | category_id='0536a41c-ed20-11ef-ba59-00155d582500' services_id='' step='get_services' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 15:17:32 | INFO     | root | create_visit
+2026-08-20 15:17:32 | INFO     | dispatcher | Обработано: router_id: 1712739898704 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:17:35 | INFO     | root | category_id='0536a41c-ed20-11ef-ba59-00155d582500' services_id='74f88e0d-e522-11ef-ba59-00155d582500' step='get_staff_and_date' staff_id='' staff_name='' select_date='' datetime='' services_title='Депиляция воском ноги полностью 1600р' action='create_visit'
+2026-08-20 15:17:35 | INFO     | root | create_visit
+2026-08-20 15:17:39 | INFO     | dispatcher | Обработано: router_id: 1712739898704 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:18:26 | INFO     | root | Бот и ресурсы успешно остановлены.
+2026-08-20 15:18:26 | ERROR    | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x0000018EC768A7B0>
+2026-08-20 15:18:30 | INFO     | root | 1
+2026-08-20 15:18:30 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-20 15:18:30 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-20 15:18:30 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-20 15:18:30 | INFO     | dispatcher | Зарегистрировано 11 обработчиков событий
+2026-08-20 15:18:30 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://d2nyun-83-142-162-102.ru.tuna.am/webhook
+2026-08-20 15:18:31 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-20 15:18:31 | INFO     | dispatcher | Обработано: router_id: 2055192434000 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:18:33 | INFO     | root | category_id='' services_id='' step='' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 15:18:33 | INFO     | root | create_visit
+2026-08-20 15:18:36 | INFO     | dispatcher | Обработано: router_id: 2055192434000 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:18:38 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='' step='get_services' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 15:18:38 | INFO     | root | create_visit
+2026-08-20 15:18:38 | INFO     | dispatcher | Обработано: router_id: 2055192434000 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:18:39 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_staff_and_date' staff_id='' staff_name='' select_date='' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:18:39 | INFO     | root | create_visit
+2026-08-20 15:18:42 | INFO     | dispatcher | Обработано: router_id: 2055192434000 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:19:28 | INFO     | root | Бот и ресурсы успешно остановлены.
+2026-08-20 15:19:29 | ERROR    | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001DE832BA7B0>
+2026-08-20 15:19:32 | INFO     | root | 1
+2026-08-20 15:19:33 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-20 15:19:33 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-20 15:19:33 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-20 15:19:33 | INFO     | dispatcher | Зарегистрировано 11 обработчиков событий
+2026-08-20 15:19:33 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://d2nyun-83-142-162-102.ru.tuna.am/webhook
+2026-08-20 15:19:33 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-20 15:19:34 | INFO     | dispatcher | Обработано: router_id: 2253431297360 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:19:36 | INFO     | root | category_id='' services_id='' step='' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 15:19:36 | INFO     | root | create_visit
+2026-08-20 15:19:37 | INFO     | dispatcher | Обработано: router_id: 2253431297360 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:19:39 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='' step='get_services' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 15:19:39 | INFO     | root | create_visit
+2026-08-20 15:19:40 | INFO     | dispatcher | Обработано: router_id: 2253431297360 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:19:42 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_staff_and_date' staff_id='' staff_name='' select_date='' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:19:42 | INFO     | root | create_visit
+2026-08-20 15:19:44 | INFO     | dispatcher | Обработано: router_id: 2253431297360 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:22:09 | INFO     | root | Бот и ресурсы успешно остановлены.
+2026-08-20 15:22:09 | ERROR    | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x0000020CAB20A7B0>
+2026-08-20 15:22:13 | INFO     | root | 1
+2026-08-20 15:22:13 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-20 15:22:13 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-20 15:22:13 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-20 15:22:13 | INFO     | dispatcher | Зарегистрировано 11 обработчиков событий
+2026-08-20 15:22:13 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://d2nyun-83-142-162-102.ru.tuna.am/webhook
+2026-08-20 15:22:13 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-20 15:22:14 | INFO     | dispatcher | Обработано: router_id: 2033488024912 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:22:17 | INFO     | root | category_id='' services_id='' step='' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 15:22:17 | INFO     | root | create_visit
+2026-08-20 15:22:18 | INFO     | dispatcher | Обработано: router_id: 2033488024912 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:22:20 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='' step='get_services' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 15:22:20 | INFO     | root | create_visit
+2026-08-20 15:22:20 | INFO     | dispatcher | Обработано: router_id: 2033488024912 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:22:22 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_staff_and_date' staff_id='' staff_name='' select_date='' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:22:22 | INFO     | root | create_visit
+2026-08-20 15:22:25 | INFO     | dispatcher | Обработано: router_id: 2033488024912 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:23:30 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_time_staff' staff_id='6da231dc-8a46-4f35-b642-5e932066987a' staff_name='Федосеева Елена' select_date='02.09.2026' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:23:30 | INFO     | root | create_visit
+2026-08-20 15:23:31 | ERROR    | dispatcher | Ошибка в обработчике: HandlerException(handler=handle, router_id=2033488024912, process=message_callback | chat_id: 461175464, user_id: 216480106, context_keys=['data', 'state'], cause=TypeError: string indices must be integers, not 'str')
+Traceback (most recent call last):
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\maxapi\dispatcher.py", line 986, in _execute_handler
+    await handler_chain(event, data)
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\maxapi\dispatcher.py", line 591, in call_handler
+    await handler.func_event(event_object, **kwargs)
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\listener\handlers\create_visit_handler.py", line 146, in handle
+    times = self._salon_service.get_time_staff(service_id = payload.services_id, staff_id = payload.staff_id,select_date = select_date)
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\listener\services\salon1c_service.py", line 90, in get_time_staff
+    def get_client(self, phone:str, usertoken:str) -> list:
+               ^^^^^^^^^^^^^^^^^^^^
+TypeError: string indices must be integers, not 'str'
+2026-08-20 15:23:49 | INFO     | dispatcher | Обработано: router_id: 2033488024912 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:23:50 | INFO     | root | category_id='' services_id='' step='' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 15:23:50 | INFO     | root | create_visit
+2026-08-20 15:23:51 | INFO     | dispatcher | Обработано: router_id: 2033488024912 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:23:52 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='' step='get_services' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 15:23:52 | INFO     | root | create_visit
+2026-08-20 15:23:53 | INFO     | dispatcher | Обработано: router_id: 2033488024912 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:23:55 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='83b3b4ca-a58e-11ef-bc68-00505683a460' step='get_staff_and_date' staff_id='' staff_name='' select_date='' datetime='' services_title='Хамам 90 минут блаженства 8500р' action='create_visit'
+2026-08-20 15:23:55 | INFO     | root | create_visit
+2026-08-20 15:24:02 | INFO     | dispatcher | Обработано: router_id: 2033488024912 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:24:03 | INFO     | root | Бот и ресурсы успешно остановлены.
+2026-08-20 15:24:04 | ERROR    | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001D9757CA7B0>
+2026-08-20 15:24:04 | ERROR    | asyncio | Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x000001D9757F5070>, 106202.9762757)])']
+connector: <aiohttp.connector.TCPConnector object at 0x000001D9757CA3C0>
+2026-08-20 15:24:07 | INFO     | root | 1
+2026-08-20 15:24:07 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-20 15:24:07 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-20 15:24:07 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-20 15:24:07 | INFO     | dispatcher | Зарегистрировано 11 обработчиков событий
+2026-08-20 15:24:07 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://d2nyun-83-142-162-102.ru.tuna.am/webhook
+2026-08-20 15:24:08 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-20 15:24:13 | INFO     | dispatcher | Обработано: router_id: 2021494936912 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:24:18 | INFO     | root | category_id='' services_id='' step='' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 15:24:18 | INFO     | root | create_visit
+2026-08-20 15:24:19 | INFO     | dispatcher | Обработано: router_id: 2021494936912 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:24:22 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='' step='get_services' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 15:24:22 | INFO     | root | create_visit
+2026-08-20 15:24:22 | INFO     | dispatcher | Обработано: router_id: 2021494936912 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:24:24 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_staff_and_date' staff_id='' staff_name='' select_date='' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:24:24 | INFO     | root | create_visit
+2026-08-20 15:24:26 | INFO     | dispatcher | Обработано: router_id: 2021494936912 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:24:31 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_time_staff' staff_id='6da231dc-8a46-4f35-b642-5e932066987a' staff_name='Федосеева Елена' select_date='02.09.2026' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:24:31 | INFO     | root | create_visit
+2026-08-20 15:24:31 | ERROR    | dispatcher | Ошибка в обработчике: HandlerException(handler=handle, router_id=2021494936912, process=message_callback | chat_id: 461175464, user_id: 216480106, context_keys=['data', 'state'], cause=TypeError: string indices must be integers, not 'str')
+Traceback (most recent call last):
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\maxapi\dispatcher.py", line 986, in _execute_handler
+    await handler_chain(event, data)
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\maxapi\dispatcher.py", line 591, in call_handler
+    await handler.func_event(event_object, **kwargs)
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\listener\handlers\create_visit_handler.py", line 146, in handle
+    times = self._salon_service.get_time_staff(service_id = payload.services_id, staff_id = payload.staff_id,select_date = select_date)
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\listener\services\salon1c_service.py", line 87, in get_time_staff
+    return time_list[0]['date'] or []
+           ~~~~~~~~~~~~^^^^^^^^
+TypeError: string indices must be integers, not 'str'
+2026-08-20 15:26:25 | INFO     | root | Бот и ресурсы успешно остановлены.
+2026-08-20 15:26:25 | ERROR    | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001D6AAA4A7B0>
+2026-08-20 15:26:28 | INFO     | root | 1
+2026-08-20 15:26:29 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-20 15:26:29 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-20 15:26:29 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-20 15:26:29 | INFO     | dispatcher | Зарегистрировано 11 обработчиков событий
+2026-08-20 15:26:29 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://d2nyun-83-142-162-102.ru.tuna.am/webhook
+2026-08-20 15:26:29 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-20 15:26:31 | INFO     | dispatcher | Обработано: router_id: 2381294130512 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:26:34 | INFO     | root | category_id='' services_id='' step='' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 15:26:34 | INFO     | root | create_visit
+2026-08-20 15:26:35 | INFO     | dispatcher | Обработано: router_id: 2381294130512 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:26:37 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='' step='get_services' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 15:26:37 | INFO     | root | create_visit
+2026-08-20 15:26:38 | INFO     | dispatcher | Обработано: router_id: 2381294130512 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:26:39 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_staff_and_date' staff_id='' staff_name='' select_date='' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:26:39 | INFO     | root | create_visit
+2026-08-20 15:26:42 | INFO     | dispatcher | Обработано: router_id: 2381294130512 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:26:48 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_time_staff' staff_id='6da231dc-8a46-4f35-b642-5e932066987a' staff_name='Федосеева Елена' select_date='02.09.2026' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:26:48 | INFO     | root | create_visit
+2026-08-20 15:26:49 | ERROR    | dispatcher | Ошибка в обработчике: HandlerException(handler=handle, router_id=2381294130512, process=message_callback | chat_id: 461175464, user_id: 216480106, context_keys=['data', 'state'], cause=KeyError: 'date')
+Traceback (most recent call last):
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\maxapi\dispatcher.py", line 986, in _execute_handler
+    await handler_chain(event, data)
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\maxapi\dispatcher.py", line 591, in call_handler
+    await handler.func_event(event_object, **kwargs)
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\listener\handlers\create_visit_handler.py", line 146, in handle
+    times = self._salon_service.get_time_staff(service_id = payload.services_id, staff_id = payload.staff_id,select_date = select_date)
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\listener\services\salon1c_service.py", line 86, in get_time_staff
+    return time_list[0]['date'] or []
+           ~~~~~~~~~~~~^^^^^^^^
+KeyError: 'date'
+2026-08-20 15:27:29 | INFO     | dispatcher | Обработано: router_id: 2381294130512 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:28:22 | INFO     | root | Бот и ресурсы успешно остановлены.
+2026-08-20 15:28:22 | ERROR    | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x0000022A7058A7B0>
+2026-08-20 15:28:26 | INFO     | root | 1
+2026-08-20 15:28:26 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-20 15:28:26 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-20 15:28:27 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-20 15:28:27 | INFO     | dispatcher | Зарегистрировано 11 обработчиков событий
+2026-08-20 15:28:27 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://d2nyun-83-142-162-102.ru.tuna.am/webhook
+2026-08-20 15:28:27 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-20 15:28:27 | INFO     | dispatcher | Обработано: router_id: 2172865926480 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:28:30 | INFO     | dispatcher | Обработано: router_id: 2172865926480 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:28:31 | INFO     | root | category_id='' services_id='' step='' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 15:28:31 | INFO     | root | create_visit
+2026-08-20 15:28:32 | INFO     | dispatcher | Обработано: router_id: 2172865926480 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:28:34 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='' step='get_services' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 15:28:34 | INFO     | root | create_visit
+2026-08-20 15:28:34 | INFO     | dispatcher | Обработано: router_id: 2172865926480 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:28:36 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_staff_and_date' staff_id='' staff_name='' select_date='' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:28:36 | INFO     | root | create_visit
+2026-08-20 15:28:39 | ERROR    | dispatcher | Ошибка в обработчике: HandlerException(handler=handle, router_id=2172865926480, process=message_callback | chat_id: 461175464, user_id: 216480106, context_keys=['data', 'state'], cause=NotFoundError: [None] HTTP 404 (HTTP 404))
+Traceback (most recent call last):
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\maxapi\dispatcher.py", line 986, in _execute_handler
+    await handler_chain(event, data)
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\maxapi\dispatcher.py", line 591, in call_handler
+    await handler.func_event(event_object, **kwargs)
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\listener\handlers\create_visit_handler.py", line 46, in handle
+    validated = await self._validate_user(event, storage = self._storage, salon_service = self._salon_service)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\listener\handlers\base_handler.py", line 36, in _validate_user
+    checkuser = salon_service.validity_usertoken(usertoken)
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\listener\services\salon1c_service.py", line 114, in validity_usertoken
+    user_client = self.client.clients.get_client(salon_id=self.salon_id, usertoken = usertoken)
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\libs\salon1c\resources\clients.py", line 16, in get_client
+    resp = self.http.get(
+        f"/hs/api/v1/client/{salon_id}/",
+        usertoken=self.token(usertoken),
+    )
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\libs\salon1c\http.py", line 104, in get
+    def get(self, path, **kw):    return self.request("GET", path, **kw)
+                                         ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\libs\salon1c\http.py", line 91, in request
+    raise_for_status(response.status_code, payload)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\libs\salon1c\exceptions.py", line 72, in raise_for_status
+    raise exc_cls(code=code, message=message or f"HTTP {status_code}",
+                  http_status=status_code, raw=payload)
+libs.salon1c.exceptions.NotFoundError: [None] HTTP 404 (HTTP 404)
+2026-08-20 15:28:48 | INFO     | dispatcher | Обработано: router_id: 2172865926480 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:28:50 | INFO     | root | category_id='' services_id='' step='' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 15:28:50 | INFO     | root | create_visit
+2026-08-20 15:28:50 | INFO     | dispatcher | Обработано: router_id: 2172865926480 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:28:51 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='' step='get_services' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 15:28:51 | INFO     | root | create_visit
+2026-08-20 15:28:52 | INFO     | dispatcher | Обработано: router_id: 2172865926480 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:28:53 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_staff_and_date' staff_id='' staff_name='' select_date='' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:28:53 | INFO     | root | create_visit
+2026-08-20 15:28:56 | INFO     | dispatcher | Обработано: router_id: 2172865926480 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:28:59 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_time_staff' staff_id='6da231dc-8a46-4f35-b642-5e932066987a' staff_name='Федосеева Елена' select_date='02.09.2026' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:28:59 | INFO     | root | create_visit
+2026-08-20 15:29:00 | INFO     | dispatcher | Обработано: router_id: 2172865926480 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:41:41 | INFO     | root | Бот и ресурсы успешно остановлены.
+2026-08-20 15:41:41 | ERROR    | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001F9E90EA7B0>
+2026-08-20 15:41:44 | INFO     | root | 1
+2026-08-20 15:41:45 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-20 15:41:45 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-20 15:41:45 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-20 15:41:45 | INFO     | dispatcher | Зарегистрировано 11 обработчиков событий
+2026-08-20 15:41:45 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://41mzkh-83-142-162-102.ru.tuna.am/webhook
+2026-08-20 15:41:45 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-20 15:41:48 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='confirmation' staff_id='6da231dc-8a46-4f35-b642-5e932066987a' staff_name='Федосеева Елена' select_date='02.09.2026' datetime='2026-09-02T17:30:00' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:41:48 | INFO     | root | create_visit
+2026-08-20 15:41:48 | INFO     | dispatcher | Обработано: router_id: 1950084945232 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:41:50 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='confirm_appointment' staff_id='6da231dc-8a46-4f35-b642-5e932066987a' staff_name='Федосеева Елена' select_date='02.09.2026' datetime='2026-09-02T17:30:00' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:41:50 | INFO     | root | create_visit
+2026-08-20 15:41:50 | ERROR    | dispatcher | Ошибка в обработчике: HandlerException(handler=handle, router_id=1950084945232, process=message_callback | chat_id: 461175464, user_id: 216480106, context_keys=['data', 'state'], cause=ValueError: time data '2026-09-02T17:30:00' does not match format '%d.%m.%Y %H:%M:%S')
+Traceback (most recent call last):
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\maxapi\dispatcher.py", line 986, in _execute_handler
+    await handler_chain(event, data)
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\maxapi\dispatcher.py", line 591, in call_handler
+    await handler.func_event(event_object, **kwargs)
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\listener\handlers\create_visit_handler.py", line 230, in handle
+    dt = datetime.strptime(payload.datetime, "%d.%m.%Y %H:%M:%S")
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\_strptime.py", line 789, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+                                    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\_strptime.py", line 555, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+                     (data_string, format))
+ValueError: time data '2026-09-02T17:30:00' does not match format '%d.%m.%Y %H:%M:%S'
+2026-08-20 15:44:09 | INFO     | root | Бот и ресурсы успешно остановлены.
+2026-08-20 15:44:10 | ERROR    | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001C60A46A7B0>
+2026-08-20 15:44:13 | INFO     | root | 1
+2026-08-20 15:44:14 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-20 15:44:14 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-20 15:44:14 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-20 15:44:14 | INFO     | dispatcher | Зарегистрировано 11 обработчиков событий
+2026-08-20 15:44:14 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://41mzkh-83-142-162-102.ru.tuna.am/webhook
+2026-08-20 15:44:14 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-20 15:44:15 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_time_staff' staff_id='c8fba2ba-421f-48d0-9c6f-1fb983f3ae9e' staff_name='Ерохина Евгения' select_date='31.08.2026' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:44:15 | INFO     | root | create_visit
+2026-08-20 15:44:19 | ERROR    | dispatcher | Ошибка в обработчике: HandlerException(handler=handle, router_id=2081871287632, process=message_callback | chat_id: 461175464, user_id: 216480106, context_keys=['data', 'state'], cause=NotFoundError: [None] HTTP 404 (HTTP 404))
+Traceback (most recent call last):
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\maxapi\dispatcher.py", line 986, in _execute_handler
+    await handler_chain(event, data)
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\maxapi\dispatcher.py", line 591, in call_handler
+    await handler.func_event(event_object, **kwargs)
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\listener\handlers\create_visit_handler.py", line 146, in handle
+    times = self._salon_service.get_time_staff(service_id = payload.services_id, staff_id = payload.staff_id,select_date = select_date)
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\listener\services\salon1c_service.py", line 83, in get_time_staff
+    time_list = self.client.bookings.book_times(self.salon_id,datetime_=datetime_,service_id=service_id,staff_id=staff_id)
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\libs\salon1c\resources\bookings.py", line 85, in book_times
+    resp = self.http.get(f"/hs/api/v1/book_times/{salon_id}/", params=params)
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\libs\salon1c\http.py", line 104, in get
+    def get(self, path, **kw):    return self.request("GET", path, **kw)
+                                         ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\libs\salon1c\http.py", line 91, in request
+    raise_for_status(response.status_code, payload)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\libs\salon1c\exceptions.py", line 72, in raise_for_status
+    raise exc_cls(code=code, message=message or f"HTTP {status_code}",
+                  http_status=status_code, raw=payload)
+libs.salon1c.exceptions.NotFoundError: [None] HTTP 404 (HTTP 404)
+2026-08-20 15:44:23 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_time_staff' staff_id='1750e4d6-e302-4813-bdc8-e18d9504ff7e' staff_name='Дусанова Ася' select_date='01.09.2026' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:44:23 | INFO     | root | create_visit
+2026-08-20 15:44:24 | INFO     | dispatcher | Обработано: router_id: 2081871287632 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:44:25 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='confirmation' staff_id='1750e4d6-e302-4813-bdc8-e18d9504ff7e' staff_name='Дусанова Ася' select_date='01.09.2026' datetime='2026-09-01T18:30:00' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:44:25 | INFO     | root | create_visit
+2026-08-20 15:44:26 | INFO     | dispatcher | Обработано: router_id: 2081871287632 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:44:28 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='confirm_appointment' staff_id='1750e4d6-e302-4813-bdc8-e18d9504ff7e' staff_name='Дусанова Ася' select_date='01.09.2026' datetime='2026-09-01T18:30:00' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:44:28 | INFO     | root | create_visit
+2026-08-20 15:44:28 | ERROR    | dispatcher | Ошибка в обработчике: HandlerException(handler=handle, router_id=2081871287632, process=message_callback | chat_id: 461175464, user_id: 216480106, context_keys=['data', 'state'], cause=ValueError: time data '2026-09-01T18:30:00' does not match format '%d.%m.%Y %H:%M:%S')
+Traceback (most recent call last):
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\maxapi\dispatcher.py", line 986, in _execute_handler
+    await handler_chain(event, data)
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\maxapi\dispatcher.py", line 591, in call_handler
+    await handler.func_event(event_object, **kwargs)
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\listener\handlers\create_visit_handler.py", line 243, in handle
+    format_date = to_iso8601(datetime.strptime(payload.datetime, "%d.%m.%Y %H:%M:%S"))
+                             ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\_strptime.py", line 789, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+                                    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\_strptime.py", line 555, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+                     (data_string, format))
+ValueError: time data '2026-09-01T18:30:00' does not match format '%d.%m.%Y %H:%M:%S'
+2026-08-20 15:47:03 | INFO     | root | Бот и ресурсы успешно остановлены.
+2026-08-20 15:47:04 | ERROR    | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001E4B95AA7B0>
+2026-08-20 15:47:08 | INFO     | root | 1
+2026-08-20 15:47:08 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-20 15:47:08 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-20 15:47:08 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-20 15:47:08 | INFO     | dispatcher | Зарегистрировано 11 обработчиков событий
+2026-08-20 15:47:08 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://41mzkh-83-142-162-102.ru.tuna.am/webhook
+2026-08-20 15:47:08 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-20 15:47:09 | INFO     | dispatcher | Обработано: router_id: 1876233213264 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:47:11 | INFO     | root | category_id='' services_id='' step='' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 15:47:11 | INFO     | root | create_visit
+2026-08-20 15:47:12 | INFO     | dispatcher | Обработано: router_id: 1876233213264 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:47:14 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='' step='get_services' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 15:47:14 | INFO     | root | create_visit
+2026-08-20 15:47:15 | INFO     | dispatcher | Обработано: router_id: 1876233213264 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:47:16 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_staff_and_date' staff_id='' staff_name='' select_date='' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:47:16 | INFO     | root | create_visit
+2026-08-20 15:47:19 | INFO     | dispatcher | Обработано: router_id: 1876233213264 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:47:22 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_time_staff' staff_id='6da231dc-8a46-4f35-b642-5e932066987a' staff_name='Федосеева Елена' select_date='02.09.2026' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:47:22 | INFO     | root | create_visit
+2026-08-20 15:47:23 | INFO     | dispatcher | Обработано: router_id: 1876233213264 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:47:24 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='confirmation' staff_id='6da231dc-8a46-4f35-b642-5e932066987a' staff_name='Федосеева Елена' select_date='02.09.2026' datetime='2026-09-02T17:30:00' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:47:24 | INFO     | root | create_visit
+2026-08-20 15:47:25 | INFO     | dispatcher | Обработано: router_id: 1876233213264 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:47:26 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='confirm_appointment' staff_id='6da231dc-8a46-4f35-b642-5e932066987a' staff_name='Федосеева Елена' select_date='02.09.2026' datetime='2026-09-02T17:30:00' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:47:26 | INFO     | root | create_visit
+2026-08-20 15:47:27 | ERROR    | dispatcher | Ошибка в обработчике: HandlerException(handler=handle, router_id=1876233213264, process=message_callback | chat_id: 461175464, user_id: 216480106, context_keys=['data', 'state'], cause=NameError: name 'short_datetime' is not defined)
+Traceback (most recent call last):
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\maxapi\dispatcher.py", line 986, in _execute_handler
+    await handler_chain(event, data)
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\maxapi\dispatcher.py", line 591, in call_handler
+    await handler.func_event(event_object, **kwargs)
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\listener\handlers\create_visit_handler.py", line 236, in handle
+    "Мы очень рады, что вы выбрали нас. Ждем вас " + Bold(short_datetime) +
+                                                          ^^^^^^^^^^^^^^
+NameError: name 'short_datetime' is not defined
+2026-08-20 15:47:35 | INFO     | root | Бот и ресурсы успешно остановлены.
+2026-08-20 15:47:35 | ERROR    | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001B4D85EA7B0>
+2026-08-20 15:47:35 | ERROR    | asyncio | Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x000001B4D8610EF0>, 107607.7049389)])']
+connector: <aiohttp.connector.TCPConnector object at 0x000001B4D85EA3C0>
+2026-08-20 15:47:39 | INFO     | root | 1
+2026-08-20 15:47:39 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-20 15:47:39 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-20 15:47:39 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-20 15:47:39 | INFO     | dispatcher | Зарегистрировано 11 обработчиков событий
+2026-08-20 15:47:39 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://41mzkh-83-142-162-102.ru.tuna.am/webhook
+2026-08-20 15:47:39 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-20 15:47:43 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_time_staff' staff_id='c8fba2ba-421f-48d0-9c6f-1fb983f3ae9e' staff_name='Ерохина Евгения' select_date='31.08.2026' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:47:43 | INFO     | root | create_visit
+2026-08-20 15:47:44 | INFO     | dispatcher | Обработано: router_id: 1959784076624 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:47:46 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='confirmation' staff_id='c8fba2ba-421f-48d0-9c6f-1fb983f3ae9e' staff_name='Ерохина Евгения' select_date='31.08.2026' datetime='2026-08-31T19:00:00' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:47:46 | INFO     | root | create_visit
+2026-08-20 15:47:47 | INFO     | dispatcher | Обработано: router_id: 1959784076624 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:47:48 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='confirm_appointment' staff_id='c8fba2ba-421f-48d0-9c6f-1fb983f3ae9e' staff_name='Ерохина Евгения' select_date='31.08.2026' datetime='2026-08-31T19:00:00' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:47:48 | INFO     | root | create_visit
+2026-08-20 15:47:49 | ERROR    | dispatcher | Ошибка в обработчике: HandlerException(handler=handle, router_id=1959784076624, process=message_callback | chat_id: 461175464, user_id: 216480106, context_keys=['data', 'state'], cause=ValueError: time data '2026-08-31T19:00:00' does not match format '%d.%m.%Y %H:%M:%S')
+Traceback (most recent call last):
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\maxapi\dispatcher.py", line 986, in _execute_handler
+    await handler_chain(event, data)
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\maxapi\dispatcher.py", line 591, in call_handler
+    await handler.func_event(event_object, **kwargs)
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\listener\handlers\create_visit_handler.py", line 243, in handle
+    format_date = to_iso8601(datetime.strptime(payload.datetime, "%d.%m.%Y %H:%M:%S"))
+                             ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\_strptime.py", line 789, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+                                    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\_strptime.py", line 555, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+                     (data_string, format))
+ValueError: time data '2026-08-31T19:00:00' does not match format '%d.%m.%Y %H:%M:%S'
+2026-08-20 15:48:20 | INFO     | root | Бот и ресурсы успешно остановлены.
+2026-08-20 15:48:21 | ERROR    | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001C84C63A7B0>
+2026-08-20 15:48:24 | INFO     | root | 1
+2026-08-20 15:48:24 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-20 15:48:24 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-20 15:48:25 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-20 15:48:25 | INFO     | dispatcher | Зарегистрировано 11 обработчиков событий
+2026-08-20 15:48:25 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://41mzkh-83-142-162-102.ru.tuna.am/webhook
+2026-08-20 15:48:25 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-20 15:48:26 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_time_staff' staff_id='1750e4d6-e302-4813-bdc8-e18d9504ff7e' staff_name='Дусанова Ася' select_date='01.09.2026' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:48:26 | INFO     | root | create_visit
+2026-08-20 15:48:28 | INFO     | dispatcher | Обработано: router_id: 1992548144464 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:48:30 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='confirmation' staff_id='1750e4d6-e302-4813-bdc8-e18d9504ff7e' staff_name='Дусанова Ася' select_date='01.09.2026' datetime='2026-09-01T18:30:00' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:48:30 | INFO     | root | create_visit
+2026-08-20 15:48:30 | INFO     | dispatcher | Обработано: router_id: 1992548144464 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:48:31 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='confirm_appointment' staff_id='1750e4d6-e302-4813-bdc8-e18d9504ff7e' staff_name='Дусанова Ася' select_date='01.09.2026' datetime='2026-09-01T18:30:00' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:48:31 | INFO     | root | create_visit
+2026-08-20 15:48:32 | ERROR    | dispatcher | Ошибка в обработчике: HandlerException(handler=handle, router_id=1992548144464, process=message_callback | chat_id: 461175464, user_id: 216480106, context_keys=['data', 'state'], cause=ValueError: time data '2026-09-01T18:30:00' does not match format '%d.%m.%Y %H:%M:%S')
+Traceback (most recent call last):
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\maxapi\dispatcher.py", line 986, in _execute_handler
+    await handler_chain(event, data)
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\maxapi\dispatcher.py", line 591, in call_handler
+    await handler.func_event(event_object, **kwargs)
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\listener\handlers\create_visit_handler.py", line 243, in handle
+    format_date = to_iso8601(datetime.strptime(payload.datetime, "%d.%m.%Y %H:%M:%S"))
+                             ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\_strptime.py", line 789, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+                                    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\_strptime.py", line 555, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+                     (data_string, format))
+ValueError: time data '2026-09-01T18:30:00' does not match format '%d.%m.%Y %H:%M:%S'
+2026-08-20 15:48:44 | INFO     | root | Бот и ресурсы успешно остановлены.
+2026-08-20 15:48:45 | ERROR    | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001CFED47A7B0>
+2026-08-20 15:48:45 | ERROR    | asyncio | Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x000001CFED4A0EF0>, 107672.745628)])']
+connector: <aiohttp.connector.TCPConnector object at 0x000001CFED47A3C0>
+2026-08-20 15:48:48 | INFO     | root | 1
+2026-08-20 15:48:49 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-20 15:48:49 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-20 15:48:49 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-20 15:48:49 | INFO     | dispatcher | Зарегистрировано 11 обработчиков событий
+2026-08-20 15:48:49 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://41mzkh-83-142-162-102.ru.tuna.am/webhook
+2026-08-20 15:48:49 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-20 15:48:55 | INFO     | dispatcher | Обработано: router_id: 2829980915024 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:48:56 | INFO     | root | category_id='' services_id='' step='' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 15:48:56 | INFO     | root | create_visit
+2026-08-20 15:48:58 | INFO     | dispatcher | Обработано: router_id: 2829980915024 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:48:59 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='' step='get_services' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 15:48:59 | INFO     | root | create_visit
+2026-08-20 15:49:00 | INFO     | dispatcher | Обработано: router_id: 2829980915024 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:49:02 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_staff_and_date' staff_id='' staff_name='' select_date='' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:49:02 | INFO     | root | create_visit
+2026-08-20 15:49:05 | INFO     | dispatcher | Обработано: router_id: 2829980915024 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:49:07 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_time_staff' staff_id='6da231dc-8a46-4f35-b642-5e932066987a' staff_name='Федосеева Елена' select_date='02.09.2026' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:49:07 | INFO     | root | create_visit
+2026-08-20 15:49:08 | INFO     | dispatcher | Обработано: router_id: 2829980915024 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:49:09 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='confirmation' staff_id='6da231dc-8a46-4f35-b642-5e932066987a' staff_name='Федосеева Елена' select_date='02.09.2026' datetime='2026-09-02T17:30:00' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:49:09 | INFO     | root | create_visit
+2026-08-20 15:49:10 | INFO     | dispatcher | Обработано: router_id: 2829980915024 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:49:11 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='confirm_appointment' staff_id='6da231dc-8a46-4f35-b642-5e932066987a' staff_name='Федосеева Елена' select_date='02.09.2026' datetime='2026-09-02T17:30:00' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:49:11 | INFO     | root | create_visit
+2026-08-20 15:49:15 | INFO     | dispatcher | Обработано: router_id: 2829980915024 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:49:29 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_time_staff' staff_id='1750e4d6-e302-4813-bdc8-e18d9504ff7e' staff_name='Дусанова Ася' select_date='01.09.2026' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:49:29 | INFO     | root | create_visit
+2026-08-20 15:49:31 | INFO     | dispatcher | Обработано: router_id: 2829980915024 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:49:33 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='confirmation' staff_id='1750e4d6-e302-4813-bdc8-e18d9504ff7e' staff_name='Дусанова Ася' select_date='01.09.2026' datetime='2026-09-01T18:30:00' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:49:33 | INFO     | root | create_visit
+2026-08-20 15:49:33 | INFO     | dispatcher | Обработано: router_id: 2829980915024 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:49:35 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='confirm_appointment' staff_id='1750e4d6-e302-4813-bdc8-e18d9504ff7e' staff_name='Дусанова Ася' select_date='01.09.2026' datetime='2026-09-01T18:30:00' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:49:35 | INFO     | root | create_visit
+2026-08-20 15:49:35 | INFO     | dispatcher | Обработано: router_id: 2829980915024 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:49:49 | INFO     | dispatcher | Обработано: router_id: 2829980915024 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:50:12 | INFO     | root | Бот и ресурсы успешно остановлены.
+2026-08-20 15:50:13 | ERROR    | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x00000292E829A7B0>
+2026-08-20 15:50:16 | INFO     | root | 1
+2026-08-20 15:50:16 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-20 15:50:16 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-20 15:50:17 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-20 15:50:17 | INFO     | dispatcher | Зарегистрировано 11 обработчиков событий
+2026-08-20 15:50:17 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://41mzkh-83-142-162-102.ru.tuna.am/webhook
+2026-08-20 15:50:17 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-20 15:50:30 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_time_staff' staff_id='c8fba2ba-421f-48d0-9c6f-1fb983f3ae9e' staff_name='Ерохина Евгения' select_date='31.08.2026' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:50:30 | INFO     | root | create_visit
+2026-08-20 15:50:31 | INFO     | dispatcher | Обработано: router_id: 2111134094672 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:50:32 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='confirmation' staff_id='c8fba2ba-421f-48d0-9c6f-1fb983f3ae9e' staff_name='Ерохина Евгения' select_date='31.08.2026' datetime='2026-08-31T19:00:00' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:50:32 | INFO     | root | create_visit
+2026-08-20 15:50:32 | INFO     | dispatcher | Обработано: router_id: 2111134094672 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:50:34 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='confirm_appointment' staff_id='c8fba2ba-421f-48d0-9c6f-1fb983f3ae9e' staff_name='Ерохина Евгения' select_date='31.08.2026' datetime='2026-08-31T19:00:00' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:50:34 | INFO     | root | create_visit
+2026-08-20 15:50:34 | INFO     | root | {'record_array': [{'datetime': '2026-08-31T19:00:00', 'service_id': '490af87f-a58b-11ef-bc68-00505683a460', 'staff_id': 'c8fba2ba-421f-48d0-9c6f-1fb983f3ae9e', 'comment': ''}]}
+2026-08-20 15:50:34 | INFO     | root | {'Parameters': None, 'Errors': {'code': 1054, 'message': 'Неверный формат даты'}}
+2026-08-20 15:50:34 | INFO     | dispatcher | Обработано: router_id: 2111134094672 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:51:08 | INFO     | root | Бот и ресурсы успешно остановлены.
+2026-08-20 15:51:08 | ERROR    | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001EB898DA7B0>
+2026-08-20 15:51:12 | INFO     | root | 1
+2026-08-20 15:51:12 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-20 15:51:12 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-20 15:51:12 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-20 15:51:12 | INFO     | dispatcher | Зарегистрировано 11 обработчиков событий
+2026-08-20 15:51:12 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://41mzkh-83-142-162-102.ru.tuna.am/webhook
+2026-08-20 15:51:12 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-20 15:51:13 | INFO     | root | category_id='' services_id='' step='' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 15:51:13 | INFO     | root | create_visit
+2026-08-20 15:51:15 | INFO     | dispatcher | Обработано: router_id: 1817069606224 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:51:17 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='' step='get_services' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 15:51:17 | INFO     | root | create_visit
+2026-08-20 15:51:17 | INFO     | dispatcher | Обработано: router_id: 1817069606224 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:51:19 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_staff_and_date' staff_id='' staff_name='' select_date='' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:51:19 | INFO     | root | create_visit
+2026-08-20 15:51:22 | INFO     | dispatcher | Обработано: router_id: 1817069606224 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:51:24 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_time_staff' staff_id='1750e4d6-e302-4813-bdc8-e18d9504ff7e' staff_name='Дусанова Ася' select_date='01.09.2026' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:51:24 | INFO     | root | create_visit
+2026-08-20 15:51:27 | INFO     | dispatcher | Обработано: router_id: 1817069606224 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:51:28 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='confirmation' staff_id='1750e4d6-e302-4813-bdc8-e18d9504ff7e' staff_name='Дусанова Ася' select_date='01.09.2026' datetime='2026-09-01T18:30:00' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:51:28 | INFO     | root | create_visit
+2026-08-20 15:51:29 | INFO     | dispatcher | Обработано: router_id: 1817069606224 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:51:31 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='confirm_appointment' staff_id='1750e4d6-e302-4813-bdc8-e18d9504ff7e' staff_name='Дусанова Ася' select_date='01.09.2026' datetime='2026-09-01T18:30:00' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:51:31 | INFO     | root | create_visit
+2026-08-20 15:51:32 | INFO     | root | {'record_array': [{'datetime': '2026-09-01T18:30:00', 'service_id': '490af87f-a58b-11ef-bc68-00505683a460', 'staff_id': '1750e4d6-e302-4813-bdc8-e18d9504ff7e', 'comment': ''}]}
+2026-08-20 15:51:33 | INFO     | root | {'Parameters': None, 'Errors': {'code': 1054, 'message': 'Неверный формат даты'}}
+2026-08-20 15:51:33 | INFO     | dispatcher | Обработано: router_id: 1817069606224 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:53:58 | INFO     | root | Бот и ресурсы успешно остановлены.
+2026-08-20 15:53:58 | ERROR    | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001A711F1A7B0>
+2026-08-20 15:56:06 | INFO     | root | 1
+2026-08-20 15:56:06 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-20 15:56:06 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-20 15:56:07 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-20 15:56:07 | INFO     | dispatcher | Зарегистрировано 11 обработчиков событий
+2026-08-20 15:56:07 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://41mzkh-83-142-162-102.ru.tuna.am/webhook
+2026-08-20 15:56:07 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-20 15:56:10 | INFO     | dispatcher | Обработано: router_id: 2255751992656 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:56:11 | INFO     | root | category_id='' services_id='' step='' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 15:56:11 | INFO     | root | create_visit
+2026-08-20 15:56:13 | INFO     | dispatcher | Обработано: router_id: 2255751992656 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:56:14 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='' step='get_services' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 15:56:14 | INFO     | root | create_visit
+2026-08-20 15:56:15 | INFO     | dispatcher | Обработано: router_id: 2255751992656 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:56:16 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_staff_and_date' staff_id='' staff_name='' select_date='' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:56:16 | INFO     | root | create_visit
+2026-08-20 15:56:19 | INFO     | dispatcher | Обработано: router_id: 2255751992656 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:56:23 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_time_staff' staff_id='c8fba2ba-421f-48d0-9c6f-1fb983f3ae9e' staff_name='Ерохина Евгения' select_date='31.08.2026' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:56:23 | INFO     | root | create_visit
+2026-08-20 15:56:24 | INFO     | dispatcher | Обработано: router_id: 2255751992656 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:56:41 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_time_staff' staff_id='1750e4d6-e302-4813-bdc8-e18d9504ff7e' staff_name='Дусанова Ася' select_date='24.08.2026' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:56:41 | INFO     | root | create_visit
+2026-08-20 15:56:42 | INFO     | dispatcher | Обработано: router_id: 2255751992656 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:56:48 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='confirmation' staff_id='1750e4d6-e302-4813-bdc8-e18d9504ff7e' staff_name='Дусанова Ася' select_date='24.08.2026' datetime='2026-08-24T20:30:00' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:56:48 | INFO     | root | create_visit
+2026-08-20 15:56:48 | INFO     | dispatcher | Обработано: router_id: 2255751992656 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:56:53 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='confirm_appointment' staff_id='1750e4d6-e302-4813-bdc8-e18d9504ff7e' staff_name='Дусанова Ася' select_date='24.08.2026' datetime='2026-08-24T20:30:00' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:56:53 | INFO     | root | create_visit
+2026-08-20 15:56:54 | INFO     | root | {'record_array': [{'datetime': '2026-08-24T20:30:00', 'service_id': '490af87f-a58b-11ef-bc68-00505683a460', 'staff_id': '1750e4d6-e302-4813-bdc8-e18d9504ff7e', 'comment': ''}]}
+2026-08-20 15:56:54 | INFO     | root | {'Parameters': None, 'Errors': {'code': 1054, 'message': 'Неверный формат даты'}}
+2026-08-20 15:56:54 | INFO     | dispatcher | Обработано: router_id: 2255751992656 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:57:48 | INFO     | root | Бот и ресурсы успешно остановлены.
+2026-08-20 15:57:49 | ERROR    | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x0000020D3573A7B0>
+2026-08-20 15:58:44 | INFO     | root | 1
+2026-08-20 15:58:44 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-20 15:58:44 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-20 15:58:44 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-20 15:58:44 | INFO     | dispatcher | Зарегистрировано 11 обработчиков событий
+2026-08-20 15:58:44 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://41mzkh-83-142-162-102.ru.tuna.am/webhook
+2026-08-20 15:58:44 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-20 15:58:47 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_time_staff' staff_id='6da231dc-8a46-4f35-b642-5e932066987a' staff_name='Федосеева Елена' select_date='02.09.2026' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:58:47 | INFO     | root | create_visit
+2026-08-20 15:58:48 | INFO     | dispatcher | Обработано: router_id: 2620985103696 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:58:50 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='confirmation' staff_id='6da231dc-8a46-4f35-b642-5e932066987a' staff_name='Федосеева Елена' select_date='02.09.2026' datetime='2026-09-02T17:30:00' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:58:50 | INFO     | root | create_visit
+2026-08-20 15:58:50 | INFO     | dispatcher | Обработано: router_id: 2620985103696 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:58:51 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='confirm_appointment' staff_id='6da231dc-8a46-4f35-b642-5e932066987a' staff_name='Федосеева Елена' select_date='02.09.2026' datetime='2026-09-02T17:30:00' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:58:51 | INFO     | root | create_visit
+2026-08-20 15:58:52 | INFO     | root | {'record_array': [{'datetime': '2026-09-02T17:30:00', 'service_id': '490af87f-a58b-11ef-bc68-00505683a460', 'staff_id': '6da231dc-8a46-4f35-b642-5e932066987a', 'comment': ''}]}
+2026-08-20 15:58:52 | INFO     | root | {'Parameters': None, 'Errors': {'code': 1054, 'message': 'Неверный формат даты'}}
+2026-08-20 15:58:52 | INFO     | dispatcher | Обработано: router_id: 2620985103696 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:59:45 | INFO     | root | Бот и ресурсы успешно остановлены.
+2026-08-20 15:59:45 | ERROR    | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000002623F0AA7B0>
+2026-08-20 15:59:49 | INFO     | root | 1
+2026-08-20 15:59:49 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-20 15:59:49 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-20 15:59:49 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-20 15:59:49 | INFO     | dispatcher | Зарегистрировано 11 обработчиков событий
+2026-08-20 15:59:49 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://41mzkh-83-142-162-102.ru.tuna.am/webhook
+2026-08-20 15:59:49 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-20 15:59:51 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_time_staff' staff_id='c8fba2ba-421f-48d0-9c6f-1fb983f3ae9e' staff_name='Ерохина Евгения' select_date='31.08.2026' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:59:51 | INFO     | root | create_visit
+2026-08-20 15:59:52 | INFO     | dispatcher | Обработано: router_id: 2246961321296 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:59:54 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='confirmation' staff_id='c8fba2ba-421f-48d0-9c6f-1fb983f3ae9e' staff_name='Ерохина Евгения' select_date='31.08.2026' datetime='2026-08-31T19:00:00' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:59:54 | INFO     | root | create_visit
+2026-08-20 15:59:54 | INFO     | dispatcher | Обработано: router_id: 2246961321296 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 15:59:56 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='confirm_appointment' staff_id='c8fba2ba-421f-48d0-9c6f-1fb983f3ae9e' staff_name='Ерохина Евгения' select_date='31.08.2026' datetime='2026-08-31T19:00:00' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 15:59:56 | INFO     | root | create_visit
+2026-08-20 15:59:56 | INFO     | root | {'record_array': [{'datetime': '2026-08-31T19:00:00', 'service_id': '490af87f-a58b-11ef-bc68-00505683a460', 'staff_id': 'c8fba2ba-421f-48d0-9c6f-1fb983f3ae9e', 'comment': ''}]}
+2026-08-20 15:59:56 | INFO     | root | {'Parameters': None, 'Errors': {'code': 1054, 'message': 'Неверный формат даты'}}
+2026-08-20 15:59:56 | INFO     | dispatcher | Обработано: router_id: 2246961321296 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:01:59 | INFO     | root | Бот и ресурсы успешно остановлены.
+2026-08-20 16:01:59 | ERROR    | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x0000020B297CA7B0>
+2026-08-20 16:02:58 | INFO     | root | 1
+2026-08-20 16:02:58 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-20 16:02:58 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-20 16:02:58 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-20 16:02:58 | INFO     | dispatcher | Зарегистрировано 11 обработчиков событий
+2026-08-20 16:02:58 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://41mzkh-83-142-162-102.ru.tuna.am/webhook
+2026-08-20 16:02:58 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-20 16:03:01 | INFO     | dispatcher | Обработано: router_id: 1597137343824 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:03:02 | INFO     | root | category_id='' services_id='' step='' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 16:03:02 | INFO     | root | create_visit
+2026-08-20 16:03:03 | INFO     | dispatcher | Обработано: router_id: 1597137343824 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:03:05 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='' step='get_services' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 16:03:05 | INFO     | root | create_visit
+2026-08-20 16:03:06 | INFO     | dispatcher | Обработано: router_id: 1597137343824 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:03:08 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_staff_and_date' staff_id='' staff_name='' select_date='' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 16:03:08 | INFO     | root | create_visit
+2026-08-20 16:03:11 | INFO     | dispatcher | Обработано: router_id: 1597137343824 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:03:13 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_time_staff' staff_id='6da231dc-8a46-4f35-b642-5e932066987a' staff_name='Федосеева Елена' select_date='02.09.2026' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 16:03:13 | INFO     | root | create_visit
+2026-08-20 16:03:14 | INFO     | dispatcher | Обработано: router_id: 1597137343824 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:03:16 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='confirmation' staff_id='6da231dc-8a46-4f35-b642-5e932066987a' staff_name='Федосеева Елена' select_date='02.09.2026' datetime='2026-09-02T17:30:00' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 16:03:16 | INFO     | root | create_visit
+2026-08-20 16:03:16 | INFO     | dispatcher | Обработано: router_id: 1597137343824 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:03:17 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='confirm_appointment' staff_id='6da231dc-8a46-4f35-b642-5e932066987a' staff_name='Федосеева Елена' select_date='02.09.2026' datetime='2026-09-02T17:30:00' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 16:03:17 | INFO     | root | create_visit
+2026-08-20 16:03:17 | INFO     | root | {'record_array': [{'datetime': '2026-09-02T17:30:00Z', 'service_id': '490af87f-a58b-11ef-bc68-00505683a460', 'staff_id': '6da231dc-8a46-4f35-b642-5e932066987a', 'comment': ''}]}
+2026-08-20 16:03:18 | INFO     | root | {'Parameters': None, 'Errors': {'code': 1054, 'message': 'Неверный формат даты'}}
+2026-08-20 16:03:18 | INFO     | dispatcher | Обработано: router_id: 1597137343824 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:05:13 | INFO     | root | Бот и ресурсы успешно остановлены.
+2026-08-20 16:05:14 | ERROR    | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x00000173DCF5A7B0>
+2026-08-20 16:05:17 | INFO     | root | 1
+2026-08-20 16:05:17 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-20 16:05:17 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-20 16:05:17 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-20 16:05:17 | INFO     | dispatcher | Зарегистрировано 11 обработчиков событий
+2026-08-20 16:05:17 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://41mzkh-83-142-162-102.ru.tuna.am/webhook
+2026-08-20 16:05:17 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-20 16:05:22 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_time_staff' staff_id='c8fba2ba-421f-48d0-9c6f-1fb983f3ae9e' staff_name='Ерохина Евгения' select_date='31.08.2026' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 16:05:22 | INFO     | root | create_visit
+2026-08-20 16:05:23 | INFO     | dispatcher | Обработано: router_id: 1926784275792 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:06:09 | INFO     | root | Бот и ресурсы успешно остановлены.
+2026-08-20 16:06:09 | ERROR    | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001C09D72A7B0>
+2026-08-20 16:06:13 | INFO     | root | 1
+2026-08-20 16:06:14 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-20 16:06:14 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-20 16:06:14 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-20 16:06:14 | INFO     | dispatcher | Зарегистрировано 11 обработчиков событий
+2026-08-20 16:06:14 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://41mzkh-83-142-162-102.ru.tuna.am/webhook
+2026-08-20 16:06:14 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-20 16:06:16 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='confirmation' staff_id='c8fba2ba-421f-48d0-9c6f-1fb983f3ae9e' staff_name='Ерохина Евгения' select_date='31.08.2026' datetime='2026-08-31T19:00:00' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 16:06:16 | INFO     | root | create_visit
+2026-08-20 16:06:16 | INFO     | dispatcher | Обработано: router_id: 1727728440656 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:06:19 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='confirm_appointment' staff_id='c8fba2ba-421f-48d0-9c6f-1fb983f3ae9e' staff_name='Ерохина Евгения' select_date='31.08.2026' datetime='2026-08-31T19:00:00' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 16:06:19 | INFO     | root | create_visit
+2026-08-20 16:06:19 | INFO     | root | {'record_array': [{'datetime': '2026-08-31T19:00:00.000', 'service_id': '490af87f-a58b-11ef-bc68-00505683a460', 'staff_id': 'c8fba2ba-421f-48d0-9c6f-1fb983f3ae9e', 'comment': ''}]}
+2026-08-20 16:06:19 | INFO     | root | {'Parameters': None, 'Errors': {'code': 1054, 'message': 'Неверный формат даты'}}
+2026-08-20 16:06:19 | INFO     | dispatcher | Обработано: router_id: 1727728440656 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:08:01 | INFO     | root | Бот и ресурсы успешно остановлены.
+2026-08-20 16:08:02 | ERROR    | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x0000019244CBA7B0>
+2026-08-20 16:08:05 | INFO     | root | 1
+2026-08-20 16:08:06 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-20 16:08:06 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-20 16:08:06 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-20 16:08:06 | INFO     | dispatcher | Зарегистрировано 11 обработчиков событий
+2026-08-20 16:08:06 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://41mzkh-83-142-162-102.ru.tuna.am/webhook
+2026-08-20 16:08:06 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-20 16:08:07 | INFO     | dispatcher | Обработано: router_id: 1914185504080 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:08:08 | INFO     | dispatcher | Обработано: router_id: 1914185504080 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:08:09 | INFO     | root | category_id='' services_id='' step='' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 16:08:09 | INFO     | root | create_visit
+2026-08-20 16:08:19 | INFO     | dispatcher | Обработано: router_id: 1914185504080 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:08:21 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='' step='get_services' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 16:08:22 | INFO     | root | create_visit
+2026-08-20 16:08:27 | INFO     | dispatcher | Обработано: router_id: 1914185504080 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:08:29 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_staff_and_date' staff_id='' staff_name='' select_date='' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 16:08:29 | INFO     | root | create_visit
+2026-08-20 16:08:38 | ERROR    | dispatcher | Ошибка в обработчике: HandlerException(handler=handle, router_id=1914185504080, process=message_callback | chat_id: 461175464, user_id: 216480106, context_keys=['data', 'state'], cause=SalonAPIError: [None] <html>
+<head><title>504 Gateway Time-out</title></head>
+<body bgcolor="white">
+<center><h1>504 Gateway Time-out</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+ (HTTP 504))
+Traceback (most recent call last):
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\maxapi\dispatcher.py", line 986, in _execute_handler
+    await handler_chain(event, data)
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\maxapi\dispatcher.py", line 591, in call_handler
+    await handler.func_event(event_object, **kwargs)
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\listener\handlers\create_visit_handler.py", line 99, in handle
+    staff = await self._salon_service.get_staff_and_date(service_id = payload.services_id, staff_id = staff_id)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\aiocache\decorators.py", line 109, in wrapper
+    return await self.decorator(f, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\aiocache\decorators.py", line 124, in decorator
+    result = await f(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\listener\services\salon1c_service.py", line 65, in get_staff_and_date
+    staffs = self.client.bookings.book_staff(self.salon_id, service_id = service_id)
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\libs\salon1c\resources\bookings.py", line 47, in book_staff
+    resp = self.http.get(f"/hs/api/v1/book_staff/{salon_id}/", params=params)
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\libs\salon1c\http.py", line 104, in get
+    def get(self, path, **kw):    return self.request("GET", path, **kw)
+                                         ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\libs\salon1c\http.py", line 91, in request
+    raise_for_status(response.status_code, payload)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\libs\salon1c\exceptions.py", line 72, in raise_for_status
+    raise exc_cls(code=code, message=message or f"HTTP {status_code}",
+                  http_status=status_code, raw=payload)
+libs.salon1c.exceptions.SalonAPIError: [None] <html>
+<head><title>504 Gateway Time-out</title></head>
+<body bgcolor="white">
+<center><h1>504 Gateway Time-out</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+ (HTTP 504)
+2026-08-20 16:08:45 | INFO     | dispatcher | Обработано: router_id: 1914185504080 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:08:47 | INFO     | root | category_id='' services_id='' step='' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 16:08:47 | INFO     | root | create_visit
+2026-08-20 16:08:51 | INFO     | dispatcher | Обработано: router_id: 1914185504080 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:08:53 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='' step='get_services' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 16:08:53 | INFO     | root | create_visit
+2026-08-20 16:08:58 | ERROR    | dispatcher | Ошибка в обработчике: HandlerException(handler=handle, router_id=1914185504080, process=message_callback | chat_id: 461175464, user_id: 216480106, context_keys=['data', 'state'], cause=SalonAPIError: [None] <html>
+<head><title>504 Gateway Time-out</title></head>
+<body bgcolor="white">
+<center><h1>504 Gateway Time-out</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+ (HTTP 504))
+Traceback (most recent call last):
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\maxapi\dispatcher.py", line 986, in _execute_handler
+    await handler_chain(event, data)
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\maxapi\dispatcher.py", line 591, in call_handler
+    await handler.func_event(event_object, **kwargs)
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\listener\handlers\create_visit_handler.py", line 46, in handle
+    validated = await self._validate_user(event, storage = self._storage, salon_service = self._salon_service)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\listener\handlers\base_handler.py", line 36, in _validate_user
+    checkuser = salon_service.validity_usertoken(usertoken)
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\listener\services\salon1c_service.py", line 114, in validity_usertoken
+    user_client = self.client.clients.get_client(salon_id=self.salon_id, usertoken = usertoken)
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\libs\salon1c\resources\clients.py", line 16, in get_client
+    resp = self.http.get(
+        f"/hs/api/v1/client/{salon_id}/",
+        usertoken=self.token(usertoken),
+    )
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\libs\salon1c\http.py", line 104, in get
+    def get(self, path, **kw):    return self.request("GET", path, **kw)
+                                         ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\libs\salon1c\http.py", line 91, in request
+    raise_for_status(response.status_code, payload)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\libs\salon1c\exceptions.py", line 72, in raise_for_status
+    raise exc_cls(code=code, message=message or f"HTTP {status_code}",
+                  http_status=status_code, raw=payload)
+libs.salon1c.exceptions.SalonAPIError: [None] <html>
+<head><title>504 Gateway Time-out</title></head>
+<body bgcolor="white">
+<center><h1>504 Gateway Time-out</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+ (HTTP 504)
+2026-08-20 16:09:06 | INFO     | dispatcher | Обработано: router_id: 1914185504080 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:09:07 | INFO     | root | category_id='' services_id='' step='' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 16:09:07 | INFO     | root | create_visit
+2026-08-20 16:09:10 | ERROR    | dispatcher | Ошибка в обработчике: HandlerException(handler=handle, router_id=1914185504080, process=message_callback | chat_id: 461175464, user_id: 216480106, context_keys=['data', 'state'], cause=NotFoundError: [None] HTTP 404 (HTTP 404))
+Traceback (most recent call last):
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\maxapi\dispatcher.py", line 986, in _execute_handler
+    await handler_chain(event, data)
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\maxapi\dispatcher.py", line 591, in call_handler
+    await handler.func_event(event_object, **kwargs)
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\listener\handlers\create_visit_handler.py", line 46, in handle
+    validated = await self._validate_user(event, storage = self._storage, salon_service = self._salon_service)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\listener\handlers\base_handler.py", line 36, in _validate_user
+    checkuser = salon_service.validity_usertoken(usertoken)
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\listener\services\salon1c_service.py", line 114, in validity_usertoken
+    user_client = self.client.clients.get_client(salon_id=self.salon_id, usertoken = usertoken)
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\libs\salon1c\resources\clients.py", line 16, in get_client
+    resp = self.http.get(
+        f"/hs/api/v1/client/{salon_id}/",
+        usertoken=self.token(usertoken),
+    )
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\libs\salon1c\http.py", line 104, in get
+    def get(self, path, **kw):    return self.request("GET", path, **kw)
+                                         ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\libs\salon1c\http.py", line 91, in request
+    raise_for_status(response.status_code, payload)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\libs\salon1c\exceptions.py", line 72, in raise_for_status
+    raise exc_cls(code=code, message=message or f"HTTP {status_code}",
+                  http_status=status_code, raw=payload)
+libs.salon1c.exceptions.NotFoundError: [None] HTTP 404 (HTTP 404)
+2026-08-20 16:09:17 | INFO     | dispatcher | Обработано: router_id: 1914185504080 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:09:18 | INFO     | root | category_id='' services_id='' step='' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 16:09:18 | INFO     | root | create_visit
+2026-08-20 16:09:18 | INFO     | dispatcher | Обработано: router_id: 1914185504080 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:09:21 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='' step='get_services' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 16:09:21 | INFO     | root | create_visit
+2026-08-20 16:09:21 | INFO     | dispatcher | Обработано: router_id: 1914185504080 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:09:22 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_staff_and_date' staff_id='' staff_name='' select_date='' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 16:09:22 | INFO     | root | create_visit
+2026-08-20 16:09:27 | ERROR    | dispatcher | Ошибка в обработчике: HandlerException(handler=handle, router_id=1914185504080, process=message_callback | chat_id: 461175464, user_id: 216480106, context_keys=['data', 'state'], cause=NotFoundError: [None] HTTP 404 (HTTP 404))
+Traceback (most recent call last):
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\maxapi\dispatcher.py", line 986, in _execute_handler
+    await handler_chain(event, data)
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\maxapi\dispatcher.py", line 591, in call_handler
+    await handler.func_event(event_object, **kwargs)
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\listener\handlers\create_visit_handler.py", line 99, in handle
+    staff = await self._salon_service.get_staff_and_date(service_id = payload.services_id, staff_id = staff_id)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\aiocache\decorators.py", line 109, in wrapper
+    return await self.decorator(f, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\aiocache\decorators.py", line 124, in decorator
+    result = await f(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\listener\services\salon1c_service.py", line 73, in get_staff_and_date
+    dates = self.client.bookings.book_dates(self.salon_id,start_date=start_date,end_date=end_date,service_id=service_id, staff_id=staff['id'])
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\libs\salon1c\resources\bookings.py", line 67, in book_dates
+    resp = self.http.get(f"/hs/api/v1/book_dates/{salon_id}/", params=params)
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\libs\salon1c\http.py", line 104, in get
+    def get(self, path, **kw):    return self.request("GET", path, **kw)
+                                         ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\libs\salon1c\http.py", line 91, in request
+    raise_for_status(response.status_code, payload)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\libs\salon1c\exceptions.py", line 72, in raise_for_status
+    raise exc_cls(code=code, message=message or f"HTTP {status_code}",
+                  http_status=status_code, raw=payload)
+libs.salon1c.exceptions.NotFoundError: [None] HTTP 404 (HTTP 404)
+2026-08-20 16:09:31 | INFO     | dispatcher | Обработано: router_id: 1914185504080 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:09:33 | INFO     | root | category_id='' services_id='' step='' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 16:09:33 | INFO     | root | create_visit
+2026-08-20 16:09:34 | INFO     | dispatcher | Обработано: router_id: 1914185504080 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:09:36 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='' step='get_services' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 16:09:36 | INFO     | root | create_visit
+2026-08-20 16:09:37 | INFO     | dispatcher | Обработано: router_id: 1914185504080 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:09:38 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_staff_and_date' staff_id='' staff_name='' select_date='' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 16:09:38 | INFO     | root | create_visit
+2026-08-20 16:09:41 | INFO     | dispatcher | Обработано: router_id: 1914185504080 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:09:43 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_time_staff' staff_id='6da231dc-8a46-4f35-b642-5e932066987a' staff_name='Федосеева Елена' select_date='02.09.2026' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 16:09:43 | INFO     | root | create_visit
+2026-08-20 16:09:44 | INFO     | dispatcher | Обработано: router_id: 1914185504080 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:09:46 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='confirmation' staff_id='6da231dc-8a46-4f35-b642-5e932066987a' staff_name='Федосеева Елена' select_date='02.09.2026' datetime='2026-09-02T17:30:00' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 16:09:46 | INFO     | root | create_visit
+2026-08-20 16:09:46 | INFO     | dispatcher | Обработано: router_id: 1914185504080 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:09:47 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='confirm_appointment' staff_id='6da231dc-8a46-4f35-b642-5e932066987a' staff_name='Федосеева Елена' select_date='02.09.2026' datetime='2026-09-02T17:30:00' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 16:09:47 | INFO     | root | create_visit
+2026-08-20 16:09:48 | INFO     | root | {'record_array': [{'datetime': '2026-09-02T17:30:00', 'service_id': '490af87f-a58b-11ef-bc68-00505683a460', 'staff_id': '6da231dc-8a46-4f35-b642-5e932066987a', 'comment': ''}]}
+2026-08-20 16:09:48 | INFO     | root | {'Parameters': None, 'Errors': {'code': 1054, 'message': 'Неверный формат даты'}}
+2026-08-20 16:09:48 | INFO     | dispatcher | Обработано: router_id: 1914185504080 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:10:04 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_time_staff' staff_id='c8fba2ba-421f-48d0-9c6f-1fb983f3ae9e' staff_name='Ерохина Евгения' select_date='31.08.2026' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 16:10:04 | INFO     | root | create_visit
+2026-08-20 16:10:05 | INFO     | dispatcher | Обработано: router_id: 1914185504080 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:10:07 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='confirmation' staff_id='c8fba2ba-421f-48d0-9c6f-1fb983f3ae9e' staff_name='Ерохина Евгения' select_date='31.08.2026' datetime='2026-08-31T19:00:00' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 16:10:07 | INFO     | root | create_visit
+2026-08-20 16:10:08 | INFO     | dispatcher | Обработано: router_id: 1914185504080 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:13:25 | INFO     | root | Бот и ресурсы успешно остановлены.
+2026-08-20 16:13:26 | ERROR    | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001BDAE80A7B0>
+2026-08-20 16:13:29 | INFO     | root | 1
+2026-08-20 16:13:30 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-20 16:13:30 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-20 16:13:30 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-20 16:13:30 | INFO     | dispatcher | Зарегистрировано 11 обработчиков событий
+2026-08-20 16:13:30 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://41mzkh-83-142-162-102.ru.tuna.am/webhook
+2026-08-20 16:13:30 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-20 16:13:45 | INFO     | root | Бот и ресурсы успешно остановлены.
+2026-08-20 16:13:45 | ERROR    | asyncio | Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x0000014617920F50>, 109171.1707858)])']
+connector: <aiohttp.connector.TCPConnector object at 0x00000146178FA3C0>
+2026-08-20 16:13:49 | INFO     | root | 1
+2026-08-20 16:13:49 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-20 16:13:49 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-20 16:13:50 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-20 16:13:50 | INFO     | dispatcher | Зарегистрировано 11 обработчиков событий
+2026-08-20 16:13:50 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://97kj2c-83-142-162-102.ru.tuna.am/webhook
+2026-08-20 16:13:50 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-20 16:13:59 | INFO     | dispatcher | Обработано: router_id: 2063078249808 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:14:01 | INFO     | root | category_id='' services_id='' step='' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 16:14:01 | INFO     | root | create_visit
+2026-08-20 16:14:04 | INFO     | dispatcher | Обработано: router_id: 2063078249808 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:14:06 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='' step='get_services' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 16:14:06 | INFO     | root | create_visit
+2026-08-20 16:14:06 | INFO     | dispatcher | Обработано: router_id: 2063078249808 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:14:08 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_staff_and_date' staff_id='' staff_name='' select_date='' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 16:14:08 | INFO     | root | create_visit
+2026-08-20 16:14:11 | INFO     | dispatcher | Обработано: router_id: 2063078249808 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:14:14 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_time_staff' staff_id='6da231dc-8a46-4f35-b642-5e932066987a' staff_name='Федосеева Елена' select_date='02.09.2026' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 16:14:14 | INFO     | root | create_visit
+2026-08-20 16:14:15 | INFO     | dispatcher | Обработано: router_id: 2063078249808 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:14:17 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='confirmation' staff_id='6da231dc-8a46-4f35-b642-5e932066987a' staff_name='Федосеева Елена' select_date='02.09.2026' datetime='2026-09-02T17:30:00' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 16:14:17 | INFO     | root | create_visit
+2026-08-20 16:14:18 | INFO     | dispatcher | Обработано: router_id: 2063078249808 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:15:08 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='confirm_appointment' staff_id='6da231dc-8a46-4f35-b642-5e932066987a' staff_name='Федосеева Елена' select_date='02.09.2026' datetime='2026-09-02T17:30:00' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 16:15:08 | INFO     | root | create_visit
+2026-08-20 16:15:08 | INFO     | root | {'record_array': [{'datetime': '2026-09-02T17:30:00Z', 'service_id': '490af87f-a58b-11ef-bc68-00505683a460', 'staff_id': '6da231dc-8a46-4f35-b642-5e932066987a', 'comment': ''}]}
+2026-08-20 16:15:09 | INFO     | root | {'Parameters': None, 'Errors': {'code': 1054, 'message': 'Неверный формат даты'}}
+2026-08-20 16:15:09 | INFO     | dispatcher | Обработано: router_id: 2063078249808 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:16:47 | INFO     | root | Бот и ресурсы успешно остановлены.
+2026-08-20 16:16:47 | ERROR    | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001E05933A7B0>
+2026-08-20 16:16:51 | INFO     | root | 1
+2026-08-20 16:16:51 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-20 16:16:51 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-20 16:16:51 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-20 16:16:51 | INFO     | dispatcher | Зарегистрировано 11 обработчиков событий
+2026-08-20 16:16:51 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://97kj2c-83-142-162-102.ru.tuna.am/webhook
+2026-08-20 16:16:51 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-20 16:16:54 | INFO     | dispatcher | Обработано: router_id: 2376871433552 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:16:57 | INFO     | root | category_id='' services_id='' step='' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 16:16:57 | INFO     | root | create_visit
+2026-08-20 16:16:58 | INFO     | dispatcher | Обработано: router_id: 2376871433552 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:17:00 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='' step='get_services' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 16:17:00 | INFO     | root | create_visit
+2026-08-20 16:17:00 | INFO     | dispatcher | Обработано: router_id: 2376871433552 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:17:02 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_staff_and_date' staff_id='' staff_name='' select_date='' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 16:17:02 | INFO     | root | create_visit
+2026-08-20 16:17:05 | INFO     | dispatcher | Обработано: router_id: 2376871433552 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:17:07 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_time_staff' staff_id='6da231dc-8a46-4f35-b642-5e932066987a' staff_name='Федосеева Елена' select_date='02.09.2026' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 16:17:07 | INFO     | root | create_visit
+2026-08-20 16:17:08 | INFO     | dispatcher | Обработано: router_id: 2376871433552 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:17:10 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='confirmation' staff_id='6da231dc-8a46-4f35-b642-5e932066987a' staff_name='Федосеева Елена' select_date='02.09.2026' datetime='2026-09-02T17:30:00' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 16:17:10 | INFO     | root | create_visit
+2026-08-20 16:17:10 | INFO     | dispatcher | Обработано: router_id: 2376871433552 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:17:12 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='confirm_appointment' staff_id='6da231dc-8a46-4f35-b642-5e932066987a' staff_name='Федосеева Елена' select_date='02.09.2026' datetime='2026-09-02T17:30:00' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 16:17:12 | INFO     | root | create_visit
+2026-08-20 16:17:12 | INFO     | root | {'record_array': [{'datetime': '2026-09-02T17:30', 'service_id': '490af87f-a58b-11ef-bc68-00505683a460', 'staff_id': '6da231dc-8a46-4f35-b642-5e932066987a', 'comment': ''}]}
+2026-08-20 16:17:13 | INFO     | root | {'Parameters': {'Result': True, 'record_id': 'ad115c7b-9c88-11f1-ba62-00155d582500', 'status': 'Reserved', 'total_amount': 1000, 'total_discount': 0, 'data_log': {'Контрагент': {'id': 'f053a274-9249-11f1-ba62-00155d582500', 'Наименование': 'Семейный Тестовый Доктор'}, 'СтруктурнаяЕдиница': {'id': '2e2f026f-a57e-11ef-bc68-00505683a460', 'Наименование': 'Другое измерение'}, 'ДатаЗаписи': '2026-09-02T17:30:00', 'Услуги': [{'id': '490af87f-a58b-11ef-bc68-00505683a460', 'Наименование': 'Архитектура бровей'}], 'Сотрудники': [{'id': '6da231dc-8a46-4f35-b642-5e932066987a', 'Наименование': 'Федосеева Елена Евгеньевна'}], 'Статус': {'Наименование': 'Ожидается'}, 'Цена': 1000}}, 'Errors': {'code': 0, 'message': ''}}
+2026-08-20 16:17:13 | INFO     | dispatcher | Обработано: router_id: 2376871433552 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:17:16 | INFO     | root | action_filter='list_visits' action='list_visits' visit_id=''
+2026-08-20 16:17:16 | INFO     | root | list_visits
+2026-08-20 16:17:18 | INFO     | dispatcher | Обработано: router_id: 2376871433552 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:17:20 | INFO     | root | action_filter='list_visits' action='cancel_visit' visit_id='ad115c7b-9c88-11f1-ba62-00155d582500'
+2026-08-20 16:17:20 | INFO     | root | list_visits
+2026-08-20 16:17:21 | INFO     | dispatcher | Обработано: router_id: 2376871433552 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:19:13 | INFO     | dispatcher | Обработано: router_id: 2376871433552 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:19:15 | INFO     | root | action_filter='list_visits' action='list_visits' visit_id=''
+2026-08-20 16:19:15 | INFO     | root | list_visits
+2026-08-20 16:19:15 | INFO     | dispatcher | Обработано: router_id: 2376871433552 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:19:17 | INFO     | dispatcher | Обработано: router_id: 2376871433552 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:19:19 | INFO     | root | category_id='' services_id='' step='' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 16:19:19 | INFO     | root | create_visit
+2026-08-20 16:19:19 | INFO     | dispatcher | Обработано: router_id: 2376871433552 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:19:20 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='' step='get_services' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 16:19:20 | INFO     | root | create_visit
+2026-08-20 16:19:21 | INFO     | dispatcher | Обработано: router_id: 2376871433552 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:19:24 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='a5946821-19b6-11f0-ba5a-00155d582500' step='get_staff_and_date' staff_id='' staff_name='' select_date='' datetime='' services_title='Уход для тела в хаммаме «Восточное расслабление с ароматом розы»  10000р' action='create_visit'
+2026-08-20 16:19:24 | INFO     | root | create_visit
+2026-08-20 16:19:30 | INFO     | dispatcher | Обработано: router_id: 2376871433552 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:19:34 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='a5946821-19b6-11f0-ba5a-00155d582500' step='get_time_staff' staff_id='f479d290-6b8b-43ee-845a-9438f572b9ed' staff_name='Тимашкова Анастасия' select_date='30.08.2026' datetime='' services_title='Уход для тела в хаммаме «Восточное расслабление с ароматом розы»  10000р' action='create_visit'
+2026-08-20 16:19:34 | INFO     | root | create_visit
+2026-08-20 16:19:36 | INFO     | dispatcher | Обработано: router_id: 2376871433552 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:19:40 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='a5946821-19b6-11f0-ba5a-00155d582500' step='confirmation' staff_id='f479d290-6b8b-43ee-845a-9438f572b9ed' staff_name='Тимашкова Анастасия' select_date='30.08.2026' datetime='2026-08-30T16:00:00' services_title='Уход для тела в хаммаме «Восточное расслабление с ароматом розы»  10000р' action='create_visit'
+2026-08-20 16:19:40 | INFO     | root | create_visit
+2026-08-20 16:19:40 | INFO     | dispatcher | Обработано: router_id: 2376871433552 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:19:42 | INFO     | root | category_id='a92554ae-19bd-11f0-ba5a-00155d582500' services_id='a5946821-19b6-11f0-ba5a-00155d582500' step='confirm_appointment' staff_id='f479d290-6b8b-43ee-845a-9438f572b9ed' staff_name='Тимашкова Анастасия' select_date='30.08.2026' datetime='2026-08-30T16:00:00' services_title='Уход для тела в хаммаме «Восточное расслабление с ароматом розы»  10000р' action='create_visit'
+2026-08-20 16:19:42 | INFO     | root | create_visit
+2026-08-20 16:19:42 | INFO     | root | {'record_array': [{'datetime': '2026-08-30T16:00', 'service_id': 'a5946821-19b6-11f0-ba5a-00155d582500', 'staff_id': 'f479d290-6b8b-43ee-845a-9438f572b9ed', 'comment': ''}]}
+2026-08-20 16:19:43 | INFO     | root | {'Parameters': {'Result': True, 'record_id': '0686a838-9c89-11f1-ba62-00155d582500', 'status': 'Reserved', 'total_amount': 10000, 'total_discount': 0, 'data_log': {'Контрагент': {'id': 'f053a274-9249-11f1-ba62-00155d582500', 'Наименование': 'Семейный Тестовый Доктор'}, 'СтруктурнаяЕдиница': {'id': '2e2f026f-a57e-11ef-bc68-00505683a460', 'Наименование': 'Другое измерение'}, 'ДатаЗаписи': '2026-08-30T16:00:00', 'Услуги': [{'id': 'a5946821-19b6-11f0-ba5a-00155d582500', 'Наименование': '«Восточное расслабление с ароматом розы» '}], 'Сотрудники': [{'id': 'f479d290-6b8b-43ee-845a-9438f572b9ed', 'Наименование': 'Тимашкова Анастасия'}], 'Статус': {'Наименование': 'Ожидается'}, 'Цена': 10000}}, 'Errors': {'code': 0, 'message': ''}}
+2026-08-20 16:19:43 | INFO     | dispatcher | Обработано: router_id: 2376871433552 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:19:45 | INFO     | root | action_filter='list_visits' action='list_visits' visit_id=''
+2026-08-20 16:19:45 | INFO     | root | list_visits
+2026-08-20 16:19:45 | INFO     | dispatcher | Обработано: router_id: 2376871433552 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:19:47 | INFO     | root | action_filter='list_visits' action='cancel_visit' visit_id='0686a838-9c89-11f1-ba62-00155d582500'
+2026-08-20 16:19:47 | INFO     | root | list_visits
+2026-08-20 16:19:48 | INFO     | dispatcher | Обработано: router_id: 2376871433552 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:22:57 | INFO     | root | Бот и ресурсы успешно остановлены.
+2026-08-20 16:22:57 | ERROR    | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x0000022968BBA7B0>
+2026-08-20 16:23:00 | INFO     | root | 1
+2026-08-20 16:23:01 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-20 16:23:01 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-20 16:23:01 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-20 16:23:01 | INFO     | dispatcher | Зарегистрировано 11 обработчиков событий
+2026-08-20 16:23:01 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://97kj2c-83-142-162-102.ru.tuna.am/webhook
+2026-08-20 16:23:01 | INFO     | root | Подписка на webhook зарегистрирована успешно.
+2026-08-20 16:23:04 | INFO     | dispatcher | Обработано: router_id: 2219890955600 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:23:06 | INFO     | root | action_filter='list_visits' action='list_visits' visit_id=''
+2026-08-20 16:23:06 | INFO     | root | list_visits
+2026-08-20 16:23:07 | INFO     | dispatcher | Обработано: router_id: 2219890955600 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:23:09 | INFO     | dispatcher | Обработано: router_id: 2219890955600 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:23:11 | INFO     | root | category_id='' services_id='' step='' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 16:23:11 | INFO     | root | create_visit
+2026-08-20 16:23:12 | INFO     | dispatcher | Обработано: router_id: 2219890955600 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:23:15 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='' step='get_services' staff_id='' staff_name='' select_date='' datetime='' services_title='' action='create_visit'
+2026-08-20 16:23:15 | INFO     | root | create_visit
+2026-08-20 16:23:15 | INFO     | dispatcher | Обработано: router_id: 2219890955600 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:23:17 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_staff_and_date' staff_id='' staff_name='' select_date='' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 16:23:17 | INFO     | root | create_visit
+2026-08-20 16:23:19 | INFO     | dispatcher | Обработано: router_id: 2219890955600 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:23:22 | INFO     | root | category_id='7cdb9b48-ed21-11ef-ba59-00155d582500' services_id='490af87f-a58b-11ef-bc68-00505683a460' step='get_time_staff' staff_id='6da231dc-8a46-4f35-b642-5e932066987a' staff_name='Федосеева Елена' select_date='02.09.2026' datetime='' services_title='Архитектура бровей 1000р' action='create_visit'
+2026-08-20 16:23:22 | INFO     | root | create_visit
+2026-08-20 16:23:22 | ERROR    | dispatcher | Ошибка в обработчике: HandlerException(handler=handle, router_id=2219890955600, process=message_callback | chat_id: 461175464, user_id: 216480106, context_keys=['data', 'state'], cause=TypeError: 'coroutine' object is not iterable)
+Traceback (most recent call last):
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\maxapi\dispatcher.py", line 986, in _execute_handler
+    await handler_chain(event, data)
+  File "C:\Users\doctor\AppData\Local\Programs\Python\Python313\Lib\site-packages\maxapi\dispatcher.py", line 591, in call_handler
+    await handler.func_event(event_object, **kwargs)
+  File "C:\Users\doctor\Desktop\python\spa\spamaxbot\listener\handlers\create_visit_handler.py", line 159, in handle
+    for date_str in times:
+                    ^^^^^
+TypeError: 'coroutine' object is not iterable
+2026-08-20 16:24:01 | INFO     | dispatcher | Обработано: router_id: 2219890955600 | message_callback | chat_id: 461175464, user_id: 216480106
+2026-08-20 16:25:06 | INFO     | root | Бот и ресурсы успешно остановлены.
+2026-08-20 16:25:07 | ERROR    | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x00000204DBF7A7B0>
+2026-08-20 16:25:11 | INFO     | root | 1
+2026-08-20 16:25:11 | INFO     | root | Пропущен хендлер: DefaultMessageHandler
+2026-08-20 16:25:11 | INFO     | root | Запуск webhook-сервера на 0.0.0.0:8888/webhook
+2026-08-20 16:25:11 | INFO     | dispatcher | Бот: @id7446047217_1_bot first_name=Центр красоты и здоровья Другое измерение id=396084162
+2026-08-20 16:25:11 | INFO     | dispatcher | Зарегистрировано 11 обработчиков событий
+2026-08-20 16:25:11 | INFO     | root | Диспетчер запущен, подписываемся на webhook: https://97kj2c-83-142-162-102.ru.tuna.am/webhook
+2026-08-20 16:25:11 | INFO     | root | Подписка на webhook зарегистрирована успешно.

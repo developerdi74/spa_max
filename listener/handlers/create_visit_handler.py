@@ -107,9 +107,10 @@ class CreateVisitHandler(BaseHandler):
                 )
 
                 for available_dates in item['available_dates']:
+                    format_date = datetime.fromisoformat(available_dates).strftime("%d.%m.%Y")
                     group.append(
                         CallbackButton(
-                            text=available_dates,
+                            text=format_date,
                             payload=CreateVisitPayload(
                                 step="get_time_staff",
                                 category_id=payload.category_id,
@@ -117,7 +118,7 @@ class CreateVisitHandler(BaseHandler):
                                 staff_name=item['name'],
                                 services_title=payload.services_title,
                                 services_id=payload.services_id,
-                                select_date=available_dates
+                                select_date=format_date
                             ).pack()
                         )
                     )
@@ -142,7 +143,7 @@ class CreateVisitHandler(BaseHandler):
         if payload.staff_id and payload.step == "get_time_staff" and payload.services_id:
             """Вывод свободного времени по дате и специалисту"""
             select_date = to_iso8601(payload.select_date)
-            times = self._salon_service.get_time_staff(service_id = payload.services_id, staff_id = payload.staff_id,select_date = select_date)
+            times = await self._salon_service.get_time_staff(service_id = payload.services_id, staff_id = payload.staff_id,select_date = select_date)
             text = as_html(
                 Heading(f"👩‍⚕️ {payload.staff_name}") +
                 "\n\n" +
@@ -156,11 +157,12 @@ class CreateVisitHandler(BaseHandler):
             group=[]
 
             for date_str in times:
-                time_without_seconds = date_str.split()[1][:-3]  # "12:30"
-                isotime = to_iso8601(date_str)
+                #print(date_str)
+                #time_without_seconds = date_str.split()[1][:-3]  # "12:30"
+                #isotime = to_iso8601(date_str)
                 group.append(
                     CallbackButton(
-                        text=time_without_seconds,
+                        text=date_str["time"],
                         payload=CreateVisitPayload(
                             step="confirmation",
                             category_id=payload.category_id,
@@ -169,7 +171,7 @@ class CreateVisitHandler(BaseHandler):
                             services_title=payload.services_title,
                             select_date=payload.select_date,
                             staff_name=payload.staff_name,
-                            datetime = isotime
+                            datetime = date_str["datetime"]
                         ).pack()
                     )
                 )
@@ -196,6 +198,8 @@ class CreateVisitHandler(BaseHandler):
             );
 
         if payload.staff_id and payload.step == "confirmation" and payload.services_id:
+            dt = datetime.fromisoformat(payload.datetime)
+            short_datetime = dt.strftime("%d.%m.%Y %H:%M")
             text = as_html(
                 Heading("📋 Подтверждение записи") +
                 "\n\n" +
@@ -203,7 +207,7 @@ class CreateVisitHandler(BaseHandler):
                 "\n\n" +
                 f"{Bold('💆 Услуга:')} {payload.services_title}" +
                 f"\n{Bold('👩‍⚕️ Специалист:')} {payload.staff_name}" +
-                f"\n{Bold('📅 Дата и время:')} {payload.datetime}" +
+                f"\n{Bold('📅 Дата и время:')} {short_datetime}" +
                 "\n\n" +
                 "✅ Нажмите «Подтвердить», чтобы завершить запись."
             )
@@ -225,7 +229,9 @@ class CreateVisitHandler(BaseHandler):
 
 
         if payload.staff_id and payload.services_id and payload.datetime and payload.step == "confirm_appointment":
-            dt = datetime.strptime(payload.datetime, "%d.%m.%Y %H:%M:%S")
+            #dt = datetime.strptime(payload.datetime, "%d.%m.%Y %H:%M:%S")
+            print(payload.datetime)
+            dt = datetime.fromisoformat(payload.datetime)
             short_datetime = dt.strftime("%d.%m.%Y %H:%M")
             text = as_html(
                 Heading("✨ Запись подтверждена!") +
@@ -237,15 +243,22 @@ class CreateVisitHandler(BaseHandler):
                 "\n" +
                 "📞 Телефон для связи: " + Bold("+7 (3519) 580-111")
             )
-            format_date = to_iso8601(datetime.strptime(payload.datetime, "%d.%m.%Y %H:%M:%S"))
+            format_date = to_iso8601(dt.strftime("%Y-%m-%dT%H:%M"))
             result = self._salon_service.create_visit(
                 usertoken=usertoken,
                 datetime_str=format_date,
                 service_id=payload.services_id,
                 staff_id=payload.staff_id
             )
-            buttons.append([CallbackButton(text="Мои визиты", payload=VisitsActionPayload(action="list_visits").pack())]);
 
+            if result != None and result['Result'] == True:
+                buttons.append([CallbackButton(text="Мои визиты", payload=VisitsActionPayload(action="list_visits").pack())]);
+            else:
+                text = as_html(
+                    Heading("⚠️ Ошибка") +
+                    "\n\n" +
+                    "Произошла ошибка при создании визита. Попробуйте ещё раз."
+                )
         buttons.append([CallbackButton(text="Начать сначала", payload=CallbackAction(action="menu").pack())]);
 
         payload_buttons = ButtonsPayload(buttons=buttons).pack()

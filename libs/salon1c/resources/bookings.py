@@ -120,13 +120,13 @@ class BookingsResource(BaseResource):
         body = dict(client_fields)
         if record_array is not None:
             body["record_array"] = record_array
-        logging.info(body)
+            
         resp = self.http.post(
             f"/hs/api/v1/book_record/{salon_id}/",
             json_body=body,
             usertoken=self.token(usertoken),
         )
-        print(resp)
+        logging.info(resp)
         return self.data(resp)
 
     def change_record(

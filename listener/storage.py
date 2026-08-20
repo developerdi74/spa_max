@@ -139,11 +139,16 @@ class MongoStorage:
 
     async def get_shares(self) -> List[dict]:
         collection = self._get_collection("shares")
-        filter_query = {}
         filter_query = {"active": True}
         cursor = collection.find(filter_query)
         shares = await cursor.to_list(length=10)
         return shares
+    async def get_faqs(self) -> List[dict]:
+        collection = self._get_collection("faqs")
+        filter_query = {"active": True}
+        cursor = collection.find(filter_query)
+        faqs = await cursor.to_list(length=10)
+        return faqs
 
     def close(self):
         if self._client:

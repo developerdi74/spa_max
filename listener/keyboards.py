@@ -16,7 +16,8 @@ class Keyboards:
         buttons = [
             [CallbackButton(text="Записаться на услугу", payload=CreateVisitPayload(action="create_visit").pack())],
             [CallbackButton(text="История посещений", payload=VisitsActionPayload(action="list_visits").pack())],     
-            [CallbackButton(text="Акции", payload=CallbackAction(action="shares").pack())],     
+            [CallbackButton(text="Акции", payload=CallbackAction(action="shares").pack())],
+            [CallbackButton(text="Вопросы и ответы", payload=CallbackAction(action="faq").pack())],
             [CallbackButton(text="Информация", payload=CallbackAction(action="information_menu").pack())],
             [RequestContactButton(text="Поделиться контактом")],
         ]

@@ -1,43 +1,37 @@
 ```
-# Dependencies
+# Python
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
-*.py~
 
-# Virtual environments
+# Dependencies
 .venv/
 venv/
 env/
-
-# Build artifacts
-dist/
-build/
-*.egg-info/
+.env
+.env.local
+.env.*
 
 # Logs
 *.log
 
-# Environment files
-.env
-.env.local
-*.env.*
-
-# Editors
-.vscode/
-.idea/
+# Temporary files
+*.tmp
 *.swp
 *.swo
+
+# OS
+.DS_Store
+Thumbs.db
 
 # Coverage
 .coverage
 coverage/
 htmlcov/
 
-# Testing
-.pytest_cache/
-.mypy_cache/
+# Build artifacts
+dist/
+build/
+*.egg-info/
 ```
-libs/__pycache__/renovation_api.cpython-313.pyc
-.env

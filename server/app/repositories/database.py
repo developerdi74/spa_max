@@ -12,6 +12,7 @@ from motor.motor_asyncio import AsyncIOMotorClient, AsyncIOMotorDatabase, AsyncI
 
 from ..models.newsletter import NewsletterDocument, NewsletterLog, NewsletterStatus,NewsletterUpdate
 from ..models.share import ShareDocument, ShareUpdate as ShareUpdateModel
+from ..models.faq import FaqDocument, FaqUpdate as FaqUpdateModel
 from ..config.settings import Settings
 
 logger = logging.getLogger(__name__)
@@ -380,6 +381,75 @@ class UserRepository(BaseRepository):
             yield user
 
 
+class FaqRepository(BaseRepository):
+    """Репозиторий для работы с вопросами и ответами (FAQ)."""
+    
+    def __init__(self, db: AsyncIOMotorDatabase, collection_name: str):
+        super().__init__(db)
+        self.collection: AsyncIOMotorCollection = db[collection_name]
+    
+    async def create_index(self) -> None:
+        """Создание индексов."""
+        try:
+            await self.collection.create_index([("createdAt", -1)])
+            logger.info("✅ Индексы коллекции faqs созданы")
+        except Exception as e:
+            logger.warning(f"⚠️ Не удалось создать индексы: {e}")
+    
+    async def get_all(self, limit: int = 200) -> List[FaqDocument]:
+        """Получение всех вопросов с сортировкой."""
+        items = []
+        async for doc in self.collection.find().sort("createdAt", -1).limit(limit):
+            items.append(FaqDocument.from_mongo(doc))
+        return items
+    
+    async def get_by_id(self, faq_id: str) -> Optional[FaqDocument]:
+        """Получение вопроса по ID."""
+        try:
+            oid = ObjectId(faq_id)
+            doc = await self.collection.find_one({"_id": oid})
+            if doc:
+                return FaqDocument.from_mongo(doc)
+        except Exception as e:
+            logger.error(f"❌ Ошибка получения вопроса {faq_id}: {e}")
+        return None
+    
+    async def create(self, faq: FaqDocument) -> FaqDocument:
+        """Создание нового вопроса."""
+        doc = faq.to_mongo()
+        doc["createdAt"] = datetime.now()
+        doc["updatedAt"] = datetime.now()
+        result = await self.collection.insert_one(doc)
+        faq.id = str(result.inserted_id)
+        return faq
+    
+    async def update(self, faq_id: str, faq: FaqUpdateModel) -> bool:
+        """Обновление вопроса."""
+        try:
+            oid = ObjectId(faq_id)
+            update_data = faq.dict()
+            update_data["updatedAt"] = datetime.now()
+            
+            result = await self.collection.update_one(
+                {"_id": oid},
+                {"$set": update_data}
+            )
+            return result.modified_count > 0
+        except Exception as e:
+            logger.error(f"❌ Ошибка обновления вопроса {faq_id}: {e}")
+            return False
+    
+    async def delete(self, faq_id: str) -> bool:
+        """Удаление вопроса."""
+        try:
+            oid = ObjectId(faq_id)
+            result = await self.collection.delete_one({"_id": oid})
+            return result.deleted_count > 0
+        except Exception as e:
+            logger.error(f"❌ Ошибка удаления вопроса {faq_id}: {e}")
+            return False
+
+
 class DatabaseManager:
     """Менеджер подключения к базе данных."""
     
@@ -393,6 +463,7 @@ class DatabaseManager:
         self.newsletter_logs: Optional[NewsletterLogRepository] = None
         self.users: Optional[UserRepository] = None
         self.shares: Optional[ShareRepository] = None
+        self.faqs: Optional[FaqRepository] = None
     
     async def connect(self) -> None:
         """Подключение к MongoDB."""
@@ -416,11 +487,16 @@ class DatabaseManager:
             self.db,
             "shares"
         )
+        self.faqs = FaqRepository(
+            self.db,
+            "faqs"
+        )
         
         # Создание индексов
         await self.newsletters.create_index()
         await self.newsletter_logs.create_index()
         await self.shares.create_index()
+        await self.faqs.create_index()
         
         # Проверка подключения
         try:

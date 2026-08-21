@@ -33,3 +33,5 @@ MANIFEST
 venv/
 ENV/
 env.bak/
+.log
+*.log

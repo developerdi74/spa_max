@@ -92,7 +92,7 @@ class AiAnswerHandler(BaseHandler):
         
         new_msg = await event.message.answer(
             text="Думаю...",
-            attachments=[Keyboards.menu_button()],
+            attachments=[Keyboards.menu_button1()],
             format = Format.HTML 
         )
         
@@ -192,7 +192,8 @@ class AiAnswerHandler(BaseHandler):
             logging.error(f"Unexpected error: {e}")
             text = "Произошла ошибка. Пожалуйста, попробуйте позже или воспользуйтесь меню."
 
-        buttons.append([CallbackButton(text="Основное меню", payload=CallbackAction(action="menu").pack())]);
+        buttons.append(Keyboards.menu_button());
+
         attachs = [ButtonsPayload(buttons=buttons).pack()]
         await event.message.answer(
             text=text or "Нашел такую информацию",
@@ -203,7 +204,8 @@ class AiAnswerHandler(BaseHandler):
         """Событие если сообщение короткое"""
         message = event.message.body.text
         text = MESSAGES_INFO
-        buttons=[[CallbackButton(text="Основное меню", payload=CallbackAction(action="menu").pack())]];
+        buttons = []
+        buttons.append(Keyboards.menu_button());
         payload_buttons = ButtonsPayload(buttons=buttons).pack()
         attachs = [payload_buttons]
         await event.message.answer(

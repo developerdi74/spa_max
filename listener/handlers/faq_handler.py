@@ -47,7 +47,7 @@ class InformationCenterHandler(BaseHandler):
             text += as_html(Bold(faq["question"])+"\n"+faq["answer"]+"\n\n")
             counter += 1
 
-        buttons.append([CallbackButton(text="Основное меню", payload=CallbackAction(action="menu").pack())]);
+        buttons.append(Keyboards.menu_button());
         payload_buttons = ButtonsPayload(buttons=buttons).pack()
         await event.send(
             text=text,

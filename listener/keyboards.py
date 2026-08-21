@@ -7,9 +7,13 @@ from listener.payloads import CallbackAction,CreateVisitPayload,VisitsActionPayl
 
 class Keyboards:
     @staticmethod
-    def menu_button():
+    def menu_button1():
         buttons = [[CallbackButton(text="Главное меню", payload=CallbackAction(action="menu").pack())]]
         return ButtonsPayload(buttons=buttons).pack()
+    
+    @staticmethod
+    def menu_button():
+        return [CallbackButton(text="Главное меню", payload=CallbackAction(action="menu").pack())]
 
     @staticmethod
     def main_menu():
@@ -28,7 +32,7 @@ class Keyboards:
         buttons = [
             [LinkButton(text="Наш сайт", url="https://spa-di.ru/")],
             [CallbackButton(text="Информация о центре(адрес и контакты)", payload=CallbackAction(action="information_centers").pack())],
-            [LinkButton(text="Связаться с оператором", url="https://max.ru/id7456020292_bot")],
+            [LinkButton(text="Связаться с оператором", url="https://max.ru/u/f9LHodD0cOIlpd840ED7t1rf09ShSgek4uLcYf9TOaJHPHCWrFWyGWvhRy8")],
             [CallbackButton(text="Основное меню", payload=CallbackAction(action="menu").pack())],
         ]
         return ButtonsPayload(buttons=buttons).pack()

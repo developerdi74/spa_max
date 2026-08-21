@@ -1,10 +1,62 @@
 from datetime import date, datetime, timedelta
-from libs.salon1c import SalonClient, SalonAPIError, make_sign
+from libs.salon1c import SalonClient, SalonAPIError, make_sign, NotFoundError, TransportError
 import logging
+import asyncio
 from aiocache import cached, Cache
 
 CACHE_CONFIG_LONG = {"cache": Cache.MEMORY, "ttl": 3600*24*30}
 CACHE_CONFIG = {"cache": Cache.MEMORY, "ttl": 3600*6}
+
+RETRY_ATTEMPTS = 3
+RETRY_DELAY = 1.0  # секунды между попытками
+
+
+class SalonServiceError(Exception):
+    """Ошибка сервиса 1С после исчерпания попыток"""
+    pass
+
+
+async def retry_on_failure(func, *args, max_attempts=RETRY_ATTEMPTS, delay=RETRY_DELAY, **kwargs):
+    """
+    Выполняет функцию с повторными попытками при ошибках 1С.
+    
+    Args:
+        func: Асинхронная функция для вызова
+        *args: Позиционные аргументы функции
+        max_attempts: Максимальное количество попыток
+        delay: Задержка между попытками (сек)
+        **kwargs: Именованные аргументы функции
+    
+    Returns:
+        Результат выполнения функции
+    
+    Raises:
+        SalonServiceError: Если все попытки исчерпаны
+    """
+    last_exception = None
+    
+    for attempt in range(1, max_attempts + 1):
+        try:
+            if asyncio.iscoroutinefunction(func):
+                return await func(*args, **kwargs)
+            else:
+                loop = asyncio.get_event_loop()
+                return await loop.run_in_executor(None, lambda: func(*args, **kwargs))
+        except (NotFoundError, TransportError, SalonAPIError) as e:
+            last_exception = e
+            logging.warning(
+                f"Попытка {attempt}/{max_attempts} не удалась: {type(e).__name__}: {e}. "
+                f"{'Повтор...' if attempt < max_attempts else ''}"
+            )
+            if attempt < max_attempts:
+                await asyncio.sleep(delay * attempt)  # Экспоненциальная задержка
+            continue
+        except Exception as e:
+            logging.error(f"Неожиданная ошибка: {type(e).__name__}: {e}")
+            raise
+    
+    logging.error(f"Все {max_attempts} попыток исчерпаны. Последняя ошибка: {last_exception}")
+    raise SalonServiceError(f"Сервис 1С недоступен после {max_attempts} попыток") from last_exception
 
 class Salon1CService:
     def __init__(self, api_key: str, salon_id: str):
@@ -62,17 +114,35 @@ class Salon1CService:
     async def get_staff_and_date(self, service_id:str,staff_id:str="") -> list:        
         start_date = date.today()
         end_date = date.today() + timedelta(days=14)
-        staffs = self.client.bookings.book_staff(self.salon_id, service_id = service_id)
-        #date_list = self.client.bookings.recording_dates(self.salon_id,start_date=start_date,end_date=end_date,service_id=service_id)
+        
+        try:
+            staffs = await retry_on_failure(
+                lambda: self.client.bookings.book_staff(self.salon_id, service_id = service_id)
+            )
+        except SalonServiceError as e:
+            logging.error(f"Не удалось получить список мастеров: {e}")
+            raise
+        
         filtered_staffs = []
         for staff in staffs:
 
             if len(staff_id)>0 and staff_id != staff['id']:
                 continue
 
-            dates = self.client.bookings.book_dates(self.salon_id,start_date=start_date,end_date=end_date,service_id=service_id, staff_id=staff['id'])
-            #result = next((item for item in date_list if item['id'] == staff['id']), None)
-            #staff['available_dates'] = sorted({dt.split()[0] for dt in result['date']}) or []
+            try:
+                dates = await retry_on_failure(
+                    lambda s=staff: self.client.bookings.book_dates(
+                        self.salon_id,
+                        start_date=start_date,
+                        end_date=end_date,
+                        service_id=service_id,
+                        staff_id=s['id']
+                    )
+                )
+            except SalonServiceError as e:
+                logging.warning(f"Не удалось получить даты для мастера {staff['id']}: {e}")
+                dates = []
+            
             staff['available_dates'] = dates or []
             filtered_staffs.append(staff)
         return filtered_staffs
@@ -80,8 +150,18 @@ class Salon1CService:
     @cached(**CACHE_CONFIG)
     async def get_time_staff(self, staff_id:str, service_id, select_date:str) -> list:
         datetime_ = datetime.strptime(select_date, "%d.%m.%Y")
-        time_list = self.client.bookings.book_times(self.salon_id,datetime_=datetime_,service_id=service_id,staff_id=staff_id)
-        #time_list = self.client.bookings.recording_dates(self.salon_id,start_date=start_date,end_date=end_date,service_id=service_id,staff_id=staff_id)
+        try:
+            time_list = await retry_on_failure(
+                lambda: self.client.bookings.book_times(
+                    self.salon_id,
+                    datetime_=datetime_,
+                    service_id=service_id,
+                    staff_id=staff_id
+                )
+            )
+        except SalonServiceError as e:
+            logging.error(f"Не удалось получить время для мастера {staff_id}: {e}")
+            raise
         return time_list or []
 
     @cached(**CACHE_CONFIG)
@@ -118,7 +198,7 @@ class Salon1CService:
         #return self.client.auth.check_usertoken(self.salon_id, usertoken)
 
 
-    def create_visit(self, usertoken:str, datetime_str:str, service_id:str, staff_id:str, comment:str=""):
+    async def create_visit(self, usertoken:str, datetime_str:str, service_id:str, staff_id:str, comment:str=""):
         record_array = [
             {
                 "datetime": datetime_str,
@@ -127,8 +207,28 @@ class Salon1CService:
                 "comment": comment
             }
         ]
-        result = self.client.bookings.book_record(salon_id=self.salon_id, usertoken = usertoken, record_array = record_array)
-        return result
-    def cancel_visit(self, usertoken:str, record_id:str):
-        result = self.client.bookings.cancel_record(salon_id=self.salon_id, usertoken = usertoken, record_id = record_id)
-        return result
+        try:
+            result = await retry_on_failure(
+                lambda: self.client.bookings.book_record(
+                    salon_id=self.salon_id,
+                    usertoken=usertoken,
+                    record_array=record_array
+                )
+            )
+            return result
+        except SalonServiceError as e:
+            logging.error(f"Не удалось создать визит: {e}")
+            raise
+    async def cancel_visit(self, usertoken:str, record_id:str):
+        try:
+            result = await retry_on_failure(
+                lambda: self.client.bookings.cancel_record(
+                    salon_id=self.salon_id,
+                    usertoken=usertoken,
+                    record_id=record_id
+                )
+            )
+            return result
+        except SalonServiceError as e:
+            logging.error(f"Не удалось отменить визит: {e}")
+            raise

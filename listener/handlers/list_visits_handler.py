@@ -42,7 +42,8 @@ class ListVisitHandler(BaseHandler):
         buttons=[]
 
         if payload.action == "list_visits":
-            list_visits = self._salon_service.get_list_client_visits(usertoken=usertoken)
+            # Асинхронный вызов
+            list_visits = await self._salon_service.get_list_client_visits(usertoken=usertoken)
             if list_visits:
                 for visit in list_visits:
                     print(visit)

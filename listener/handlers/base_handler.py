@@ -20,7 +20,7 @@ class BaseHandler:
         raise NotImplementedError
 
     async def _validate_user(self, event: Message, storage: MongoStorage, salon_service: Salon1CService) -> tuple[str, str, str, list] | None:
-        """Валидация chat_id и телефона"""
+        """Валидация chat_id и телефона (асинхронно)"""
         chat_id = get_chat_id(event)
         if not chat_id:
             logging.error("Не удалось получить chat_id")
@@ -33,10 +33,12 @@ class BaseHandler:
 
         usertoken = chat_info.get("usertoken", "") if chat_info else ""
 
-        checkuser = salon_service.validity_usertoken(usertoken)
+        # Асинхронная проверка токена
+        checkuser = await salon_service.validity_usertoken(usertoken)
 
         if phone and checkuser == False:
-            usertoken = salon_service.auth_client(phone)
+            # Асинхронная авторизация
+            usertoken = await salon_service.auth_client(phone)
             await storage.update_usertoken(phone=phone, usertoken=usertoken)
 
         if not chat_info or not phone or not usertoken:

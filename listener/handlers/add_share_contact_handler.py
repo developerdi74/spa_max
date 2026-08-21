@@ -27,7 +27,8 @@ class ContactHandler(BaseHandler):
         phone = contact.payload.vcf.phone
         clean_phone = hlp.validate_phone(phone)
         #phone="79026001548"
-        usertoken = self._salon_service.auth_client(phone)
+        # Асинхронная авторизация
+        usertoken = await self._salon_service.auth_client(phone)
         try:
             await self._storage.upsert_contact(
                 user_id=user_id,

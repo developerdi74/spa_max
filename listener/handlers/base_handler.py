@@ -1,5 +1,5 @@
 from maxapi import Dispatcher
-from maxapi.types import MessageCallback
+from maxapi.types import MessageCallback,Message
 from listener.utils import get_chat_id
 from libs.funcs import HelperFunction as hlp
 from listener.keyboards import Keyboards
@@ -19,7 +19,7 @@ class BaseHandler:
     def register(self, dp: Dispatcher) -> None:
         raise NotImplementedError
 
-    async def _validate_user(self, event: MessageCallback, storage: MongoStorage, salon_service: Salon1CService) -> tuple[str, str, str, list] | None:
+    async def _validate_user(self, event: Message, storage: MongoStorage, salon_service: Salon1CService) -> tuple[str, str, str, list] | None:
         """Валидация chat_id и телефона"""
         chat_id = get_chat_id(event)
         if not chat_id:

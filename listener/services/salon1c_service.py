@@ -165,7 +165,8 @@ class Salon1CService:
         return time_list or []
 
     @cached(**CACHE_CONFIG)
-    def get_client(self, phone:str, usertoken:str) -> list:
+    async def get_client(self, phone:str, usertoken:str) -> list:
+        #Не используется
         logging.info("get_client")
         #phone = "79026001548"
         #phone = "79525269602"

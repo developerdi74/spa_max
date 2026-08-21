@@ -19,7 +19,7 @@ from datetime import datetime
 from libs.salon1c import SalonClient, SalonAPIError, make_sign
 from listener.services.salon1c_service import Salon1CService
 
-class CreateVisitHandler(BaseHandler):
+class ListVisitHandler(BaseHandler):
     def __init__(self, storage: MongoStorage, salon1c_service: Salon1CService):
         self._storage = storage
         self._salon_service = salon1c_service
@@ -69,11 +69,7 @@ class CreateVisitHandler(BaseHandler):
                         "❌ Нажмите «Отменить», чтобы отменить запись." +
                         "\n"
                     )
-                    """
-                    text=as_html(Heading(f"Визит от {show_datetime}\n\n"))
-                    for service in visit['services']:
-                        text+=as_html(f"Услуга: "+Bold(service['service']['name'])+"\n")
-                        text+=as_html(f"Специалист: "+Bold(service['staff']['name'])+"\n\n")"""
+                    
                     buttons.append([
                         CallbackButton(
                             text=f"Отменить визит", 
@@ -110,7 +106,7 @@ class CreateVisitHandler(BaseHandler):
                 )
             
         if payload.action == "cancel_visit" and payload.visit_id:
-            result = self._salon_service.cancel_visit(usertoken=usertoken,record_id=payload.visit_id)
+            result = await self._salon_service.cancel_visit(usertoken=usertoken,record_id=payload.visit_id)
             text = as_html(
                 Heading("❌ Запись отменена") +
                 "\n\n" +

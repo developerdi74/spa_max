@@ -9,7 +9,7 @@ import logging
 import json
 from libs.funcs import HelperFunction as hlp
 from rich import print as rprint
-from storage import MongoStorage
+from listener.storage import MongoStorage
 from datetime import datetime, timedelta
 from listener.payloads import CallbackAction, CreateVisitPayload,VisitsActionPayload
 from typing import List, Optional, Any
@@ -83,7 +83,7 @@ class AiAnswerHandler(BaseHandler):
         dp.message_created(F.message.body.text.len() <= 5)(self.more_info)
         dp.message_created(F.message.body.text.len() >= 6)(self.handle)
 
-    async def handle(self, event: MessageCallback) -> None:
+    async def handle(self, event: MessageCreated) -> None:
         validated = await self._validate_user(event, storage = self._storage, salon_service = self._salon_service)   
         if validated is None:
             return

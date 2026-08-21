@@ -39,7 +39,8 @@ class MongoStorage:
         return record.get("phoneNumber") if record else None
 
     async def get_record_by_chat_id(self, chat_id: int, collection_name: str | None = None ) -> dict | None:
-        collection = self._get_collection(self._default_collection_name)
+        collection_name = collection_name or self._default_collection_name
+        collection = self._get_collection(collection_name)
         return await collection.find_one({"chatId": chat_id})
 
     async def upsert_contact(

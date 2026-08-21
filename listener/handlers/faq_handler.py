@@ -6,7 +6,7 @@ from listener.keyboards import Keyboards
 from listener.payloads import CallbackAction
 from maxapi.utils.formatting import Bold, Heading, Link, as_html
 from maxapi.enums.format import Format
-from storage import MongoStorage
+from listener.storage import MongoStorage
 from listener.services import AIHelperService
 from listener.services.salon1c_service import Salon1CService
 from maxapi.types.attachments.attachment import ButtonsPayload

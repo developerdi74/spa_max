@@ -5,7 +5,7 @@ from maxapi.enums.format import Format
 
 from listener.handlers.base_handler import BaseHandler
 from listener.keyboards import Keyboards
-from storage import MongoStorage
+from listener.storage import MongoStorage
 import logging
 
 #https://max.ru/id7456020292_1_bot?start=get_in_line

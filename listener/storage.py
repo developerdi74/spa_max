@@ -9,26 +9,72 @@ class MongoStorage:
         self._db_name = db_name
         self._default_collection_name = default_collection_name
         self._client: AsyncIOMotorClient | None = None
-        self._db: AsyncIOMotorDatabase | None = None # Храним БД, а не коллекцию
+        self._db: AsyncIOMotorDatabase | None = None
+        self._collections: dict[str, AsyncIOMotorCollection] = {}  # Кэш коллекций
 
     async def connect(self) -> None:
         self._client = AsyncIOMotorClient(
             self._mongo_uri,
-            serverSelectionTimeoutMS=3000,  # Таймаут выбора сервера (5 сек)
-            connectTimeoutMS=3000,          # Таймаут подключения (5 сек)
-            socketTimeoutMS=5000,          # Таймаут операций (10 сек)
-            maxPoolSize=50,                 # Макс. соединений в пуле
-            minPoolSize=10,                 # Мин. соединений в пуле
+            serverSelectionTimeoutMS=3000,
+            connectTimeoutMS=3000,
+            socketTimeoutMS=5000,
+            maxPoolSize=50,
+            minPoolSize=10,
         )
         self._db = self._client[self._db_name]
+        await self._create_indexes()
+
+    async def _create_indexes(self) -> None:
+        """Создание индексов для оптимизации запросов."""
+        if self._db is None:
+            raise RuntimeError("MongoDB не инициализирован. Вызовите connect().")
+        
+        try:
+            # Индексы для коллекции users
+            users_collection = self._db["users"]
+            await users_collection.create_index("chatId", unique=True, background=True)
+            await users_collection.create_index("phoneNumber", unique=True, background=True)
+            logging.info("Индексы для коллекции 'users' созданы")
+
+            # Индексы для коллекции request_access
+            request_access_collection = self._db["request_access"]
+            await request_access_collection.create_index([("phone", 1), ("date", -1)], background=True)
+            await request_access_collection.create_index("date", expireAfterSeconds=600, background=True)  # TTL 10 минут
+            logging.info("Индексы для коллекции 'request_access' созданы")
+
+            # Индексы для коллекции messages
+            messages_collection = self._db["messages"]
+            await messages_collection.create_index([("phone", 1), ("date", -1)], background=True)
+            await messages_collection.create_index("date", expireAfterSeconds=2592000, background=True)  # TTL 30 дней
+            logging.info("Индексы для коллекции 'messages' созданы")
+
+            # Индексы для коллекции shares
+            shares_collection = self._db["shares"]
+            await shares_collection.create_index("active", background=True)
+            logging.info("Индексы для коллекции 'shares' созданы")
+
+            # Индексы для коллекции faqs
+            faqs_collection = self._db["faqs"]
+            await faqs_collection.create_index("active", background=True)
+            logging.info("Индексы для коллекции 'faqs' созданы")
+
+        except Exception as e:
+            logging.error(f"Ошибка при создании индексов: {e}")
+            raise
 
     def _get_collection(self, collection_name: str | None = None) -> AsyncIOMotorCollection:
-        """Возвращает нужную коллекцию или дефолтную, если имя не передано."""
+        """Возвращает нужную коллекцию или дефолтную, если имя не передано.
+        Использует кэширование для ускорения доступа."""
         if self._db is None:
             raise RuntimeError("MongoDB не инициализирован. Вызовите connect().")
         
         name = collection_name or self._default_collection_name
-        return self._db[name]
+        
+        # Кэшируем коллекцию для ускорения повторных обращений
+        if name not in self._collections:
+            self._collections[name] = self._db[name]
+        
+        return self._collections[name]
 
 
     # Пример изменения метода: добавляем опциональный параметр collection_name

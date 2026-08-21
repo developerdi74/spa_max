@@ -17,7 +17,7 @@ from maxapi.utils.formatting import Bold, Heading, Link, as_html
 from maxapi.enums.format import Format
 from datetime import datetime
 from libs.salon1c import SalonClient, SalonAPIError, make_sign
-from listener.services.salon1c_service import Salon1CService
+from listener.services.salon1c_service import Salon1CService, SalonServiceError
 from libs.salon1c.utils import to_iso8601
 
 class CreateVisitHandler(BaseHandler):
@@ -96,7 +96,24 @@ class CreateVisitHandler(BaseHandler):
         if payload.services_id and payload.step == "get_staff_and_date":
             """Вывод мастеров и доступных дат для записи"""
             staff_id = payload.staff_id or ""
-            staff = await self._salon_service.get_staff_and_date(service_id = payload.services_id, staff_id = staff_id)
+            try:
+                staff = await self._salon_service.get_staff_and_date(service_id = payload.services_id, staff_id = staff_id)
+            except SalonServiceError as e:
+                logging.error(f"Ошибка получения мастеров и дат: {e}")
+                text = as_html(
+                    Heading("⚠️ Ошибка") +
+                    "\n\n" +
+                    "Сервис временно недоступен. Пожалуйста, попробуйте позже."
+                )
+                buttons.append([CallbackButton(text="Начать сначала", payload=CallbackAction(action="menu").pack())])
+                payload_buttons = ButtonsPayload(buttons=buttons).pack()
+                await event.answer(
+                    new_text=text,
+                    attachments=[payload_buttons],
+                    format = Format.HTML           
+                )
+                return
+            
             for item in staff:
                 buttons=[]
                 group=[]
@@ -143,7 +160,23 @@ class CreateVisitHandler(BaseHandler):
         if payload.staff_id and payload.step == "get_time_staff" and payload.services_id:
             """Вывод свободного времени по дате и специалисту"""
             select_date = to_iso8601(payload.select_date)
-            times = await self._salon_service.get_time_staff(service_id = payload.services_id, staff_id = payload.staff_id,select_date = select_date)
+            try:
+                times = await self._salon_service.get_time_staff(service_id = payload.services_id, staff_id = payload.staff_id,select_date = select_date)
+            except SalonServiceError as e:
+                logging.error(f"Ошибка получения времени: {e}")
+                text = as_html(
+                    Heading("⚠️ Ошибка") +
+                    "\n\n" +
+                    "Сервис временно недоступен. Пожалуйста, попробуйте позже."
+                )
+                buttons.append([CallbackButton(text="Начать сначала", payload=CallbackAction(action="menu").pack())])
+                payload_buttons = ButtonsPayload(buttons=buttons).pack()
+                await event.answer(
+                    new_text=text,
+                    attachments=[payload_buttons],
+                    format = Format.HTML           
+                )
+                return
             text = as_html(
                 Heading(f"👩‍⚕️ {payload.staff_name}") +
                 "\n\n" +
@@ -233,25 +266,42 @@ class CreateVisitHandler(BaseHandler):
             print(payload.datetime)
             dt = datetime.fromisoformat(payload.datetime)
             short_datetime = dt.strftime("%d.%m.%Y %H:%M")
-            text = as_html(
-                Heading("✨ Запись подтверждена!") +
-                "\n\n" +
-                "Мы очень рады, что вы выбрали нас. Ждем вас " + Bold(short_datetime) + 
-                " в центре красоты и здоровья " + Bold("«Другое измерение»") +
-                "\n\n" +
-                "📍 Адрес: " + Bold("ул. Ленина, 27") +
-                "\n" +
-                "📞 Телефон для связи: " + Bold("+7 (3519) 580-111")
-            )
+            
             format_date = to_iso8601(dt.strftime("%Y-%m-%dT%H:%M"))
-            result = self._salon_service.create_visit(
-                usertoken=usertoken,
-                datetime_str=format_date,
-                service_id=payload.services_id,
-                staff_id=payload.staff_id
-            )
+            try:
+                result = await self._salon_service.create_visit(
+                    usertoken=usertoken,
+                    datetime_str=format_date,
+                    service_id=payload.services_id,
+                    staff_id=payload.staff_id
+                )
+            except SalonServiceError as e:
+                logging.error(f"Ошибка создания визита: {e}")
+                text = as_html(
+                    Heading("⚠️ Ошибка") +
+                    "\n\n" +
+                    "Сервис временно недоступен. Пожалуйста, попробуйте позже."
+                )
+                buttons.append([CallbackButton(text="Начать сначала", payload=CallbackAction(action="menu").pack())])
+                payload_buttons = ButtonsPayload(buttons=buttons).pack()
+                await event.answer(
+                    new_text=text,
+                    attachments=[payload_buttons],
+                    format = Format.HTML           
+                )
+                return
 
             if result != None and result['Result'] == True:
+                text = as_html(
+                    Heading("✨ Запись подтверждена!") +
+                    "\n\n" +
+                    "Мы очень рады, что вы выбрали нас. Ждем вас " + Bold(short_datetime) + 
+                    " в центре красоты и здоровья " + Bold("«Другое измерение»") +
+                    "\n\n" +
+                    "📍 Адрес: " + Bold("ул. Ленина, 27") +
+                    "\n" +
+                    "📞 Телефон для связи: " + Bold("+7 (3519) 580-111")
+                )
                 buttons.append([CallbackButton(text="Мои визиты", payload=VisitsActionPayload(action="list_visits").pack())]);
             else:
                 text = as_html(

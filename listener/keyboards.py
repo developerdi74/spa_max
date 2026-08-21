@@ -7,9 +7,13 @@ from listener.payloads import CallbackAction,CreateVisitPayload,VisitsActionPayl
 
 class Keyboards:
     @staticmethod
-    def menu_button():
+    def menu_button1():
         buttons = [[CallbackButton(text="Главное меню", payload=CallbackAction(action="menu").pack())]]
         return ButtonsPayload(buttons=buttons).pack()
+    
+    @staticmethod
+    def menu_button():
+        return [CallbackButton(text="Главное меню", payload=CallbackAction(action="menu").pack())]
 
     @staticmethod
     def main_menu():

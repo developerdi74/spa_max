@@ -37,7 +37,7 @@ class CreateVisitHandler(BaseHandler):
         logging.info("create_visit")
         await event.answer(
             new_text="Загрузка данных...",
-            attachments=[Keyboards.menu_button()],
+            attachments=[Keyboards.menu_button1()],
             format = Format.HTML           
         )
 
@@ -105,7 +105,7 @@ class CreateVisitHandler(BaseHandler):
                     "\n\n" +
                     "Сервис временно недоступен. Пожалуйста, попробуйте позже."
                 )
-                buttons.append([CallbackButton(text="Начать сначала", payload=CallbackAction(action="menu").pack())])
+                buttons.append(Keyboards.menu_button());
                 payload_buttons = ButtonsPayload(buttons=buttons).pack()
                 await event.answer(
                     new_text=text,
@@ -147,7 +147,7 @@ class CreateVisitHandler(BaseHandler):
                     buttons.append(group)
 
                 if not staff_id:
-                    buttons.append([CallbackButton(text="Начать сначала", payload=CallbackAction(action="menu").pack())]);
+                    buttons.append(Keyboards.menu_button());
                     payload_buttons = ButtonsPayload(buttons=buttons).pack()                
                     await event.send(
                         text=text,
@@ -169,7 +169,7 @@ class CreateVisitHandler(BaseHandler):
                     "\n\n" +
                     "Сервис временно недоступен. Пожалуйста, попробуйте позже."
                 )
-                buttons.append([CallbackButton(text="Начать сначала", payload=CallbackAction(action="menu").pack())])
+                buttons.append(Keyboards.menu_button());
                 payload_buttons = ButtonsPayload(buttons=buttons).pack()
                 await event.answer(
                     new_text=text,
@@ -282,7 +282,7 @@ class CreateVisitHandler(BaseHandler):
                     "\n\n" +
                     "Сервис временно недоступен. Пожалуйста, попробуйте позже."
                 )
-                buttons.append([CallbackButton(text="Начать сначала", payload=CallbackAction(action="menu").pack())])
+                buttons.append(Keyboards.menu_button());
                 payload_buttons = ButtonsPayload(buttons=buttons).pack()
                 await event.answer(
                     new_text=text,
@@ -309,7 +309,7 @@ class CreateVisitHandler(BaseHandler):
                     "\n\n" +
                     "Произошла ошибка при создании визита. Попробуйте ещё раз."
                 )
-        buttons.append([CallbackButton(text="Начать сначала", payload=CallbackAction(action="menu").pack())]);
+        buttons.append(Keyboards.menu_button())
 
         payload_buttons = ButtonsPayload(buttons=buttons).pack()
 

@@ -52,7 +52,7 @@ class InformationCenterHandler(BaseHandler):
                     )
                 ])          
 
-            buttons.append([CallbackButton(text="Основное меню", payload=CallbackAction(action="menu").pack())]);
+            buttons.append(Keyboards.menu_button());
             payload_buttons = ButtonsPayload(buttons=buttons).pack()
             await event.send(
                 text=text,

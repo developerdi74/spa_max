@@ -80,7 +80,8 @@ class ListVisitHandler(BaseHandler):
                             ).pack()
                         )
                     ]);
-
+                    
+                    buttons.append(Keyboards.menu_button());
                     payload_buttons = ButtonsPayload(buttons=buttons).pack()
                     await event.send(
                         text=text,
@@ -116,7 +117,7 @@ class ListVisitHandler(BaseHandler):
                 "✨ Если захотите записаться заново, мы всегда на связи."
             )
             
-        buttons.append([CallbackButton(text="Вернуться в главное меню", payload=CallbackAction(action="menu").pack())]);
+        buttons.append(Keyboards.menu_button());
 
         payload_buttons = ButtonsPayload(buttons=buttons).pack()
 

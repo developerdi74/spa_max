@@ -1,51 +1,57 @@
 """
-Сервис для рассылки подтверждений визитов клиентов в установленное время в .env NOTIFICATION_TIME
-Путь: /maxprojects/sender/sender.py
+Сервис для рассылки подтверждений визитов клиентов в установленное время из .env NOTIFICATION_TIME
+Путь: /workspace/sender/sender.py
 Библиотеки: 
-    /maxprojects/libs/funcs.py
-    /maxprojects/libs/renovation_api.py
+    /workspace/libs/funcs.py
+    /workspace/libs/salon1c/client.py
+    /workspace/listener/services/salon1c_service.py
 """
 import asyncio
 import logging
-
 import sys
 from pathlib import Path
-parent_dir = Path(__file__).parent.parent
-sys.path.insert(0, str(parent_dir))
+from datetime import datetime, timedelta
 
-
-from libs.funcs import HelperFunction as hlp
-from libs.salon1c import SalonClient, SalonAPIError, make_sign, NotFoundError, TransportError
-from listener.services.salon1c_service import Salon1CService
-from maxapi.filters.callback_payload import CallbackPayload
-from datetime import datetime,timedelta
 import aiohttp
 import os
 from motor.motor_asyncio import AsyncIOMotorClient
 from maxapi import Bot, Dispatcher, F
 from dotenv import load_dotenv, find_dotenv
-import atexit
 from maxapi.enums.format import Format
-from maxapi.utils.formatting import (Blockquote,Bold,Heading,Italic,Link,as_html,)
+from maxapi.utils.formatting import Blockquote, Bold, Heading, Italic, Link, as_html
 from maxapi.types.attachments.attachment import ButtonsPayload
-from maxapi.types.attachments.buttons import (ClipboardButton,LinkButton,CallbackButton)
+from maxapi.types.attachments.buttons import ClipboardButton, LinkButton, CallbackButton
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
+
+parent_dir = Path(__file__).parent.parent
+sys.path.insert(0, str(parent_dir))
+
+from libs.funcs import HelperFunction as hlp
+from libs.salon1c import SalonClient, SalonAPIError, make_sign, NotFoundError, TransportError
+from listener.services.salon1c_service import Salon1CService
 from listener.payloads import ConfirmAppointmentPayload, CallbackAction
+
 # Настройка логирования
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logging.basicConfig(
+    level=logging.INFO, 
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.StreamHandler(sys.stdout)
+    ]
+)
 logger = logging.getLogger(__name__)
 
 load_dotenv(find_dotenv())
 
 # КОНФИГУРАЦИЯ
-MONGO_URI = os.getenv("MONGO_URI") # Адрес вашего сервера с MongoDB
+MONGO_URI = os.getenv("MONGO_URI")  # Адрес вашего сервера с MongoDB
 DB_NAME = os.getenv("DB_NAME")
 COLLECTION_NAME = os.getenv("COLLECTION_NAME")
 MAX_BOT_TOKEN = os.getenv("MAX_BOT_TOKEN")
 
 # Данные для МИС Renovatio
-SALON_ID = os.getenv("SALON_ID","")
-API_KEY = os.getenv("API_KEY","")
+SALON_ID = os.getenv("SALON_ID", "")
+API_KEY = os.getenv("API_KEY", "")
 DAYS_BEFORE = int(os.getenv("DAYS_BEFORE", 20))
 
 
@@ -67,11 +73,11 @@ class NotificationSender:
             logger.error(f"Не удалось отправить сообщение пользователю {chat_id}: {e}")
             return False    
 
-    async def send_confirmation(self, chat_id, text, appointment_id):
-        #отправка кнопок подтверждения или отмены визита
+    async def send_confirmation(self, chat_id: int, text: str, appointment_id: str) -> bool:
+        """Отправка кнопок подтверждения или отмены визита"""
         buttons = [
             [CallbackButton(text="Подтвердить визит", payload=ConfirmAppointmentPayload(appointment_id=appointment_id, action='confirmation').pack())],
-            #[CallbackButton(text="ОТМЕНИТЬ ВИЗИТ(по клику визит будет отменён)", payload=ConfirmAppointment(appointment_id=appointment_id, action='cancel').pack(),intent = "negative")]
+            #[CallbackButton(text="ОТМЕНИТЬ ВИЗИТ(по клику визит будет отменён)", payload=ConfirmAppointment(appointment_id=appointment_id, action='cancel').pack(),intent = "negative")],
             [CallbackButton(text="Основное меню", payload=CallbackAction(action='menu').pack())],
         ]
         payload = ButtonsPayload(buttons=buttons).pack()
@@ -86,31 +92,28 @@ class NotificationSender:
             logger.info(f"Подтверждение отправлено в чат {chat_id}")
             return True
         except Exception as e:
-            #logger.error(f"Не удалось отправить сообщение пользователю {chat_id}: {e}")
+            logger.error(f"Не удалось отправить сообщение пользователю {chat_id}: {e}")
             return False
 
-    async def process_notifications(self):
+    async def process_notifications(self) -> None:
         """Основная логика: получить данные из МИС -> найти в Mongo -> отправить"""
         formatted_date = datetime.now().strftime("%d.%m.%Y")
-        logger.info("Запуск процесса рассылки..."+formatted_date)
+        logger.info(f"Запуск процесса рассылки... {formatted_date}")
         
-        appointments=[]
-        appointments = await self.salon1c_service.get_visites();
-
-        countVisits = len(appointments)
-        
+        appointments = await self.salon1c_service.get_visites()
+        count_visits = len(appointments)
         sent_count = 0
         
         for item in appointments:
             #hlp.log_json(item)
             status = item.get("status", [])
 
-            client = item.get("client", [])
+            client = item.get("client", {})
             if not client:
                 continue
-            phones = client.get("phones", [])
             
-            if(len(phones) == 0):
+            phones = client.get("phones", [])
+            if not phones:
                 continue
 
             phone = phones[0]
@@ -127,23 +130,32 @@ class NotificationSender:
             user_record = await self.collection.find_one({"phoneNumber": clean_phone})
 
             if not user_record:
-                 # Альтернативный поиск, если форматы телефонов отличаются
-                 user_record = await self.collection.find_one({"phoneNumber": {"$regex": clean_phone[-10:]}})
+                # Альтернативный поиск, если форматы телефонов отличаются
+                user_record = await self.collection.find_one({"phoneNumber": {"$regex": clean_phone[-10:]}})
 
             if user_record:
-                hlp.log_json(item);
+                hlp.log_json(item)
                 chat_id = user_record.get('chatId')
                 if chat_id:
                     apid = str(item['id'])
                     services = item["services"]
+                    if not services:
+                        continue
+                    
                     srv = services[0]
                     start_date = srv.get("start_date")
+                    if not start_date:
+                        continue
+                    
                     dt = datetime.fromisoformat(start_date)
                     format_date = dt.strftime("%d.%m.%Y %H:%M")
-                    service = srv.get("service",[])
-                    service_title = service.get("title","")
-                    staff = srv.get("staff",[])
-                    staff_title = staff.get("title","")
+                    
+                    service = srv.get("service", {})
+                    service_title = service.get("title", "")
+                    
+                    staff = srv.get("staff", {})
+                    staff_title = staff.get("title", "")
+                    
                     message_text = as_html(
                         Heading("Здравствуйте! \nПожалуйста, подтвердите запись в центр красоты и здоровья «Другое измерение»"),
                         "\n",
@@ -162,19 +174,18 @@ class NotificationSender:
                         "С уважением,",
                         "Центр красоты и здоровья «Другое измерение»"
                     )
-                    success = await self.send_confirmation(chat_id, message_text, appointment_id = apid)
+                    success = await self.send_confirmation(chat_id, message_text, appointment_id=apid)
                     if success:
                         sent_count += 1
                         await asyncio.sleep(0.5)
             else:
                 logger.debug(f"Пользователь с телефоном {phone} не найден в базе бота.")
-                pass
 
         if not appointments:
             logger.info("Пациенты не найдены или ошибка API.")
             return
 
-        logger.info(f"Получено {countVisits} записей из МИС.")
+        logger.info(f"Получено {count_visits} записей из МИС.")
         logger.info(f"Рассылка завершена. Отправлено сообщений: {sent_count}")
 
     async def close(self):
@@ -218,7 +229,8 @@ class NotificationSender:
             self.client.close()
             logger.info("Клиент MongoDB закрыт")
 
-async def main2():
+async def main2() -> None:
+    """Одиночный запуск процесса рассылки"""
     sender = NotificationSender(
         mongo_uri=MONGO_URI,
         db_name=DB_NAME,
@@ -230,7 +242,8 @@ async def main2():
     finally:
         await sender.close()
 
-async def main():
+async def main() -> None:
+    """Запуск планировщика для регулярной работы"""
     sender = NotificationSender(
         mongo_uri=MONGO_URI,
         db_name=DB_NAME,
@@ -264,7 +277,7 @@ async def main():
             logger.error(f"❌ Неверный формат времени для {var_name}: {time_str}")
 
     scheduler.start()
-    #logger.info("🚀 Планировщик запущен. Ожидание сигнала остановки...")
+    logger.info("🚀 Планировщик запущен. Ожидание сигнала остановки...")
 
     try:
         await asyncio.Event().wait()
@@ -276,12 +289,12 @@ async def main():
         logger.info("🔌 Ресурсы закрыты.")
 
 if __name__ == '__main__':
-    #Одиночный запуск
-    asyncio.run(main2())
-    #ДЛЯ РЕГУЛЯРНОЙ РАБОТЫ (раскомментируйте блок ниже)
+    # ДЛЯ РЕГУЛЯРНОЙ РАБОТЫ (раскомментируйте блок ниже)
+    # Одиночный запуск (закомментировать для production)
+    # asyncio.run(main2())
+    
     logger.info(f"Текущее время: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     try:
-        #asyncio.run(main())
-        pass
+        asyncio.run(main())
     except KeyboardInterrupt:
-        pass # Игнорируем повторный KeyboardInterrupt на верхнем уровне
+        pass  # Игнорируем повторный KeyboardInterrupt на верхнем уровне

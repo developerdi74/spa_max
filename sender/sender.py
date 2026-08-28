@@ -1,5 +1,5 @@
 """
-Сервис для рассылки уведомлений из Renovation в МАКС в установленное время в .env NOTIFICATION_TIME
+Сервис для рассылки подтверждений визитов клиентов в установленное время в .env NOTIFICATION_TIME
 Путь: /maxprojects/sender/sender.py
 Библиотеки: 
     /maxprojects/libs/funcs.py
@@ -13,8 +13,10 @@ from pathlib import Path
 parent_dir = Path(__file__).parent.parent
 sys.path.insert(0, str(parent_dir))
 
-from libs.renovation_api import RenovatioClient 
+
 from libs.funcs import HelperFunction as hlp
+from libs.salon1c import SalonClient, SalonAPIError, make_sign, NotFoundError, TransportError
+from listener.services.salon1c_service import Salon1CService
 from maxapi.filters.callback_payload import CallbackPayload
 from datetime import datetime,timedelta
 import aiohttp
@@ -28,7 +30,7 @@ from maxapi.utils.formatting import (Blockquote,Bold,Heading,Italic,Link,as_html
 from maxapi.types.attachments.attachment import ButtonsPayload
 from maxapi.types.attachments.buttons import (ClipboardButton,LinkButton,CallbackButton)
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
-
+from listener.payloads import ConfirmAppointmentPayload, CallbackAction
 # Настройка логирования
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -42,16 +44,10 @@ COLLECTION_NAME = os.getenv("COLLECTION_NAME")
 MAX_BOT_TOKEN = os.getenv("MAX_BOT_TOKEN")
 
 # Данные для МИС Renovatio
-MIS_API_URL = os.getenv("MIS_API_URL")
-MIS_API_KEY = os.getenv("MIS_API_KEY")
+SALON_ID = os.getenv("SALON_ID","")
+API_KEY = os.getenv("API_KEY","")
 DAYS_BEFORE = int(os.getenv("DAYS_BEFORE", 20))
 
-class ConfirmAppointment(CallbackPayload, prefix='confirmAppointment'):
-    appointment_id: str
-    action: str
-
-class CallbackAction(CallbackPayload, prefix='visits'):
-    action: str
 
 class NotificationSender:
     def __init__(self, mongo_uri, db_name, collection_name, bot_token):
@@ -59,7 +55,7 @@ class NotificationSender:
         self.db = self.client[db_name]
         self.collection = self.db[collection_name]
         self.bot = Bot(token=bot_token)
-        self.mis_client = RenovatioClient(MIS_API_URL, MIS_API_KEY,verify_ssl = False)
+        self.salon1c_service = Salon1CService(api_key=API_KEY, salon_id=SALON_ID)
 
     async def send_notification(self, chat_id, text):
         """Отправка сообщения пользователю через MAX API"""
@@ -74,9 +70,9 @@ class NotificationSender:
     async def send_confirmation(self, chat_id, text, appointment_id):
         #отправка кнопок подтверждения или отмены визита
         buttons = [
-            [CallbackButton(text="Подтвердить визит", payload=ConfirmAppointment(appointment_id=appointment_id, action='confirm').pack())],
+            [CallbackButton(text="Подтвердить визит", payload=ConfirmAppointmentPayload(appointment_id=appointment_id, action='confirmation').pack())],
             #[CallbackButton(text="ОТМЕНИТЬ ВИЗИТ(по клику визит будет отменён)", payload=ConfirmAppointment(appointment_id=appointment_id, action='cancel').pack(),intent = "negative")]
-            [CallbackButton(text="МЕНЮ", payload=CallbackAction(action='menu').pack())],
+            [CallbackButton(text="Основное меню", payload=CallbackAction(action='menu').pack())],
         ]
         payload = ButtonsPayload(buttons=buttons).pack()
 
@@ -95,53 +91,34 @@ class NotificationSender:
 
     async def process_notifications(self):
         """Основная логика: получить данные из МИС -> найти в Mongo -> отправить"""
-        logger.info("Запуск процесса рассылки...")
+        formatted_date = datetime.now().strftime("%d.%m.%Y")
+        logger.info("Запуск процесса рассылки..."+formatted_date)
         
-        # 1. Получаем данные из МИС
-        #patients = await self.mis_client.get_patients_with_appointments()
-
-        now = datetime.now()
-        next_day = now + timedelta(days=DAYS_BEFORE)
-        formatted_date = next_day.strftime("%d.%m.%Y")
-
         appointments=[]
-        logging.info(formatted_date)
-        appointments = await self.mis_client.get_appointments(
-            date_from = formatted_date+" 00:00",
-            date_to = formatted_date+" 23:59",
-            status_id = '1,2,3'
-        );
+        appointments = await self.salon1c_service.get_visites();
 
         countVisits = len(appointments)
-        logging.info(countVisits)
+        
         sent_count = 0
-        #для тестов
-        """appointments = [
-            {
-                "id": "100994",
-                "clinic": "Доменщиков 8а",
-                "patient_phone": "+7 (991) 898-17-29",
-                "time_start": "28.04.2026 07:30",
-                "room": "23",
-                "doctor": "Капельницы Д.",
-            },
-            {
-               "id": "100994",
-               "clinic": "Доменщиков 8а",
-               "patient_phone": "79193422046",
-               "time_start": "28.04.2026 07:30",
-               "room": "23",
-               "doctor": "Капельницы Д."
-            },
-        ]"""
+        
         for item in appointments:
-            if item['confirm_status']:
+            #hlp.log_json(item)
+            status = item.get("status", [])
+
+            client = item.get("client", [])
+            if not client:
+                continue
+            phones = client.get("phones", [])
+            phone = phones[0]
+            clean_phone = hlp.validate_phone(phone)
+            
+            if not clean_phone:
                 continue
 
-            clean_phone = hlp.validate_phone(item['patient_phone'])
-            phone = clean_phone
-            if not phone:
+            if status != "Expected":
                 continue
+            
+            #clean_phone = "79918981729" 
 
             user_record = await self.collection.find_one({"phoneNumber": clean_phone})
 
@@ -150,28 +127,36 @@ class NotificationSender:
                  user_record = await self.collection.find_one({"phoneNumber": {"$regex": clean_phone[-10:]}})
 
             if user_record:
-                #hlp.log_json(item);
+                hlp.log_json(item);
                 chat_id = user_record.get('chatId')
-                apid = str(item['id'])
                 if chat_id:
+                    apid = str(item['id'])
+                    services = item["services"]
+                    srv = services[0]
+                    start_date = srv.get("start_date")
+                    dt = datetime.fromisoformat(start_date)
+                    format_date = dt.strftime("%d.%m.%Y %H:%M")
+                    service = srv.get("service",[])
+                    service_title = service.get("title","")
+                    staff = srv.get("staff",[])
+                    staff_title = staff.get("title","")
                     message_text = as_html(
-                        Heading(f"Здравствуйте! Подтверждение Вашего визита!"),
+                        Heading("Здравствуйте! \nПожалуйста, подтвердите запись в центр красоты и здоровья «Другое измерение»"),
                         "\n",
                         "\n",
-                        Bold(item['time_start']),
-                        f" у Вас запланирован визит",
-                        f" в ",Bold('МЦ Семейный доктор')," по адресу: \n",Bold(item['clinic']),
-                        "\n",
-                        f"Врач: {item.get('doctor')}","\n",
-                        f"Кабинет: { 'уточните у администратора' if item.get('room') else item.get('room')}",
-                        "\n",
-                        "Пожалуйста, не забудьте с собой паспорт, СНИЛС(для больничного), ребенку свидетельство о рождении.",
+                        f"📅 " + Bold(format_date) + " у Вас запланирован визит по адресу:",
+                        f"\n📍 "+Bold('пр. Ленина, 27'),
                         "\n",
                         "\n",
-                        Bold("Для подтверждения визита нажмите, пожалуйста, на кнопку ниже."),
+                        f"👤 Специалист: {staff_title}",
+                        f"\n💆‍♀️ Услуга: {service_title}",
                         "\n",
                         "\n",
-                        Link("Памятки для подготовки", url="https://mgn-doctor.ru/documents/memos/"),
+                        Bold("Пожалуйста, подтвердите Ваш визит, нажав на кнопку ниже."),
+                        "\n",
+                        "\n",
+                        "С уважением,",
+                        "Центр красоты и здоровья «Другое измерение»"
                     )
                     success = await self.send_confirmation(chat_id, message_text, appointment_id = apid)
                     if success:
@@ -205,19 +190,19 @@ class NotificationSender:
                 logger.warning(f"Ошибка при закрытии сессии бота: {e}")
         
         # 2. Закрываем сессию клиента МИС (RenovatioClient)
-        if self.mis_client:
+        if self.salon1c_service:
             try:
                 # Попытка закрыть через стандартный метод close/aclose, если он есть
-                if hasattr(self.mis_client, 'close'):
-                    await self.mis_client.close()
+                if hasattr(self.salon1c_service, 'close'):
+                    await self.salon1c_service.close()
                     logger.info("Сессия МИС закрыта через close()")
-                elif hasattr(self.mis_client, 'aclose'):
-                    await self.mis_client.aclose()
+                elif hasattr(self.salon1c_service, 'aclose'):
+                    await self.salon1c_service.aclose()
                     logger.info("Сессия МИС закрыта через aclose()")
                 # Попытка закрыть прямую сессию aiohttp, если она доступна
-                elif hasattr(self.mis_client, 'session') and self.mis_client.session:
-                    if not self.mis_client.session.closed:
-                        await self.mis_client.session.close()
+                elif hasattr(self.salon1c_service, 'session') and self.salon1c_service.session:
+                    if not self.salon1c_service.session.closed:
+                        await self.salon1c_service.session.close()
                         logger.info("Сессия МИС закрыта через .session.close()")
                 else:
                     logger.warning("Не удалось найти метод закрытия сессии для RenovatioClient")
@@ -235,7 +220,7 @@ async def main2():
         db_name=DB_NAME,
         collection_name=COLLECTION_NAME,
         bot_token=MAX_BOT_TOKEN
-    )    
+    )
     try:
         await sender.process_notifications()
     finally:
@@ -288,11 +273,11 @@ async def main():
 
 if __name__ == '__main__':
     #Одиночный запуск
-    #asyncio.run(main())
-    
+    asyncio.run(main2())
     #ДЛЯ РЕГУЛЯРНОЙ РАБОТЫ (раскомментируйте блок ниже)
     logger.info(f"Текущее время: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     try:
-        asyncio.run(main())
+        #asyncio.run(main())
+        pass
     except KeyboardInterrupt:
         pass # Игнорируем повторный KeyboardInterrupt на верхнем уровне

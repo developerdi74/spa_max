@@ -40,6 +40,8 @@ class ListVisitHandler(BaseHandler):
         
         chat_id, phone, usertoken, checkuser = validated
         buttons=[]
+        
+        list_visits2 = await self._salon_service.get_visites()
 
         if payload.action == "list_visits":
             # Асинхронный вызов

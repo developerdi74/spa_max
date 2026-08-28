@@ -9,6 +9,7 @@ from typing import Any, List, Optional, Sequence, Union
 
 from ..utils import clean_params, services_array_json, to_iso8601
 from .base import BaseResource
+from libs.funcs import HelperFunction as hlp
 
 DateLike = Union[str, date, datetime]
 
@@ -126,7 +127,9 @@ class BookingsResource(BaseResource):
             json_body=body,
             usertoken=self.token(usertoken),
         )
-        logging.info(resp)
+        logging.info("Визит создан")
+        hlp.log_json(resp)
+        logging.info("#######################")
         return self.data(resp)
 
     def change_record(

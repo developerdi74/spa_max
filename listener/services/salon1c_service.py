@@ -1,4 +1,4 @@
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timedelta,time
 from libs.salon1c import SalonClient, SalonAPIError, make_sign, NotFoundError, TransportError
 import logging
 import asyncio
@@ -7,6 +7,7 @@ from aiocache import cached, Cache
 from typing import Any, Callable, TypeVar, Union
 import aiohttp
 from concurrent.futures import ThreadPoolExecutor
+from libs.salon1c.utils import to_iso8601
 
 CACHE_CONFIG_LONG = {"cache": Cache.MEMORY, "ttl": 3600*24*30}
 CACHE_CONFIG = {"cache": Cache.MEMORY, "ttl": 3600*6}
@@ -33,6 +34,7 @@ def run_sync_in_async(func: Callable[..., T], *args, **kwargs) -> asyncio.Future
 
 
 async def retry_on_failure(func: Callable, *args, max_attempts=RETRY_ATTEMPTS, delay=RETRY_DELAY, **kwargs):
+
     """
     Выполняет функцию с повторными попытками при ошибках 1С.
     
@@ -49,6 +51,7 @@ async def retry_on_failure(func: Callable, *args, max_attempts=RETRY_ATTEMPTS, d
     Raises:
         SalonServiceError: Если все попытки исчерпаны
     """
+
     last_exception = None
     
     for attempt in range(1, max_attempts + 1):
@@ -302,3 +305,35 @@ class Salon1CService:
         except SalonServiceError as e:
             logging.error(f"Не удалось отменить визит: {e}")
             raise
+
+    async def get_visites(self) -> list:
+        """Получить визиты по дате (асинхронно)"""
+        # Получаем завтрашнюю дату
+        tomorrow = datetime.now().date() + timedelta(days=10)
+        logging.info(tomorrow)
+        list_visits = await run_sync_in_async(
+            lambda: self.client.visits.visits(
+                self.salon_id,
+                start_date=to_iso8601(datetime.combine(tomorrow, time(0, 1, 0))),
+                end_date=to_iso8601(datetime.combine(tomorrow, time(23, 59, 0)))
+            )
+        )
+        return list_visits
+    async def confirm_visit(self, usertoken:str, appointment_id:str) -> list:
+        """Получить визиты по дате (асинхронно)"""
+
+        record = {
+            "id": appointment_id,
+            "status": "canceled"
+        }
+        logging.info(f"Подтверждение визита {appointment_id} US: "+ usertoken)
+
+        result = await run_sync_in_async(
+            lambda: self.client.visits.update_record(
+                salon_id = self.salon_id,
+                record=record,
+                usertoken=usertoken
+            )
+        )
+        logging.info(result)
+        return result

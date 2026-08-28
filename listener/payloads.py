@@ -18,3 +18,7 @@ class VisitsActionPayload(CallbackPayload, prefix="visits"):
     action_filter: str = "list_visits"
     action: str = ""
     visit_id: str = ""
+
+class ConfirmAppointmentPayload(CallbackPayload, prefix='confirm'):
+    appointment_id: str
+    action: str

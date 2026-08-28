@@ -6,7 +6,7 @@ from typing import Any, Optional
 
 from ..utils import clean_params, to_iso8601
 from .base import BaseResource
-
+import logging
 
 class VisitsResource(BaseResource):
 
@@ -44,6 +44,7 @@ class VisitsResource(BaseResource):
 
     def update_record(
         self,
+        salon_id: str,
         record: dict,
         usertoken: Optional[str] = None,
     ) -> Any:
@@ -53,10 +54,11 @@ class VisitsResource(BaseResource):
         (datetime, comment, status, duration, record_array).
         """
         resp = self.http.put(
-            "/hs/api/v1/records/{salon_id}/",
+            "/hs/api/v1/records/"+salon_id+"/",
             json_body=record,
             usertoken=self.token(usertoken),
         )
+        return resp
         return self.data(resp)
 
     def records_list(

@@ -291,7 +291,8 @@ class CreateVisitHandler(BaseHandler):
                 )
                 return
 
-            if result != None and result['Result'] == True:
+            if result and result.get('Result') == True and result.get('data_log'):
+                await self._storage.add_visit(phone=phone)
                 text = as_html(
                     Heading("✨ Запись подтверждена!") +
                     "\n\n" +
@@ -307,7 +308,7 @@ class CreateVisitHandler(BaseHandler):
                 text = as_html(
                     Heading("⚠️ Ошибка") +
                     "\n\n" +
-                    "Произошла ошибка при создании визита. Попробуйте ещё раз."
+                    "Произошла ошибка при создании визита. \nПожалуйста, попробуйте выбрать другую дату или время."
                 )
         buttons.append(Keyboards.menu_button())
 

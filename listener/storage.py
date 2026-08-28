@@ -169,7 +169,6 @@ class MongoStorage:
         }
         result = await collection.insert_one(insert_data)
         logging.info("Новая запись в MongoDB добавлена с ID: %s", result.inserted_id)
-
     async def get_user_messages(self, *, phone: int, limit: int=0, date: Optional[datetime] = None) -> List[dict]:
         collection = self._get_collection("messages")
         filter_query = {"phone": phone}
@@ -200,3 +199,22 @@ class MongoStorage:
     def close(self):
         if self._client:
             self._client.close()
+
+
+    #Сбор статистики
+    async def add_visit(self, *, phone: str) -> None:
+        collection = self._get_collection("visits")
+        insert_data = {
+            "phone": phone,
+            "date": datetime.now(),
+        }
+        await collection.insert_one(insert_data)
+
+    async def add_confirmations(self, *, phone: str) -> None:
+        collection = self._get_collection("confirmations")
+        insert_data = {
+            "phone": phone,
+            "date": datetime.now(),
+        }
+        await collection.insert_one(insert_data)
+    #Сбор статистики

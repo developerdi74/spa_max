@@ -109,6 +109,10 @@ class NotificationSender:
             if not client:
                 continue
             phones = client.get("phones", [])
+            
+            if(len(phones) == 0):
+                continue
+
             phone = phones[0]
             clean_phone = hlp.validate_phone(phone)
             

@@ -161,7 +161,7 @@ class FaqRouter:
         
         @self.router.post("/faq/{faq_id}/delete", response_class=HTMLResponse)
         @login_required
-        async def faq_delete(faq_id: str):
+        async def faq_delete(request: Request, faq_id: str):
             """Удаление вопроса."""
             if not self.db_manager or not self.db_manager.faqs:
                 raise HTTPException(status_code=503, detail="MongoDB not initialized")

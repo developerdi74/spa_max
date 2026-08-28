@@ -169,7 +169,7 @@ class NewsletterRouter:
         
         @self.router.post("/newsletters/{newsletter_id}/delete", response_class=HTMLResponse)
         @login_required
-        async def newsletter_delete(newsletter_id: str):
+        async def newsletter_delete(request: Request, newsletter_id: str):
             """Удаление рассылки."""
             if not self.db_manager or not self.db_manager.newsletters:
                 raise HTTPException(status_code=503, detail="MongoDB not initialized")

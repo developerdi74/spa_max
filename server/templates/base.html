@@ -228,6 +228,7 @@
                 <li><a href="/newsletters" {% if request.url.path.startswith('/newsletters') %}class="active"{% endif %}>Рассылки</a></li>
                 <li><a href="/shares" {% if request.url.path.startswith('/shares') %}class="active"{% endif %}>Акции</a></li>
                 <li><a href="/faq" {% if request.url.path.startswith('/faq') %}class="active"{% endif %}>FAQ</a></li>
+                <li><a href="/stats" {% if request.url.path.startswith('/stats') %}class="active"{% endif %}>Статистика</a></li>
             </ul>
         </nav>
         {% block content %}{% endblock %}

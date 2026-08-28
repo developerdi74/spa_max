@@ -177,7 +177,7 @@ class ShareRouter:
         
         @self.router.post("/shares/{share_id}/delete", response_class=HTMLResponse)
         @login_required
-        async def share_delete(share_id: str):
+        async def share_delete(request: Request,share_id: str):
             """Удаление акции."""
             if not self.db_manager or not self.db_manager.shares:
                 raise HTTPException(status_code=503, detail="MongoDB not initialized")

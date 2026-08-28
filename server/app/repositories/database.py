@@ -464,6 +464,9 @@ class DatabaseManager:
         self.users: Optional[UserRepository] = None
         self.shares: Optional[ShareRepository] = None
         self.faqs: Optional[FaqRepository] = None
+        
+        # Сторидж из listener для статистики
+        self.storage = None
     
     async def connect(self) -> None:
         """Подключение к MongoDB."""
@@ -491,6 +494,11 @@ class DatabaseManager:
             self.db,
             "faqs"
         )
+        
+        # Инициализация storage из listener для доступа к методам статистики
+        from listener.storage import MongoStorage
+        self.storage = MongoStorage(self.settings.MONGO_URI, self.settings.DB_NAME, self.settings.COLLECTION_USERS)
+        await self.storage.connect()
         
         # Создание индексов
         await self.newsletters.create_index()

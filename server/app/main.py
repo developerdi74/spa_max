@@ -19,6 +19,7 @@ from .services.newsletter_service import NewsletterService
 from .routers.newsletters import NewsletterRouter, HealthRouter
 from .routers.shares import ShareRouter
 from .routers.faq import FaqRouter
+from .routers.stats import StatsRouter
 from .utils.logging import setup_logging
 from .utils.auth import AuthRouter
 
@@ -79,6 +80,8 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
             router.initialize(db_manager)
         elif isinstance(router, FaqRouter):
             router.initialize(db_manager)
+        elif isinstance(router, StatsRouter):
+            router.initialize(db_manager)
     
     logger.info("🚀 Webhook сервис запущен")
     
@@ -122,16 +125,18 @@ def create_application() -> FastAPI:
     newsletter_router = NewsletterRouter(templates)
     share_router = ShareRouter(templates)
     faq_router = FaqRouter(templates)
+    stats_router = StatsRouter(templates)
     auth_router = AuthRouter(templates)
     
     # Сохраняем роутеры в state для последующей инициализации
-    app.state.routers = [health_router, newsletter_router, share_router, faq_router, auth_router]
+    app.state.routers = [health_router, newsletter_router, share_router, faq_router, stats_router, auth_router]
     
     # Регистрация роутеров
     app.include_router(health_router.router)
     app.include_router(newsletter_router.router)
     app.include_router(share_router.router)
     app.include_router(faq_router.router)
+    app.include_router(stats_router.router)
     app.include_router(auth_router.router)
     
     return app

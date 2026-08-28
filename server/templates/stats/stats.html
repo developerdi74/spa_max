@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Статистика{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>📊 Статистика по месяцам</h2>
+    
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-header">Пользователи</div>
+                <div class="card-body">
+                    <h5 class="card-title">Всего: {{ total_users }}</h5>
+                    <p class="card-text">За последние 12 месяцев: {{ total_users_months }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-header">Посещения (visits)</div>
+                <div class="card-body">
+                    <h5 class="card-title">Всего: {{ total_visits }}</h5>
+                    <p class="card-text">За последние 12 месяцев: {{ total_visits_months }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-info mb-3">
+                <div class="card-header">Подтверждения (confirmations)</div>
+                <div class="card-body">
+                    <h5 class="card-title">Всего: {{ total_confirmations }}</h5>
+                    <p class="card-text">За последние 12 месяцев: {{ total_confirmations_months }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5>Детальная статистика по месяцам</h5>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Месяц</th>
+                        <th>Пользователи</th>
+                        <th>Посещения</th>
+                        <th>Подтверждения</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for month_stat in stats_by_month %}
+                    <tr>
+                        <td>{{ month_stat.month_name }} {{ month_stat.year }}</td>
+                        <td>{{ month_stat.users }}</td>
+                        <td>{{ month_stat.visits }}</td>
+                        <td>{{ month_stat.confirmations }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

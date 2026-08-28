@@ -217,4 +217,103 @@ class MongoStorage:
             "date": datetime.now(),
         }
         await collection.insert_one(insert_data)
+
+    async def get_visits_stats(self, months: int = 12) -> List[dict]:
+        """Получение статистики посещений по месяцам."""
+        if self._db is None:
+            raise RuntimeError("MongoDB не инициализирован. Вызовите connect().")
+        
+        collection = self._get_collection("visits")
+        pipeline = [
+            {
+                "$group": {
+                    "_id": {
+                        "year": {"$year": "$date"},
+                        "month": {"$month": "$date"}
+                    },
+                    "count": {"$sum": 1}
+                }
+            },
+            {
+                "$sort": {"_id.year": -1, "_id.month": -1}
+            },
+            {"$limit": months},
+            {
+                "$project": {
+                    "_id": 0,
+                    "year": "$_id.year",
+                    "month": "$_id.month",
+                    "count": 1
+                }
+            },
+            {"$sort": {"year": 1, "month": 1}}
+        ]
+        result = await collection.aggregate(pipeline).to_list(length=None)
+        return result
+
+    async def get_confirmations_stats(self, months: int = 12) -> List[dict]:
+        """Получение статистики подтверждений по месяцам."""
+        if self._db is None:
+            raise RuntimeError("MongoDB не инициализирован. Вызовите connect().")
+        
+        collection = self._get_collection("confirmations")
+        pipeline = [
+            {
+                "$group": {
+                    "_id": {
+                        "year": {"$year": "$date"},
+                        "month": {"$month": "$date"}
+                    },
+                    "count": {"$sum": 1}
+                }
+            },
+            {
+                "$sort": {"_id.year": -1, "_id.month": -1}
+            },
+            {"$limit": months},
+            {
+                "$project": {
+                    "_id": 0,
+                    "year": "$_id.year",
+                    "month": "$_id.month",
+                    "count": 1
+                }
+            },
+            {"$sort": {"year": 1, "month": 1}}
+        ]
+        result = await collection.aggregate(pipeline).to_list(length=None)
+        return result
+
+    async def get_users_stats(self, months: int = 12) -> List[dict]:
+        """Получение статистики пользователей по месяцам (по дате добавления)."""
+        if self._db is None:
+            raise RuntimeError("MongoDB не инициализирован. Вызовите connect().")
+        
+        collection = self._get_collection("users")
+        pipeline = [
+            {
+                "$group": {
+                    "_id": {
+                        "year": {"$year": "$date"},
+                        "month": {"$month": "$date"}
+                    },
+                    "count": {"$sum": 1}
+                }
+            },
+            {
+                "$sort": {"_id.year": -1, "_id.month": -1}
+            },
+            {"$limit": months},
+            {
+                "$project": {
+                    "_id": 0,
+                    "year": "$_id.year",
+                    "month": "$_id.month",
+                    "count": 1
+                }
+            },
+            {"$sort": {"year": 1, "month": 1}}
+        ]
+        result = await collection.aggregate(pipeline).to_list(length=None)
+        return result
     #Сбор статистики

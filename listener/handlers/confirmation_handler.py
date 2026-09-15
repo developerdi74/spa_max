@@ -54,7 +54,7 @@ class CreateVisitHandler(BaseHandler):
         if not appointment_id:
             text = "Не удалось подтвердить визит"
         else:
-            #result = await self._salon_service.confirm_visit(usertoken=usertoken, appointment_id=appointment_id)
+            result = await self._salon_service.confirm_visit(appointment_id=appointment_id)
             await self._storage.add_confirmations(phone=phone)
         """await event.answer(
             new_text=text,

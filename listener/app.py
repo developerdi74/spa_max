@@ -22,7 +22,7 @@ class ListenerApplication:
         self.dp = Dispatcher()
 
         self.storage = MongoStorage(self.config.mongo_uri, self.config.db_name, self.config.collection_name)
-        self.salon1c_service = Salon1CService(api_key=self.config.salon_key, salon_id=self.config.salon_id)
+        self.salon1c_service = Salon1CService(api_key=self.config.salon_key, salon_id=self.config.salon_id, usertoken_app=self.config.usertoken_app)
         self.aihelper_service = AIHelperService(self.config.ai_key, self.config.ai_url, self.config.ai_project, self.config.ai_model)
 
         self._register_handlers()

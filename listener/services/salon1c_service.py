@@ -78,9 +78,10 @@ async def retry_on_failure(func: Callable, *args, max_attempts=RETRY_ATTEMPTS, d
     raise SalonServiceError(f"Сервис 1С недоступен после {max_attempts} попыток") from last_exception
 
 class Salon1CService:
-    def __init__(self, api_key: str, salon_id: str):
+    def __init__(self, api_key: str, salon_id: str, usertoken_app:str=""):
         self.api_key = api_key
         self.salon_id = salon_id
+        self.usertoken_app = usertoken_app
         self.client = self._client()
         self._token_cache: dict[str, tuple[str, datetime]] = {}  # Кэш токенов: phone -> (token, expiry)
         self._TOKEN_CACHE_TTL = 3600  # 1 час
@@ -319,20 +320,20 @@ class Salon1CService:
             )
         )
         return list_visits
-    async def confirm_visit(self, usertoken:str, appointment_id:str) -> list:
+    async def confirm_visit(self, appointment_id:str) -> list:
         """Получить визиты по дате (асинхронно)"""
 
         record = {
             "id": appointment_id,
-            "status": "canceled"
+            "comment": "Подтвердили в МАКС"
         }
-        logging.info(f"Подтверждение визита {appointment_id} US: "+ usertoken)
+        logging.info(f"Подтверждение визита {appointment_id}")
 
         result = await run_sync_in_async(
             lambda: self.client.visits.update_record(
                 salon_id = self.salon_id,
                 record=record,
-                usertoken=usertoken
+                usertoken=self.usertoken_app
             )
         )
         logging.info(result)

@@ -13,6 +13,7 @@ class Config:
     collection_name: str
     salon_id: str
     salon_key: str
+    usertoken_app: str
     webhook_url: str
     webhook_secret: str | None
     webhook_host: str
@@ -32,6 +33,7 @@ class Config:
             collection_name=os.getenv("COLLECTION_NAME", ""),
             salon_id=os.getenv("SALON_ID", ""),
             salon_key=os.getenv("API_KEY", ""),
+            usertoken_app=os.getenv("USERTOKEN_APP", ""),
             webhook_url=os.getenv("WEBHOOK_URL_SUBSCRIBE", ""),
             webhook_secret=os.getenv("WEBHOOK_SECRET") or None,
             webhook_host=os.getenv("WEBHOOK_HOST", "0.0.0.0"),

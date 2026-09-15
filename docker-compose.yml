@@ -15,19 +15,19 @@ services:
     networks:
       - max-net
 
-  # Сервис обработки вебхуков (FastAPI)
-  max-server:
+  # Сервис админ панели для рассылки (FastAPI)
+  max-admin:
     build:
       context: .
-      dockerfile: server/Dockerfile
-    container_name: max_server
+      dockerfile: admin/Dockerfile
+    container_name: max_admin
     restart: unless-stopped
     ports:
       - "8000:8000"
     env_file:
       - .env
     volumes:
-      - ./server/start.py:/app/start.py
+      - ./admin/start.py:/app/start.py
       - ./libs:/app/libs
     networks:
       - max-net

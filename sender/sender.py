@@ -53,6 +53,7 @@ MAX_BOT_TOKEN = os.getenv("MAX_BOT_TOKEN")
 SALON_ID = os.getenv("SALON_ID", "")
 API_KEY = os.getenv("API_KEY", "")
 DAYS_BEFORE = int(os.getenv("DAYS_BEFORE", 20))
+ENV = os.getenv("ENV", "DEV")
 
 
 class NotificationSender:
@@ -105,7 +106,6 @@ class NotificationSender:
         sent_count = 0
         
         for item in appointments:
-            #hlp.log_json(item)
             status = item.get("status", [])
 
             client = item.get("client", {})
@@ -256,7 +256,7 @@ async def main() -> None:
     # Список переменных времени из .env
     time_vars = {
         "NOTIFICATION_TIME": os.getenv("NOTIFICATION_TIME", "9:00"),
-        "NOTIFICATION_TIME_TWO": os.getenv("NOTIFICATION_TIME_TWO", "12:00")
+        "NOTIFICATION_TIME_TWO": os.getenv("NOTIFICATION_TIME_TWO", "14:00")
     }
 
     for var_name, time_str in time_vars.items():
@@ -291,10 +291,15 @@ async def main() -> None:
 if __name__ == '__main__':
     # ДЛЯ РЕГУЛЯРНОЙ РАБОТЫ (раскомментируйте блок ниже)
     # Одиночный запуск (закомментировать для production)
-    # asyncio.run(main2())
+    #asyncio.run(main2())
     
     logger.info(f"Текущее время: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     try:
-        asyncio.run(main())
+        if ENV == "DEV":
+            logger.info("Запуск в режиме DEV (одиночный запуск)")
+            asyncio.run(main2())
+        else:
+            asyncio.run(main())
+        pass
     except KeyboardInterrupt:
         pass  # Игнорируем повторный KeyboardInterrupt на верхнем уровне

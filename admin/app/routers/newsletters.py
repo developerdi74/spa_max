@@ -269,7 +269,7 @@ class HealthRouter:
         @self.router.get("/")
         async def root():
             """Корневой эндпоинт."""
-            return {"status": "ok", "timestamp": datetime.now().isoformat()}
+            return RedirectResponse(url="/newsletters", status_code=302)
         
         @self.router.get("/health")
         async def health_check():

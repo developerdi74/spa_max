@@ -33,6 +33,10 @@ class ListenerApplication:
         # 1. Автоматически находим все классы хендлеров
         handler_classes = discover_handlers()
         
+        logging.info("Найдено хендлеров: %d", len(handler_classes))
+        for cls in handler_classes:
+            logging.info("  - %s", cls.__name__)
+        
         # 2. Пул всех доступных зависимостей
         deps = {
             'storage': self.storage,
@@ -46,24 +50,28 @@ class ListenerApplication:
         instances = []
 
         EXCLUDED_HANDLERS = []
-        logging.info(self.config.ai_activated)
+        logging.info("AI активирован: %s", self.config.ai_activated)
         
         if self.config.ai_activated != "1":
             EXCLUDED_HANDLERS.append("AiAnswerHandler")
+            logging.info("Исключен хендлер: AiAnswerHandler (AI не активирован)")
         else:            
             EXCLUDED_HANDLERS.append("DefaultMessageHandler")
+            logging.info("Исключен хендлер: DefaultMessageHandler (AI активирован)")
 
         for cls in handler_classes:
             if cls.__name__ in EXCLUDED_HANDLERS:
-                logging.info(f"Пропущен хендлер: {cls.__name__}")
+                logging.info("Пропущен хендлер: %s", cls.__name__)
                 continue
             sig = inspect.signature(cls.__init__)
             kwargs = {k: v for k, v in deps.items() if k in sig.parameters}
             instances.append(cls(**kwargs))
+            logging.info("Зарегистрирован хендлер: %s", cls.__name__)
             
         # 4. Регистрируем
         registry = HandlerRegistry(instances)
         registry.register_all(self.dp)
+        logging.info("Всего зарегистрировано хендлеров: %d", len(instances))
 
     def build_app(self) -> FastAPI:
         webhook = FastAPIMaxWebhook(
@@ -77,7 +85,17 @@ class ListenerApplication:
             # Подключение к БД при старте
             await self.storage.connect()
             logging.info("Подключение к MongoDB установлено")
+            
+            # Логирование зарегистрированных обработчиков после подключения
+            logging.info("=== Зарегистрированные обработчики событий ===")
+            event_handlers = {
+                'message_created': len(self.dp.event_handlers),
+                'message_callback': len([h for h in self.dp.event_handlers if hasattr(h, 'filters')]),
+            }
+            logging.info("Всего обработчиков событий: %d", len(self.dp.event_handlers))
+            
             yield
+            
             # Отключение при остановке
             self.storage.close()
             logging.info("Подключение к MongoDB закрыто")

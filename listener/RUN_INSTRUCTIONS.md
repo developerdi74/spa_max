@@ -1,15 +1,90 @@
-# Запуск через Uvicorn (для разработки)
+# Инструкции по запуску сервиса Listener
+
+## 🔧 Проблема с игнорированием событий
+
+Если вы видите в логах сообщения вида:
+```
+INFO:     89.221.230.117:0 - "POST /webhook HTTP/1.1" 200 OK
+2026-09-15 15:37:24 | INFO     | dispatcher | Проигнорировано: router_id: None | message_callback | chat_id: 461175464, user_id: 216480106
+```
+
+Это означает, что **обработчики событий не зарегистрированы** или **зарегистрированы неправильно**.
+
+### Причины проблемы:
+
+1. **Несколько воркеров Gunicorn/Uvicorn**: При запуске с `-w > 1` каждый воркер создает свой экземпляр Dispatcher, и хендлеры регистрируются только в одном из них.
+   - ✅ **Решение**: Используйте `-w 1` (один воркер) для webhook-режима.
+
+2. **Неправильная регистрация хендлеров**: Убедитесь, что все хендлеры наследуются от `BaseHandler` и правильно регистрируют события.
+   - ✅ **Решение**: Проверьте логи при старте — должны быть сообщения о регистрации всех хендлеров.
+
+3. **Отсутствие токена бота**: Если `MAX_BOT_TOKEN` не задан, приложение не запустится корректно.
+   - ✅ **Решение**: Установите переменную окружения `MAX_BOT_TOKEN`.
+
+## 🚀 Варианты запуска
+
+### 1. Запуск через Uvicorn (для разработки)
+```bash
 uvicorn listener.listener:create_app --host 0.0.0.0 --port 8888 --reload
+```
 
-# Запуск через Uvicorn с несколькими воркерами (для продакшена)
-uvicorn listener.listener:create_app --host 0.0.0.0 --port 8888 --workers 4
+### 2. Запуск через Gunicorn с Uvicorn workers (для продакшена)
+**ВАЖНО**: Для webhook-режима используйте только 1 воркер!
+```bash
+gunicorn listener.listener:create_app -b 0.0.0.0:8888 -k uvicorn.workers.UvicornWorker -w 1 --access-logfile - --error-logfile - --capture-output
+```
 
-# Запуск через Gunicorn с Uvicorn workers (рекомендуется для продакшена)
-gunicorn listener.listener:create_app -b 0.0.0.0:8888 -k uvicorn.workers.UvicornWorker -w 4 --access-logfile - --error-logfile - --capture-output
-
-# Запуск через Docker
+### 3. Запуск через Docker
+```bash
 docker build -t listener-bot .
 docker run -p 8888:8888 --env-file .env listener-bot
+```
 
-# Переменные окружения для настройки количества воркеров в Docker
-# WEBHOOK_WORKERS=4
+Dockerfile настроен на запуск с 1 воркером по умолчанию.
+
+## 📋 Необходимые переменные окружения
+
+| Переменная | Описание | Пример |
+|------------|----------|--------|
+| `MAX_BOT_TOKEN` | Токен бота MaxAPI | `your_bot_token` |
+| `MONGO_URI` | URI подключения к MongoDB | `mongodb://localhost:27017` |
+| `DB_NAME` | Имя базы данных | `bot_db` |
+| `COLLECTION_NAME` | Имя коллекции | `users` |
+| `SALON_ID` | ID салона | `12345` |
+| `API_KEY` | API ключ салона | `your_api_key` |
+| `USERTOKEN_APP` | Токен приложения | `your_usertoken` |
+| `WEBHOOK_URL_SUBSCRIBE` | URL для подписки на webhook | `https://your-domain.com` |
+| `WEBHOOK_SECRET` | Секрет webhook (опционально) | `your_secret` |
+| `WEBHOOK_HOST` | Хост для прослушивания | `0.0.0.0` |
+| `WEBHOOK_PORT_HTTPS` | Порт для прослушивания | `8888` |
+| `WEBHOOK_PATH` | Путь webhook | `/webhook` |
+| `AI_ACTIVATED` | Флаг активации AI (0 или 1) | `0` |
+| `AI_SECRET` | AI API ключ | `your_ai_key` |
+| `AI_URL` | AI API URL | `https://ai-api.com` |
+| `AI_PROJECT` | AI проект | `my_project` |
+| `AI_MODEL` | AI модель | `gpt-4` |
+
+## 🔍 Отладка
+
+При запуске проверьте логи — должны быть сообщения:
+```
+INFO | Найдено хендлеров: X
+INFO |   - BotStartedHandler
+INFO |   - MenuHandler
+INFO |   - ...
+INFO | Зарегистрирован хендлер: BotStartedHandler
+INFO | Зарегистрирован хендлер: MenuHandler
+INFO | Всего зарегистрировано хендлеров: Y
+INFO | === Зарегистрированные обработчики событий ===
+INFO | Всего обработчиков событий: Z
+```
+
+Если хендлеров меньше ожидаемого — проверьте:
+1. Все ли файлы хендлеров импортируются
+2. Правильно ли указаны зависимости в `__init__` хендлеров
+3. Нет ли ошибок при создании экземпляров хендлеров
+
+## ⚠️ Критические замечания
+
+- **НЕ используйте несколько воркеров** (`-w > 1`) для webhook-режима — это приведет к игнорированию событий.
+- Для высоконагруженных систем рассмотрите архитектуру с отдельным процессом для обработки webhook и очередью задач.

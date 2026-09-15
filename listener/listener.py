@@ -28,7 +28,17 @@ def create_app():
     """Фабрика приложения для запуска через Gunicorn/Uvicorn."""
     application = ListenerApplication()
     # Подключение к БД выполняется в lifespan FastAPI
-    return application.build_app()
+    app = application.build_app()
+    
+    # Логирование зарегистрированных роутов для отладки
+    import logging
+    logger = logging.getLogger(__name__)
+    logger.info("Зарегистрированные роуты:")
+    for route in app.routes:
+        if hasattr(route, 'methods') and hasattr(route, 'path'):
+            logger.info("  %s %s", route.methods, route.path)
+    
+    return app
 
 
 if __name__ == "__main__":

@@ -7,11 +7,48 @@ from maxapi import Bot, Dispatcher
 from maxapi.webhook.fastapi import FastAPIMaxWebhook
 from listener.handlers import discover_handlers, HandlerRegistry
 
+# Явно загружаем переменные окружения ДО импорта Config
+from dotenv import load_dotenv, find_dotenv
+load_dotenv(find_dotenv())
+
 from listener.config import Config
 from listener.services.salon1c_service import Salon1CService
 from listener.storage import MongoStorage
 from listener.services.aihelper_service import AIHelperService 
 from libs.salon1c import SalonClient, SalonAPIError, make_sign
+
+
+# Глобальное хранилище экземпляра приложения для factory-функции
+_app_instance: "ListenerApplication | None" = None
+
+
+async def _lifespan_manager(app: FastAPI):
+    """Глобальный менеджер жизненного цикла для uvicorn --factory
+    
+    Использует глобальный экземпляр приложения, созданный в create_app()
+    Работает как асинхронный генератор для поддержки startup/shutdown.
+    """
+    global _app_instance
+    if _app_instance is None:
+        logging.error("Lifespan запущен, но _app_instance не инициализирован!")
+        yield
+        return
+    
+    # Startup - подключаем ресурсы ПЕРЕД обработкой запросов
+    try:
+        logging.info("Запуск подключения к MongoDB...")
+        await _app_instance._connect_resources()
+        logging.info("MongoDB подключен успешно")
+    except Exception as e:
+        logging.error(f"Ошибка подключения к MongoDB: {e}")
+        logging.warning("Приложение запущено без подключения к MongoDB")
+    
+    yield  # Передаем управление приложению
+    
+    # Shutdown - отключаем ресурсы после остановки приложения
+    logging.info("Остановка приложения, отключение MongoDB...")
+    await _app_instance._disconnect_resources()
+    logging.info("MongoDB отключен")
 
 
 class ListenerApplication:
@@ -21,10 +58,13 @@ class ListenerApplication:
 
         self.dp = Dispatcher()
 
+        # Создаем storage СРАЗУ при инициализации
         self.storage = MongoStorage(self.config.mongo_uri, self.config.db_name, self.config.collection_name)
         self.salon1c_service = Salon1CService(api_key=self.config.salon_key, salon_id=self.config.salon_id, usertoken_app=self.config.usertoken_app)
         self.aihelper_service = AIHelperService(self.config.ai_key, self.config.ai_url, self.config.ai_project, self.config.ai_model)
 
+        self._app = None
+        # Хендлеры регистрируем ПОСЛЕ создания storage, но connect вызывается в lifespan
         self._register_handlers()
 
     def _register_handlers(self) -> None:
@@ -63,7 +103,20 @@ class ListenerApplication:
         registry = HandlerRegistry(instances)
         registry.register_all(self.dp)
 
+    async def _connect_resources(self) -> None:
+        """Подключение к MongoDB при старте приложения."""
+        await self.storage.connect()
+        logging.info("MongoDB подключен успешно")
+
+    async def _disconnect_resources(self) -> None:
+        """Отключение от MongoDB при остановке приложения."""
+        self.storage.close()
+        logging.info("MongoDB отключен")
+
     def build_app(self) -> FastAPI:
+        if self._app is not None:
+            return self._app
+        
         webhook = FastAPIMaxWebhook(
             dp=self.dp,
             bot=self.bot,
@@ -72,7 +125,7 @@ class ListenerApplication:
 
         app = FastAPI(
             title="MaxAPI Webhook Listener Bot",
-            lifespan=webhook.lifespan,
+            lifespan=_lifespan_manager,  # Используем глобальный lifespan
         )
 
         webhook.setup(app, path=self.config.webhook_path)
@@ -84,11 +137,10 @@ class ListenerApplication:
                 "webhook_path": self.config.webhook_path,
             })
 
+        self._app = app
         return app
 
     async def run(self) -> None:
-        await self.storage.connect()
-
         app = self.build_app()
         config = uvicorn.Config(
             app=app,
@@ -108,6 +160,17 @@ class ListenerApplication:
             await server.serve()
         except KeyboardInterrupt:
             logging.info("Получен сигнал остановки бота...")
-        finally:
-            self.storage.close()
-            logging.info("Бот и ресурсы успешно остановлены.")
+
+
+def create_app() -> FastAPI:
+    """Factory function for uvicorn --factory
+    
+    Эта функция создает экземпляр приложения и сохраняет его глобально,
+    чтобы lifespan мог получить доступ к ресурсам (MongoDB).
+    Переменные окружения уже загружены при импорте модуля.
+    """
+    global _app_instance
+    
+    application = ListenerApplication()
+    _app_instance = application
+    return application.build_app()

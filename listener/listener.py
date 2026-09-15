@@ -15,6 +15,7 @@ sys.path.insert(0, str(parent_dir))
 
 from listener.app import ListenerApplication, create_app
 from fastapi import FastAPI
+import uvicorn
 
 #logging.basicConfig(level=logging.INFO)
 logging.basicConfig(
@@ -28,8 +29,16 @@ logging.basicConfig(
 )
 
 async def main():
-    application = ListenerApplication()
-    await application.run()
+    # Запускаем через uvicorn с factory-функцией для поддержки lifespan
+    config = uvicorn.Config(
+        app="listener.listener:create_app",
+        factory=True,
+        host="0.0.0.0",
+        port=8888,
+        log_level="info",
+    )
+    server = uvicorn.Server(config)
+    await server.serve()
 
 
 if __name__ == "__main__":

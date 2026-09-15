@@ -1,6 +1,7 @@
 import logging
 import inspect
 import uvicorn
+from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 from maxapi import Bot, Dispatcher
@@ -22,6 +23,7 @@ from libs.salon1c import SalonClient, SalonAPIError, make_sign
 _app_instance: "ListenerApplication | None" = None
 
 
+@asynccontextmanager
 async def _lifespan_manager(app: FastAPI):
     """Глобальный менеджер жизненного цикла для uvicorn --factory
     

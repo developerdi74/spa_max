@@ -1,5 +1,7 @@
 import logging
 import inspect
+from contextlib import asynccontextmanager
+
 import uvicorn
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
@@ -70,9 +72,19 @@ class ListenerApplication:
             secret=self.config.webhook_secret,
         )
 
+        @asynccontextmanager
+        async def lifespan(app: FastAPI):
+            # Подключение к БД при старте
+            await self.storage.connect()
+            logging.info("Подключение к MongoDB установлено")
+            yield
+            # Отключение при остановке
+            self.storage.close()
+            logging.info("Подключение к MongoDB закрыто")
+
         app = FastAPI(
             title="MaxAPI Webhook Listener Bot",
-            lifespan=webhook.lifespan,
+            lifespan=lifespan,
         )
 
         webhook.setup(app, path=self.config.webhook_path)
@@ -87,8 +99,7 @@ class ListenerApplication:
         return app
 
     async def run(self) -> None:
-        await self.storage.connect()
-
+        """Метод для обратной совместимости, но теперь используется lifespan."""
         app = self.build_app()
         config = uvicorn.Config(
             app=app,

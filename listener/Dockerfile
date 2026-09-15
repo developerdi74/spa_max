@@ -2,10 +2,22 @@ FROM python:3.10-slim
 
 WORKDIR /app
 
+# Установка системных зависимостей
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    && rm -rf /var/lib/apt/lists/*
+
 COPY listener/requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt gunicorn
 
 COPY listener/ /app/listener/
 COPY libs /app/libs
 
-CMD ["python", "listener/listener.py"]
+# Переменная окружения для количества воркеров
+ENV WEBHOOK_WORKERS=4
+
+# Экспозиция порта
+EXPOSE 8888
+
+# Запуск через gunicorn с uvicorn workers
+CMD ["gunicorn", "listener.listener:create_app", "-b", "0.0.0.0:8888", "-k", "uvicorn.workers.UvicornWorker", "-w", "4", "--access-logfile", "-", "--error-logfile", "-", "--capture-output"]

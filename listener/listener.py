@@ -13,8 +13,7 @@ from pathlib import Path
 parent_dir = Path(__file__).parent.parent
 sys.path.insert(0, str(parent_dir))
 
-from listener.app import ListenerApplication
-
+from listener.app import ListenerApplication, create_app
 from fastapi import FastAPI
 
 #logging.basicConfig(level=logging.INFO)
@@ -31,12 +30,6 @@ logging.basicConfig(
 async def main():
     application = ListenerApplication()
     await application.run()
-
-
-def create_app() -> FastAPI:
-    """Factory function for uvicorn --factory"""
-    application = ListenerApplication()
-    return application.build_app()
 
 
 if __name__ == "__main__":

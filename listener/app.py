@@ -1,6 +1,7 @@
 import logging
 import inspect
 import uvicorn
+from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 from maxapi import Bot, Dispatcher
@@ -64,10 +65,28 @@ class ListenerApplication:
         registry = HandlerRegistry(instances)
         registry.register_all(self.dp)
 
+    async def _connect_resources(self) -> None:
+        """Подключение к MongoDB при старте приложения."""
+        await self.storage.connect()
+        logging.info("MongoDB подключен успешно")
+
+    async def _disconnect_resources(self) -> None:
+        """Отключение от MongoDB при остановке приложения."""
+        self.storage.close()
+        logging.info("MongoDB отключен")
+
     def build_app(self) -> FastAPI:
         if self._app is not None:
             return self._app
             
+        @asynccontextmanager
+        async def lifespan(app: FastAPI):
+            # Startup
+            await self._connect_resources()
+            yield
+            # Shutdown
+            await self._disconnect_resources()
+        
         webhook = FastAPIMaxWebhook(
             dp=self.dp,
             bot=self.bot,
@@ -76,7 +95,7 @@ class ListenerApplication:
 
         app = FastAPI(
             title="MaxAPI Webhook Listener Bot",
-            lifespan=webhook.lifespan,
+            lifespan=lifespan,
         )
 
         webhook.setup(app, path=self.config.webhook_path)
@@ -92,8 +111,6 @@ class ListenerApplication:
         return app
 
     async def run(self) -> None:
-        await self.storage.connect()
-
         app = self.build_app()
         config = uvicorn.Config(
             app=app,
@@ -113,9 +130,6 @@ class ListenerApplication:
             await server.serve()
         except KeyboardInterrupt:
             logging.info("Получен сигнал остановки бота...")
-        finally:
-            self.storage.close()
-            logging.info("Бот и ресурсы успешно остановлены.")
 
 
 def create_app() -> FastAPI:

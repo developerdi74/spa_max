@@ -8,4 +8,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY listener/ /app/listener/
 COPY libs /app/libs
 
-CMD ["python", "listener/listener.py"]
+EXPOSE 8888
+
+CMD ["uvicorn", "listener.listener:create_app", "--host", "0.0.0.0", "--port", "8888", "--factory"]

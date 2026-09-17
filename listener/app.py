@@ -70,9 +70,23 @@ class ListenerApplication:
             secret=self.config.webhook_secret,
         )
 
+        async def on_startup():
+            await self.storage.connect()
+            logging.info(
+                "Запуск webhook-сервера на %s:%d%s",
+                self.config.webhook_host,
+                self.config.webhook_port,
+                self.config.webhook_path,
+            )
+
+        async def on_shutdown():
+            self.storage.close()
+            logging.info("Бот и ресурсы успешно остановлены.")
+
         app = FastAPI(
             title="MaxAPI Webhook Listener Bot",
-            lifespan=webhook.lifespan,
+            on_startup=[on_startup],
+            on_shutdown=[on_shutdown],
         )
 
         webhook.setup(app, path=self.config.webhook_path)

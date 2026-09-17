@@ -45,14 +45,12 @@ services:
       dockerfile: listener/Dockerfile
     container_name: max_listener
     restart: unless-stopped
-    # ports: # УДАЛЕН: Внешний доступ теперь через nginx
-    #   - "8888:8888"
+    # ports: # Удалено: Внешний доступ теперь через nginx
     expose:
       - "8888"
     env_file:
       - .env
     volumes:
-      - ./listener:/app/listener
       - ./libs:/app/libs
     networks:
       - max-net
@@ -61,8 +59,13 @@ services:
     depends_on:
       - mongodb
     extra_hosts:
-      - "mis-host:192.168.19.2"      
-    command: ["python", "listener/listener.py", "--port", "8888"]
+      - "mis-host:192.168.19.2"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8888/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s      
 
   # Сервис рассылки
   max-sender:
@@ -104,6 +107,8 @@ services:
       - max-listener
     networks:
       - max-net
+    extra_hosts:
+      - "mis-host:192.168.19.2"
 
   # Сервис для получения и обновления сертификатов
   certbot:

@@ -121,6 +121,8 @@ class BookingsResource(BaseResource):
         body = dict(client_fields)
         if record_array is not None:
             body["record_array"] = record_array
+        
+        body["commercial"] = "max"
             
         resp = self.http.post(
             f"/hs/api/v1/book_record/{salon_id}/",
@@ -128,8 +130,8 @@ class BookingsResource(BaseResource):
             usertoken=self.token(usertoken),
         )
         logging.info("Визит создан")
-        hlp.log_json(resp)
-        logging.info("#######################")
+        #hlp.log_json(resp)
+        #logging.info("#######################")
         return self.data(resp)
 
     def change_record(

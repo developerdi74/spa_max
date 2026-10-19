@@ -279,6 +279,8 @@ class Salon1CService:
                 "comment": comment
             }
         ]
+
+        #client_fields = {'commercial': "max"}
         try:
             result = await retry_on_failure(
                 lambda: self.client.bookings.book_record(

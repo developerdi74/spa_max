@@ -263,7 +263,7 @@ class CreateVisitHandler(BaseHandler):
 
         if payload.staff_id and payload.services_id and payload.datetime and payload.step == "confirm_appointment":
             #dt = datetime.strptime(payload.datetime, "%d.%m.%Y %H:%M:%S")
-            print(payload.datetime)
+            #print(payload.datetime)
             dt = datetime.fromisoformat(payload.datetime)
             short_datetime = dt.strftime("%d.%m.%Y %H:%M")
             

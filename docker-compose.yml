@@ -78,6 +78,7 @@ services:
     volumes:
       - ./sender/sender.py:/app/sender.py
       - ./libs:/app/libs
+      - ./listener:/app/listener
     networks:
       - max-net
     depends_on:

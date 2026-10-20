@@ -4,3 +4,4 @@ aiohttp
 python-dotenv
 apscheduler
 requests
+aiocache

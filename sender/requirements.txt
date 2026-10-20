@@ -3,3 +3,4 @@ motor
 aiohttp
 python-dotenv
 apscheduler
+requests

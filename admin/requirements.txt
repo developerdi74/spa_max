@@ -7,3 +7,4 @@ uvicorn
 pydantic
 python-multipart
 jinja2
+requests

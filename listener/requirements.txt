@@ -6,3 +6,4 @@ fastapi
 aiocache
 openai
 rich
+requests

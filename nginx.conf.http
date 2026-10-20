@@ -3,7 +3,7 @@ events { worker_connections 1024; }
 http {
     server {
         listen 80;
-        server_name max.mgn-doctor.ru;
+        server_name max.spa-di.ru;
 
         # ACME challenge (используем alias для точного пути)
         location /.well-known/acme-challenge/ {

@@ -29,6 +29,7 @@ services:
     volumes:
       - ./admin/start.py:/app/start.py
       - ./libs:/app/libs
+      - ./listener:/app/listener
     networks:
       - max-net
     depends_on:

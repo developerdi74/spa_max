@@ -312,8 +312,7 @@ class Salon1CService:
     async def get_visites(self) -> list:
         """Получить визиты по дате (асинхронно)"""
         # Получаем завтрашнюю дату
-        tomorrow = datetime.now().date() + timedelta(days=10)
-        logging.info(tomorrow)
+        tomorrow = datetime.now().date() + timedelta(days=1)
         list_visits = await run_sync_in_async(
             lambda: self.client.visits.visits(
                 self.salon_id,

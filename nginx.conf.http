@@ -22,3 +22,6 @@ http {
         }
     }
 }
+
+#Выпуск сертификата с игнорирование заданных параметров в docker-compose.xml
+#docker compose run --rm --entrypoint certbot certbot certonly --webroot -w /var/www/certbot -d max.spa-di.ru --email developer@di74.ru --agree-tos --no-eff-email

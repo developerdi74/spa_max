@@ -3,6 +3,14 @@ from motor.motor_asyncio import AsyncIOMotorClient, AsyncIOMotorDatabase, AsyncI
 from typing import List, Optional
 from datetime import datetime, timedelta
 
+from libs.chat_state import (
+    ACTIVE_STATUSES,
+    create_or_reopen_ticket as _create_or_reopen_ticket,
+    get_active_ticket as _get_active_ticket,
+    append_message as _append_message,
+    close_ticket as _close_ticket,
+)
+
 class MongoStorage:
     def __init__(self, mongo_uri: str, db_name: str, default_collection_name: str):
         self._mongo_uri = mongo_uri
@@ -57,6 +65,11 @@ class MongoStorage:
             faqs_collection = self._db["faqs"]
             await faqs_collection.create_index("active", background=True)
             logging.info("Индексы для коллекции 'faqs' созданы")
+
+            # Индексы для коллекции support_tickets (чат с менеджером)
+            from libs.chat_state import ensure_indexes as chat_ensure_indexes, TICKET_COLLECTION
+            await chat_ensure_indexes(self._db)
+            logging.info("Индексы для коллекции '%s' созданы", TICKET_COLLECTION)
 
         except Exception as e:
             logging.error(f"Ошибка при создании индексов: {e}")
@@ -195,6 +208,39 @@ class MongoStorage:
         cursor = collection.find(filter_query)
         faqs = await cursor.to_list(length=10)
         return faqs
+
+    # ------------------------------------------------------------------
+    # Чат с менеджером (тикетная система, коллекция support_tickets)
+    # ------------------------------------------------------------------
+    def _tickets_collection(self) -> AsyncIOMotorCollection:
+        from libs.chat_state import TICKET_COLLECTION
+        return self._get_collection(TICKET_COLLECTION)
+
+    async def get_active_ticket(self, chat_id: int) -> dict | None:
+        """Активный тикет чата (open/assigned), если есть."""
+        return await _get_active_ticket(self._tickets_collection(), chat_id)
+
+    async def create_or_reopen_ticket(
+        self, *, chat_id: int, user_info: dict | None = None, reason: str = "", source: str = "button"
+    ) -> tuple[dict | None, bool]:
+        """Создать/переоткрыть тикет. Возвращает (ticket, created_new)."""
+        return await _create_or_reopen_ticket(
+            self._tickets_collection(),
+            chat_id=chat_id,
+            user_info=user_info,
+            reason=reason,
+            source=source,
+        )
+
+    async def append_ticket_message(
+        self, ticket_id, *, author: str, text: str, manager: str | None = None
+    ) -> None:
+        await _append_message(
+            self._tickets_collection(), ticket_id, author=author, text=text, manager=manager
+        )
+
+    async def close_ticket(self, ticket_id, *, closed_by: str) -> dict | None:
+        return await _close_ticket(self._tickets_collection(), ticket_id, closed_by=closed_by)
 
     def close(self):
         if self._client:

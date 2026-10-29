@@ -2,7 +2,7 @@ from maxapi.types import RequestContactButton
 from maxapi.types.attachments.attachment import ButtonsPayload
 from maxapi.types.attachments.buttons import CallbackButton, LinkButton
 
-from listener.payloads import CallbackAction,CreateVisitPayload,VisitsActionPayload
+from listener.payloads import CallbackAction,CreateVisitPayload,VisitsActionPayload,ChatActionPayload
 
 
 class Keyboards:
@@ -23,7 +23,17 @@ class Keyboards:
             [CallbackButton(text="Акции", payload=CallbackAction(action="shares").pack())],
             [CallbackButton(text="Вопросы и ответы", payload=CallbackAction(action="faq").pack())],
             [CallbackButton(text="Информация", payload=CallbackAction(action="information_menu").pack())],
+            [CallbackButton(text="💬 Связаться с менеджером", payload=ChatActionPayload(action="open").pack())],
             [RequestContactButton(text="Поделиться контактом")],
+        ]
+        return ButtonsPayload(buttons=buttons).pack()
+
+    @staticmethod
+    def chat_connecting():
+        """Клавиатура в режиме ожидания менеджера."""
+        buttons = [
+            [CallbackButton(text="Отменить соединение с менеджером", payload=ChatActionPayload(action="cancel").pack(), intent="negative")],
+            [CallbackButton(text="Главное меню", payload=ChatActionPayload(action="menu").pack())],
         ]
         return ButtonsPayload(buttons=buttons).pack()
 

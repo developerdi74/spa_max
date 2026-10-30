@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Чаты с менеджерами{% endblock %}
+
+{% block content %}
+    <div class="page-head">
+        <h1>💬 Чаты с подписчиками
+            {% if not archived and stats %}
+                <span class="badge queued">{{ stats.open + stats.assigned }} активн.</span>
+            {% endif %}
+        </h1>
+        <div class="actions">
+            {% if archived %}
+                <a class="btn btn-secondary" href="/chats">Активные</a>
+            {% else %}
+                <a class="btn btn-secondary" href="/chats?archived=1">История</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Клиент</th>
+                <th>Телефон</th>
+                <th>Статус</th>
+                <th>Менеджер</th>
+                <th>Последнее сообщение</th>
+                <th>Обновлён</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+                <tr>
+                    <td>{{ item.userInfo.name if item.userInfo and item.userInfo.name else '—' }}</td>
+                    <td>{{ item.userInfo.phoneNumber if item.userInfo and item.userInfo.phoneNumber else '—' }}</td>
+                    <td>
+                        {% if item.status == 'open' %}
+                            <span class="badge running">Новое</span>
+                        {% elif item.status == 'assigned' %}
+                            <span class="badge queued">В работе</span>
+                        {% else %}
+                            <span class="badge completed">Закрыто</span>
+                        {% endif %}
+                        {% if item.unread %}<span class="badge failed">{{ item.unread }} новых</span>{% endif %}
+                    </td>
+                    <td>{{ item.assignedTo or '—' }}</td>
+                    <td>
+                        {{ item.lastMessagePreview or '—' }}
+                        <div class="muted">Причина: {{ item.reason or '—' }} ({{ item.source or '—' }})</div>
+                    </td>
+                    <td>{{ item.updatedAt }}</td>
+                    <td>
+                        <div class="actions">
+                            <a class="btn" href="/chats/{{ item._id }}">Открыть чат</a>
+                        </div>
+                    </td>
+                </tr>
+            {% else %}
+                <tr><td colspan="7">Обращений нет</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

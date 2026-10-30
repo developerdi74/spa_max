@@ -15,6 +15,27 @@ from ..models.share import ShareDocument, ShareUpdate as ShareUpdateModel
 from ..models.faq import FaqDocument, FaqUpdate as FaqUpdateModel
 from ..config.settings import Settings
 
+import sys as _sys
+from pathlib import Path as _Path
+
+# libs.chat_state — общий модуль тикетной системы (listener/admin/sender)
+_LIBS_ROOT = _Path(__file__).resolve().parents[3]
+if str(_LIBS_ROOT) not in _sys.path:
+    _sys.path.insert(0, str(_LIBS_ROOT))
+
+from libs.chat_state import (  # noqa: E402
+    ACTIVE_STATUSES,
+    append_message as _append_message,
+    assign_ticket as _assign_ticket,
+    close_ticket as _close_ticket,
+    create_or_reopen_ticket as _create_or_reopen_ticket,
+    ensure_indexes as _ensure_ticket_indexes,
+    get_active_ticket as _get_active_ticket,
+    get_ticket as _get_ticket,
+    list_tickets as _list_tickets,
+    ticket_stats as _ticket_stats,
+)
+
 logger = logging.getLogger(__name__)
 
 
@@ -450,6 +471,45 @@ class FaqRepository(BaseRepository):
             return False
 
 
+class SupportTicketRepository(BaseRepository):
+    """Репозиторий рабочего места менеджера: очередь чатов и переписка."""
+
+    def __init__(self, db: AsyncIOMotorDatabase):
+        super().__init__(db)
+        from libs.chat_state import TICKET_COLLECTION
+        self.collection: AsyncIOMotorCollection = db[TICKET_COLLECTION]
+
+    async def create_index(self) -> None:
+        """Индексы тикетной коллекции."""
+        try:
+            await _ensure_ticket_indexes(self.db)
+            logger.info("✅ Индексы коллекции support_tickets созданы")
+        except Exception as e:
+            logger.warning(f"⚠️ Не удалось создать индексы support_tickets: {e}")
+
+    async def list_tickets(self, statuses=ACTIVE_STATUSES, limit: int = 200) -> List[Dict[str, Any]]:
+        return await _list_tickets(self.collection, statuses=tuple(statuses), limit=limit)
+
+    async def get_ticket(self, ticket_id: str) -> Optional[Dict[str, Any]]:
+        return await _get_ticket(self.collection, ticket_id)
+
+    async def assign(self, ticket_id: str, manager: str) -> Optional[Dict[str, Any]]:
+        return await _assign_ticket(self.collection, ticket_id, manager=manager)
+
+    async def close(self, ticket_id: str, closed_by: str) -> Optional[Dict[str, Any]]:
+        return await _close_ticket(self.collection, ticket_id, closed_by=closed_by)
+
+    async def append_message(
+        self, ticket_id: str, *, author: str, text: str, manager: Optional[str] = None
+    ) -> None:
+        await _append_message(
+            self.collection, ticket_id, author=author, text=text, manager=manager
+        )
+
+    async def stats(self) -> Dict[str, int]:
+        return await _ticket_stats(self.collection)
+
+
 class DatabaseManager:
     """Менеджер подключения к базе данных."""
     
@@ -464,6 +524,7 @@ class DatabaseManager:
         self.users: Optional[UserRepository] = None
         self.shares: Optional[ShareRepository] = None
         self.faqs: Optional[FaqRepository] = None
+        self.support_tickets: Optional[SupportTicketRepository] = None
         
         # Сторидж из listener для статистики
         self.storage = None
@@ -494,6 +555,7 @@ class DatabaseManager:
             self.db,
             "faqs"
         )
+        self.support_tickets = SupportTicketRepository(self.db)
         
         # Инициализация storage из listener для доступа к методам статистики
         from listener.storage import MongoStorage
@@ -505,6 +567,7 @@ class DatabaseManager:
         await self.newsletter_logs.create_index()
         await self.shares.create_index()
         await self.faqs.create_index()
+        await self.support_tickets.create_index()
         
         # Проверка подключения
         try:

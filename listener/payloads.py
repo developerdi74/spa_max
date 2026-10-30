@@ -22,3 +22,6 @@ class VisitsActionPayload(CallbackPayload, prefix="visits"):
 class ConfirmAppointmentPayload(CallbackPayload, prefix='confirm'):
     appointment_id: str
     action: str
+
+class ChatActionPayload(CallbackPayload, prefix="chat"):
+    action: str  # open | close | cancel | menu

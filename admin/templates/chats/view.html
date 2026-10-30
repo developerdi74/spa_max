@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %}Чат с клиентом{% endblock %}
+
+{% block head %}
+<style>
+    .chat-box {
+        background: #fff; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        padding: 16px; max-height: 60vh; overflow-y: auto; margin-bottom: 16px;
+        display: flex; flex-direction: column; gap: 8px;
+    }
+    .msg { max-width: 70%; padding: 10px 14px; border-radius: 12px; font-size: 14px; white-space: pre-wrap; word-wrap: break-word; }
+    .msg .meta { display: block; font-size: 11px; color: #6b7280; margin-top: 4px; }
+    .msg-client { align-self: flex-start; background: #eef2ff; }
+    .msg-manager { align-self: flex-end; background: #dcfce7; }
+    .msg-system { align-self: center; background: #f3f4f6; color: #6b7280; font-size: 12px; }
+    .reply-form textarea { min-height: 80px; }
+    .ticket-info { font-size: 13px; color: #6b7280; margin-bottom: 12px; }
+</style>
+{% endblock %}
+
+{% block content %}
+    <div class="page-head">
+        <h1>Чат с клиентом {{ ticket.userInfo.name if ticket.userInfo and ticket.userInfo.name else '' }}</h1>
+        <a class="btn btn-secondary" href="/chats">← К очереди</a>
+    </div>
+
+    <div class="ticket-info">
+        Статус: <b>{{ ticket.status }}</b> ·
+        Клиент: {{ ticket.userInfo.name if ticket.userInfo else '—' }}
+        ({{ ticket.userInfo.phoneNumber if ticket.userInfo else '—' }}, chatId {{ ticket.chatId }}) ·
+        Менеджер: {{ ticket.assignedTo or 'не назначен' }} ·
+        Создан: {{ ticket.createdAt }} ·
+        Причина: {{ ticket.reason or '—' }}
+    </div>
+
+    <div class="chat-box" id="chat-box">
+        {% for m in ticket.history %}
+            <div class="msg msg-{{ m.author }}">
+                {{ m.text }}
+                <span class="meta">
+                    {% if m.author == 'client' %}Клиент{% elif m.author == 'manager' %}Менеджер {{ m.manager or '' }}{% else %}Система{% endif %}
+                    · {{ m.at }}
+                </span>
+            </div>
+        {% else %}
+            <div class="msg msg-system">Сообщений пока нет</div>
+        {% endfor %}
+    </div>
+
+    {% if ticket.status != 'closed' %}
+        <form class="form-box reply-form" method="post" action="/chats/{{ ticket._id }}/reply">
+            <label>
+                Ответ клиенту
+                <textarea name="text" required placeholder="Введите ответ…"></textarea>
+            </label>
+            <div class="form-actions">
+                <button type="submit">📨 Отправить</button>
+                {% if ticket.status == 'open' %}
+                    <button type="submit" formaction="/chats/{{ ticket._id }}/assign" class="btn-secondary">Взять в работу</button>
+                {% endif %}
+                <button type="submit" formaction="/chats/{{ ticket._id }}/close" class="btn-danger"
+                        onclick="return confirm('Завершить диалог и вернуть клиента боту?');">Закрыть диалог</button>
+            </div>
+        </form>
+    {% else %}
+        <div class="form-box">Диалог закрыт {{ ticket.closedAt }} ({{ ticket.closedBy or '—' }}).</div>
+    {% endif %}
+
+    <script>
+        // Автоскролл вниз и автообновление раз в 15 секунд (пока диалог активен)
+        var box = document.getElementById('chat-box');
+        box.scrollTop = box.scrollHeight;
+        {% if ticket.status != 'closed' %}
+        setTimeout(function () { location.reload(); }, 15000);
+        {% endif %}
+    </script>
+{% endblock %}

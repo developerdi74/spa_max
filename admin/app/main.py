@@ -8,7 +8,7 @@ from contextlib import asynccontextmanager
 from pathlib import Path
 from typing import Optional, AsyncGenerator
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
 from starlette.middleware.sessions import SessionMiddleware
 from maxapi import Bot
@@ -122,6 +122,19 @@ def create_application() -> FastAPI:
         secret_key=settings.MAX_BOT_TOKEN[:32] if len(settings.MAX_BOT_TOKEN) >= 32 else settings.MAX_BOT_TOKEN + "x" * (32 - len(settings.MAX_BOT_TOKEN)),
         https_only=False,
     )
+
+    @app.middleware("http")
+    async def chats_badge_middleware(request: Request, call_next):
+        """Считает активные обращения и кладёт число в request.state —
+        шаблон base.html выводит его как бейдж у пункта «💬 Чаты»."""
+        request.state.unread_chats = 0
+        try:
+            if db_manager and db_manager.support_tickets and request.session.get("authenticated"):
+                stats = await db_manager.support_tickets.stats()
+                request.state.unread_chats = int(stats.get("open", 0)) + int(stats.get("assigned", 0))
+        except Exception as e:  # noqa: BLE001 — бейдж не должен ломать страницу
+            logger.debug(f"Не удалось посчитать активные чаты: {e}")
+        return await call_next(request)
     
     # Создание роутеров
     health_router = HealthRouter()
@@ -141,6 +154,7 @@ def create_application() -> FastAPI:
     app.include_router(share_router.router)
     app.include_router(faq_router.router)
     app.include_router(stats_router.router)
+    app.include_router(chat_router.router)
     app.include_router(auth_router.router)
     
     return app

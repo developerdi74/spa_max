@@ -187,8 +187,10 @@ class ChatRouter:
             """Закрыть обращение — клиент возвращается к боту."""
             repo = await self._get_tickets_repo()
             manager = request.session.get("username", "manager")
-            ticket = await repo.close(ticket_id, closed_by=f"manager:{manager}")
-            if ticket:
+            # Извлекаем chatId до закрытия (close может вернуть None, если тикет уже закрыт)
+            ticket = await repo.get_ticket(ticket_id)
+            result = await repo.close(ticket_id, closed_by=f"manager:{manager}")
+            if ticket and (result or ticket.get("status") in ("open", "assigned")):
                 await repo.append_message(
                     ticket_id,
                     author="system",

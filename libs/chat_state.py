@@ -141,6 +141,21 @@ async def create_or_reopen_ticket(
     return ticket, True
 
 
+def to_object_id(ticket_id):
+    """Приводит идентификатор тикета к ObjectId (строка -> ObjectId, None если невалиден)."""
+    from bson import ObjectId
+    from bson.errors import InvalidId
+
+    if ticket_id is None:
+        return None
+    if isinstance(ticket_id, ObjectId):
+        return ticket_id
+    try:
+        return ObjectId(str(ticket_id))
+    except (InvalidId, TypeError):
+        return None
+
+
 async def append_message(
     col,
     ticket_id,
@@ -150,6 +165,9 @@ async def append_message(
     manager: Optional[str] = None,
 ) -> None:
     """Добавляет сообщение в историю тикета и обновляет активность."""
+    oid = to_object_id(ticket_id)
+    if oid is None:
+        return
     now = datetime.now()
     entry = {"author": author, "text": text, "at": now}
     if manager:
@@ -160,39 +178,50 @@ async def append_message(
         update["$set"] = {"clientLastActivity": now, "lastMessage": entry, "updatedAt": now}
     else:
         update["$set"] = {"managerLastActivity": now, "lastMessage": entry, "updatedAt": now}
-    await col.update_one({"_id": ticket_id}, update)
+    await col.update_one({"_id": oid}, update)
 
 
 async def close_ticket(col, ticket_id, *, closed_by: str) -> Optional[Dict[str, Any]]:
     """Закрывает тикет, возвращает его документ (или None, если уже закрыт)."""
+    oid = to_object_id(ticket_id)
+    if oid is None:
+        return None
     now = datetime.now()
     res = await col.update_one(
-        {"_id": ticket_id, "status": {"$in": list(ACTIVE_STATUSES)}},
+        {"_id": oid, "status": {"$in": list(ACTIVE_STATUSES)}},
         {"$set": {"status": "closed", "closedAt": now, "closedBy": closed_by, "updatedAt": now}},
     )
-    if res.modified_count == 0:
+    if res.matched_count == 0:
         return None
-    return await col.find_one({"_id": ticket_id})
+    return _serialize_ticket(await col.find_one({"_id": oid}))
 
 
 async def assign_ticket(col, ticket_id, *, manager: str) -> Optional[Dict[str, Any]]:
     """Берёт тикет в работу (open -> assigned). Повторный вызов идемпотентен."""
+    oid = to_object_id(ticket_id)
+    if oid is None:
+        return None
     now = datetime.now()
-    await col.update_one(
-        {"_id": ticket_id, "status": "open"},
-        {"$set": {"status": "assigned", "assignedTo": manager, "updatedAt": now}},
-    )
-    return await col.find_one({"_id": ticket_id})
+    doc = await col.find_one({"_id": oid})
+    if doc is None:
+        return None
+    # Идемпотентно: open -> assigned; уже assigned — оставляем текущего менеджера
+    if doc.get("status") == "open":
+        await col.update_one(
+            {"_id": oid, "status": "open"},
+            {"$set": {"status": "assigned", "assignedTo": manager, "updatedAt": now}},
+        )
+        doc = await col.find_one({"_id": oid})
+    return _serialize_ticket(doc)
 
 
 async def get_ticket(col, ticket_id):
     """Тикет по _id (ObjectId или строка)."""
-    from bson import ObjectId
-    try:
-        oid = ObjectId(str(ticket_id))
-    except Exception:
+    oid = to_object_id(ticket_id)
+    if oid is None:
         return None
-    return await col.find_one({"_id": oid})
+    doc = await col.find_one({"_id": oid})
+    return _serialize_ticket(doc) if doc else None
 
 
 def _serialize_ticket(doc: Dict[str, Any]) -> Dict[str, Any]:

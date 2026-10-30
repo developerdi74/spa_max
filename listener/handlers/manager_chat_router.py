@@ -1,27 +1,40 @@
 """
 Роутер живого чата «менеджер — подписчик» (приоритетная ветка).
 
-maxapi не поддерживает «next handler», поэтому перехват сообщений клиента
-реализован отдельным Router, который регистрируется в диспетчере РАНЬШЕ
-обычных хендлеров (см. listener/app.py:_register_handlers): включённые
-роутеры обходятся раньше собственных обработчиков Dispatcher.
+maxapi не поддерживает «next handler»: диспетчер выполняет ПЕРВЫЙ
+подходящий обработчик и останавливается. Поэтому реализация такая:
 
-Логика:
-  • Активный тикет (open/assigned) у чата есть  → сообщение уходит менеджеру
-    (пишется в историю support_tickets, менеджеры получают уведомление).
-  • Активного тикета нет / это служебное событие (кнопки, контакт, команда) →
-    return False, и событие обрабатывают обычные хендлеры (AI, меню и т.д.).
-  • Кнопки «Отменить соединение» / «Главное меню» (payload chat:*) обрабатываются
-    здесь же, чтобы не конфликтовать с MenuHandler.
+  1. В конструкторе Dispatcher передаётся кастомный ``custom_filter`` —
+     функция :func:`manager_chat_gate` (см. listener/app.py). Она выполняется
+     для каждого события ДО подбора хендлеров и умеет полностью «съесть»
+     событие (вернуть ``{"_stop": True}``) — тогда ни один обычный хендлер
+     (включая AiAnswerHandler) не вызывается. Так сообщения клиента с
+     активным тикетом гарантированно не попадают в AI-ответчик.
+
+  2. Сам роутер (регистрируется РАНЬШЕ обычных хендлеров через
+     ``dp.include_routers``) обрабатывает кнопки диалога
+     (``chat:open`` / ``chat:cancel`` / ``chat:menu``), а также принимает
+     сообщения клиентов, которые гейт передал дальше (например, при
+     временной недоступности MongoDB — чтобы бот продолжил отвечать).
+
+Логика перехвата:
+  • Активный тикет (open/assigned) + непустой текст без контакта →
+    сообщение пишется в историю тикета, менеджеры получают уведомление,
+    клиенту — подтверждение; событие остановлено.
+  • Ошибки инфраструктуры (Mongo недоступна) → событие отдаётся обычным
+    хендлерам (бот работает как раньше).
 """
 
+import asyncio
 import logging
 from typing import Any, Optional
 
 from maxapi import Bot, Dispatcher, F, Router
+from maxapi.filters.middleware import BaseMiddleware, HandlerCallable
 from maxapi.types import MessageCreated, MessageCallback
 from maxapi.utils.formatting import Bold, Heading, as_html
 from maxapi.enums.format import Format
+from maxapi.enums.update_type import UpdateType
 
 from listener.keyboards import Keyboards
 from listener.payloads import ChatActionPayload
@@ -45,13 +58,38 @@ def _extract_text(event: MessageCreated) -> str:
 def _has_contact(event: MessageCreated) -> bool:
     """Сообщение содержит переданный контакт — его должен обрабатывать бот."""
     try:
-        for att in (event.message.attachments or []):
-            payload = getattr(att, "payload", None)
-            if payload is not None and getattr(payload, "contact", None) is not None:
+        body = getattr(event.message, "body", None)
+        for att in (getattr(body, "attachments", None) or []):
+            content_type = getattr(getattr(att, "content", None), "type", None)
+            if content_type is not None and str(content_type) == "contact":
                 return True
     except Exception:  # noqa: BLE001
         pass
     return False
+
+
+class ManagerChatGate(BaseMiddleware):
+    """Глобальная outer-middleware диспетчера: «гейт» живого чата.
+
+    Выполняется для КАЖДОГО события раньше подбора хендлеров. Если у чата
+    есть активный тикет и это текстовое сообщение клиента без контакта —
+    перехватывает событие целиком (AiAnswerHandler и прочие хендлеры не
+    вызываются). Иначе пропускает событие дальше как обычно.
+
+    Любая внутренняя ошибка (недоступна Mongo и т.п.) — событие
+    пропускается к обычным хендлерам, чтобы бот не «немел».
+    """
+
+    def __init__(self, router_owner: "ManagerChatRouter"):
+        self._owner = router_owner
+
+    async def __call__(self, handler: HandlerCallable, event, data: dict) -> Any:
+        try:
+            if await self._owner.try_intercept(event):
+                return None  # событие полностью обработано, хендлеры не нужны
+        except Exception as e:  # noqa: BLE001
+            logger.error(f"ManagerChatGate: ошибка перехвата, отдаю событие боту: {e}", exc_info=True)
+        return await handler(event, data)
 
 
 class ManagerChatRouter:

@@ -309,10 +309,10 @@ class Salon1CService:
             logging.error(f"Не удалось отменить визит: {e}")
             raise
 
-    async def get_visites(self) -> list:
+    async def get_visites(self, days = 1) -> list:
         """Получить визиты по дате (асинхронно)"""
         # Получаем завтрашнюю дату
-        tomorrow = datetime.now().date() + timedelta(days=1)
+        tomorrow = datetime.now().date() + timedelta(days=days)
         list_visits = await run_sync_in_async(
             lambda: self.client.visits.visits(
                 self.salon_id,

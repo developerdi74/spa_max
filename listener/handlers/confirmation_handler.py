@@ -55,11 +55,17 @@ class CreateVisitHandler(BaseHandler):
             text = "Не удалось подтвердить визит"
         else:
             result = await self._salon_service.confirm_visit(appointment_id=appointment_id)
-            await self._storage.add_confirmations(phone=phone)
-        """await event.answer(
+            await self._storage.add_confirmations(phone=phone);
+
+        text = as_html(
+                    Heading("Благодарим Вас за подтверждение визита!") +
+                    "\n\n" +
+                    "Ждём вас в нашем центре красоты и здоровья Другое измерение!"
+                )
+        await event.answer(
             new_text=text,
             attachments=[payload_buttons],
             format = Format.HTML           
-        )"""
+        )
         return
     

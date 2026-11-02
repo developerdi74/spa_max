@@ -52,7 +52,7 @@ MAX_BOT_TOKEN = os.getenv("MAX_BOT_TOKEN")
 # Данные для МИС Renovatio
 SALON_ID = os.getenv("SALON_ID", "")
 API_KEY = os.getenv("API_KEY", "")
-DAYS_BEFORE = int(os.getenv("DAYS_BEFORE", 20))
+DAYS_BEFORE = int(os.getenv("DAYS_BEFORE", 1))
 ENV = os.getenv("ENV", "DEV")
 
 
@@ -101,7 +101,7 @@ class NotificationSender:
         formatted_date = datetime.now().strftime("%d.%m.%Y")
         logger.info(f"Запуск процесса рассылки... {formatted_date}")
         
-        appointments = await self.salon1c_service.get_visites()
+        appointments = await self.salon1c_service.get_visites(days=DAYS_BEFORE)
         count_visits = len(appointments)
         sent_count = 0
         
